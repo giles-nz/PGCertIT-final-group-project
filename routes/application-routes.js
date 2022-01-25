@@ -11,4 +11,11 @@ router.get("/", async function(req, res) {
     res.render("home");
 });
 
+router.get("/articles", async function(req, res) {
+
+
+
+    res.render("articles");
+});
+
 module.exports = router;

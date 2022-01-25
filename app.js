@@ -33,6 +33,9 @@ app.use(require("./middleware/toaster-middleware.js"));
 // Setup routes
 app.use(require("./routes/application-routes.js"));
 
+const loginRouter = require("./routes/login-routes.js");
+app.use(loginRouter);
+
 // Start the server running.
 app.listen(port, function () {
     console.log(`App listening on port ${port}!`);
