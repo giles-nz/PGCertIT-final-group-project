@@ -8,17 +8,35 @@
     {{else}}
     <title>Default title.</title>
     {{/if}}
+    <link rel="stylesheet" href="./css/site.css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <nav>
-       <a href="/">HOME</a>
-       <a href="articles">ARTICLES</a>
-       <a></a>
-       <a href="login">SIGN IN</a>
-       <a href="newAccount">SIGN UP</a>
-    </nav>
+    
+    <div id="container-Main">
+       <nav id="nav">
+           <div id="leftnav">
+               <a href="/">Home</a>
+               <a href="/">About</a>
+               <a href="articles">Articles</a>
+               <a href="/">Contact</a>
+               <a href="/">Advertise</a>
+           </div>
+           <div id="rightnav">
+               <a href="#" class="fa fa-facebook"></a>
+               <a href="#" class="fa fa-twitter"></a>
+               <a href="#" class="fa fa-instagram"></a>
+               <a href="#" class="fa fa-rss"></a>
+               <a href="login">Log out</a>
+           </div>
+          {{!-- <a href="login">SIGN IN</a>
+          <a href="newAccount">SIGN UP</a> --}}
+       </nav>
     {{{body}}}
+
+    </div>
 </body>
 
 </html>
