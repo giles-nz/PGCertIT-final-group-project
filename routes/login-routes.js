@@ -67,9 +67,9 @@ router.get("/newAccount", function(req, res) {
 });
 
 
-router.post("/newAccount", function(req, res) {
+// router.post("/newAccount", function(req, res) {
 
 
-});
+// });
 
 module.exports = router;
