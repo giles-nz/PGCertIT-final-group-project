@@ -15,8 +15,12 @@
        <a href="/">HOME</a>
        <a href="articles">ARTICLES</a>
        <a></a>
+       {{#if user}}
+       <a href="logout">LOGOUT</a>
+       {{else}}
        <a href="login">SIGN IN</a>
        <a href="newAccount">SIGN UP</a>
+        {{/if}}
     </nav>
     {{{body}}}
 </body>
