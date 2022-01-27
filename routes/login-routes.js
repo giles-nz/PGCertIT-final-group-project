@@ -67,9 +67,24 @@ router.get("/newAccount", function(req, res) {
 });
 
 
-// router.post("/newAccount", function(req, res) {
 
+router.post("/newAccount", async function(req, res) {
+    const user = {
+        username: req.body.username,
+        password: req.body.password,
+        name: req.body.name
+    };
 
-// });
+    try {
+        await userDao.createUser(user);
+        res.setToastMessage("Account creation successful. Please login using your new credentials.");
+        res.redirect("/newAccount")
+    }
+    catch (err) {
+        res.setToastMessage("That username was already taken!");
+        res.redirect("/newAccount");
+    }
+
+ });
 
 module.exports = router;
