@@ -13,8 +13,8 @@
     <form action="./newAccount" method="POST">
 
         <div class="flex-col mb">
-            <label for="txtUsername">Username:</label>
-            <input type="text" name="username" id="txtUsername" required>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
         </div>
 
         <br>
@@ -39,33 +39,51 @@
         <br>
 
         <div class="flex-col mb">
-            <label for="password_two">Please select an avatar:</label>
-            <input type="radio" name="avatar" class="flex-col mb" id="male">
-            <label for="male">
-                <img src="http://findicons.com/files/icons/1688/web_blog/48/user_male_white_red_brown.png">
+            <label for="avatar">Please select an avatar:</label>
+            <br>
+            <input type="radio" name="avatar" class="avatar-img" id="1" value="1">
+            <label for="1">
+                <img src="./images/avatars/1.png">
             </label>
-            <input type="radio" name="avatar" class="flex-col mb" id="female">
-            <label for="female">
-                <img src="http://findicons.com/files/icons/1688/web_blog/48/user_female_white_pink_black.png">
+            <input type="radio" name="avatar" class="avatar-img" id="2" value="2">
+            <label for="2">
+                <img src="./images/avatars/2.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="3" value="3">
+            <label for="3">
+                <img src="./images/avatars/3.png">
+            </label>
+            <br>
+            <input type="radio" name="avatar" class="avatar-img" id="6" value="6">
+            <label for="6">
+                <img src="./images/avatars/6.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="7" value="7">
+            <label for="7">
+                <img src="./images/avatars/7.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="11" value="11">
+            <label for="11">
+                <img src="./images/avatars/11.png">
             </label>
         </div>
 
         <br>
 
         <div class="flex-col mb">
-            <label for="txtfname">First name:</label>
-            <input type="text" name="fname" id="txtfname" required>
+            <label for="fname">First name:</label>
+            <input type="text" name="fname" id="fname" required>
         </div>
 
         <br>
 
         <div class="flex-col mb">
-            <label for="txtlname">Last name:</label>
-            <input type="text" name="fname" id="txtlname" required>
+            <label for="lname">Last name:</label>
+            <input type="text" name="lname" id="lname" required>
         </div>
 
         <br>
-
+        
         <div class="flex-col mb">
             <label for="dob">Date of birth:</label>
             <input type="date" name="dob" id="dob" required>
@@ -75,11 +93,8 @@
 
         <div class="flex-col mb">
             <label for="bio">Tell us a bit about yourself:</label>
-            <input type="textarea" name="bio" id="bio" rows="4" cols="50" required>
+            <input type="text" name="bio" id="bio"required>
         </div>
-
-        {{!-- <textarea rows="4" cols="50" name="comment" form="usrform">
-        Enter text here...</textarea> --}}
 
         <br>
 

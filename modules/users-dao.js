@@ -11,9 +11,9 @@ async function createUser(user) {
     const db = await dbPromise;
 
     const result = await db.run(SQL`
-        insert into users (username, password, name) values(${user.username}, ${user.password})`);
-
+        insert into users (fname, lname, bio, username, password, dob, avatar) values (${user.fname},${user.lname},${user.bio},${user.username},${user.password},${user.dob},${user.avatar})`);
     // Get the auto-generated ID value, and assign it back to the user object.
+    
     user.id = result.lastID;
 }
 
@@ -62,8 +62,6 @@ async function retrieveUserWithAuthToken(authToken) {
     const user = await db.get(SQL`
         select * from users
         where authToken = ${authToken}`);
-
-    console.log(user);
 
     return user;
 }

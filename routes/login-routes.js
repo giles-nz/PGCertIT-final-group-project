@@ -6,6 +6,8 @@ const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 
 
 router.get("/login", function (req, res) {
+
+    res.locals.title = "Login | WEBSITE NAME";
     if (res.locals.user) {
         res.redirect("/");
     }
@@ -24,6 +26,7 @@ router.get("/logout", function (req, res) {
 });
 
 router.get("/", verifyAuthenticated, async function (req, res) {
+    res.locals.title = "Home | WEBSITE NAME";
     const user = res.locals.user;
     res.render("home");
 });
@@ -32,7 +35,7 @@ router.get("/", verifyAuthenticated, async function (req, res) {
 // If they match a user in the database, give that user an authToken, save the authToken
 // in a cookie, and redirect to "/". Otherwise, redirect to "/login", with a "login failed" message.
 router.post("/login", async function (req, res) {
-
+    
     // Get the username and password submitted in the form
     const username = req.body.username;
     const password = req.body.password;
@@ -61,24 +64,27 @@ router.post("/login", async function (req, res) {
 });
 
 router.get("/newAccount", function(req, res) {
-
-
+    res.locals.title = "New Account | WEBSITE NAME";
     res.render("new-account");
 });
 
 
 
-router.post("/newAccount", async function(req, res) {
-    const user = {
+router.post("/newAccount", function(req, res) {
+    let user = {
         username: req.body.username,
+        lname: req.body.lname,
         password: req.body.password,
-        name: req.body.name
+        fname: req.body.fname,
+        bio: req.body.bio,
+        avatar: req.body.avatar,
+        dob: req.body.dob
     };
 
     try {
-        await userDao.createUser(user);
-        res.setToastMessage("Account creation successful. Please login using your new credentials.");
-        res.redirect("/newAccount")
+        userDao.createUser(user);
+        res.setToastMessage(`Thanks, ${user.fname}! We've Created your account. Please log in using your new credentials.`);
+        res.redirect("/login")
     }
     catch (err) {
         res.setToastMessage("That username was already taken!");
@@ -86,5 +92,20 @@ router.post("/newAccount", async function(req, res) {
     }
 
  });
+
+//  router.post("/newAccount", function (req,res){
+
+//     let user = {
+//         username: req.body.username,
+//         password: req.body.password,
+//         fname: req.body.fname,
+//         lname: req.body.lname,
+//     }
+   
+//     userDao.createUser(user);
+//     console.log(user.fname);
+//     res.setToastMessage("User created successfully!");
+//     res.redirect("/login")
+// });
 
 module.exports = router;

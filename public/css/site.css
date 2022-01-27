@@ -1,3 +1,4 @@
+
 /* *{
     border: 1px solid black;
 }  */
@@ -7,8 +8,9 @@
 } 
 /* --------------------------- Nav part */
 body {
-    margin: 0px;
+  margin: 0px;
 }
+
 .nav-a:link{
     color: black;
     text-align: center;
@@ -79,35 +81,36 @@ body {
     text-decoration: none;
     display: inline-block;
 }
+
 a:hover {
-    color: #706F6F;
-    background-color: transparent;
-    text-decoration: none;
+  color: #706f6f;
+  background-color: transparent;
+  text-decoration: none;
 }
-#nav{
-    background-color: #2a53c1;
-    padding: 20px;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+#nav {
+  background-color: #2a53c1;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 /* --------------------------- Nav part */
+
 
 /* --------------------------- homepage part */
 #home-page{
     margin: 20px;
-}
-#nav-image{
-    display: block;
-    margin: auto;
+#nav-image {
+  display: block;
+  margin: auto;
 }
 .welcome-text {
-    font-size: 40px;
-    margin-left: 70px;
-    display: flex;
-    flex-direction: row;
-    color: #0e1c40;
+  font-size: 40px;
+  margin-left: 70px;
+  display: flex;
+  flex-direction: row;
+  color: #0e1c40;
 }
 .container-login{
   background-color: white;
@@ -132,6 +135,12 @@ a:hover {
   height: 70%;
   padding: 40px;
   text-align: center;
+}
+.home-page-avatar {
+  height: 50%;
+  width: auto;
+  display: block;
+  margin: auto;
 }
 /* --------------------------- homepage part */
 
