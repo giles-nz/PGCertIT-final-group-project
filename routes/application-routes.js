@@ -18,4 +18,11 @@ router.get("/articles", async function(req, res) {
     res.render("articles");
 });
 
+router.get("/content", async function(req, res) {
+
+
+
+    res.render("content");
+});
+
 module.exports = router;

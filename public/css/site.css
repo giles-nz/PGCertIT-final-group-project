@@ -1,4 +1,7 @@
-* {
+/* *{
+    border: 1px solid black;
+}  */
+#container-Main {
     font-family: 'Open Sans', sans-serif;
     line-height: 23px;
 } 
@@ -6,13 +9,76 @@
 body {
     margin: 0px;
 }
-a:link, a:visited {
+.nav-a:link{
+    color: black;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+.nav-a:visited {
     color: white;
     text-align: center;
     padding: 0px 10px 0px 10px;
     text-decoration: none;
     display: inline-block;
-  }
+}
+#facebook:link{
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+#facebook:visited {
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+#twitter:link{
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+#twitter:visited {
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+#instagram:link{
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+#instagram:visited {
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+#rss:link{
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+#rss:visited {
+    color: white;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
 a:hover {
     color: #706F6F;
     background-color: transparent;
@@ -28,6 +94,7 @@ a:hover {
 }
 /* --------------------------- Nav part */
 
+/* --------------------------- homepage part */
 #home-page{
     margin: 20px;
 }
@@ -43,10 +110,8 @@ a:hover {
     color: #0e1c40;
 }
 .container-login{
-    /* background-color: rgb(0,0,0); /* Fallback color */
-  background-color: white; /* Black w/opacity/see-through */
+  background-color: white;
   color: black;
-  /* border: 1px solid black; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -57,9 +122,8 @@ a:hover {
   text-align: center;
 }
 .container-create{
-  background-color: white; /* Black w/opacity/see-through */
+  background-color: white;
   color: black;
-  /* border: 1px solid black; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -68,4 +132,72 @@ a:hover {
   height: 70%;
   padding: 40px;
   text-align: center;
+}
+/* --------------------------- homepage part */
+
+/* --------------------------- article display part */
+#container-all-article{
+    font-family: 'Lato', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin-top: 40px;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 300px 10px 300px;
+}
+.card-image{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    object-position:center;
+}
+.card-body{
+    padding: 20px;
+    margin: 20px;
+}
+.card-image:hover{
+    transform: scale(1.1);
+    transition: transform .5s;
+}
+.card-title{
+   font-size: 30px;
+}
+.articl-a{
+    color: black;
+    text-decoration: none;
+}
+.articl-a:hover{
+    color: #2a53c1;
+}
+/* --------------------------- article display part */
+
+#container-content{
+    text-align: center;
+}
+#img-inside{
+    float: left;
+    padding: 2px;
+    border: 1px solid #2a53c1;
+    margin: 10px;
+}
+#comment-submit{
+    text-align: center;
+}
+#txtContent{
+    width: 80%;
+}
+#small-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: small;
+}
+#author-content{
+    padding: 0px 50px 0px 0px;
+}
+#time-content{
+    padding: 0px 0px 0px 50px;
 }
