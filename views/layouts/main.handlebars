@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="./css/site.css">
     <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');</style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tiny.cloud/1/cq7c0kz5cfk762vhm8wh6sryppgbhuuawwwij58d4jizb3up/tinymce/5/tinymce.min.js" referrerpolicy="origin">
+    </script>
+    <script>tinymce.init({
+        selector: '#textEditor',
+        plugins: 'lists',
+        menubar: 'file edit format',
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist'
+        });
+    </script>
 </head>
 
 <body>
