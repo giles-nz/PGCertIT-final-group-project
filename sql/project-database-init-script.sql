@@ -54,5 +54,5 @@ foreign key (user_id) references users (id),
 foreign key (article_id) references articles (id)
 );
 
-insert into users (id, fname, lname, bio, username, password, dob, avatar) values (1,'Bryson','Newman','User number one of our site','user1','pa55word',1967-12-03,1);
-insert into users (id, fname, lname, bio, username, password, dob, avatar) values (2,'Miles','Hartman','User number one of our site','user2','pa55word',1967-12-03,1);
+insert into users (id, fname, lname, bio, username, password, dob, avatar) values (1,'Bryson','Newman','User number one of our site','user1','pa55word','1967-12-03',1);
+insert into users (id, fname, lname, bio, username, password, dob, avatar) values (2,'Miles','Hartman','User number two of our site','user2','pa55word','1954-12-03',1);

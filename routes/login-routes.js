@@ -65,23 +65,26 @@ router.post("/login", async function (req, res) {
 
 router.get("/newAccount", function(req, res) {
     res.locals.title = "New Account | WEBSITE NAME";
-
     res.render("new-account");
 });
 
 
 
-router.post("/newAccount", async function(req, res) {
-    const user = {
+router.post("/newAccount", function(req, res) {
+    let user = {
         username: req.body.username,
+        lname: req.body.lname,
         password: req.body.password,
-        name: req.body.name
+        fname: req.body.fname,
+        bio: req.body.bio,
+        avatar: req.body.avatar,
+        dob: req.body.dob
     };
 
     try {
-        await userDao.createUser(user);
-        res.setToastMessage("Account creation successful. Please login using your new credentials.");
-        res.redirect("/newAccount")
+        userDao.createUser(user);
+        res.setToastMessage(`Thanks, ${user.fname}! We've Created your account. Please log in using your new credentials.`);
+        res.redirect("/login")
     }
     catch (err) {
         res.setToastMessage("That username was already taken!");
@@ -89,5 +92,20 @@ router.post("/newAccount", async function(req, res) {
     }
 
  });
+
+//  router.post("/newAccount", function (req,res){
+
+//     let user = {
+//         username: req.body.username,
+//         password: req.body.password,
+//         fname: req.body.fname,
+//         lname: req.body.lname,
+//     }
+   
+//     userDao.createUser(user);
+//     console.log(user.fname);
+//     res.setToastMessage("User created successfully!");
+//     res.redirect("/login")
+// });
 
 module.exports = router;
