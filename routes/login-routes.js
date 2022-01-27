@@ -67,6 +67,7 @@ router.get("/newAccount", function(req, res) {
 });
 
 
+
 router.post("/newAccount", async function(req, res) {
     const user = {
         username: req.body.username,
@@ -84,6 +85,6 @@ router.post("/newAccount", async function(req, res) {
         res.redirect("/newAccount");
     }
 
-});
+ });
 
 module.exports = router;

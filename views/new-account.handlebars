@@ -1,35 +1,93 @@
+
 <div class="container-create">
 
     {{! Display a message if one was provided. }}
     {{#if toastMessage}}
     <p>{{toastMessage}}</p>
+
     {{/if}}
+
+<div class="container-create">
 
     <h1>New Account</h1>
     <form action="./newAccount" method="POST">
+
         <div class="flex-col mb">
             <label for="txtUsername">Username:</label>
             <input type="text" name="username" id="txtUsername" required>
         </div>
 
-        <div class="flex-col mb">
-            <label for="txtPassword">Password:</label>
-            <input type="password" name="password" id="txtPassword" required>
-        </div>
-
-         <div class="flex-col mb">
-            <label for="txtPassword">Confirm Password:</label>
-            <input type="password" name="password" id="txtPassword" required>
-        </div>
+        <br>
 
         <div class="flex-col mb">
-            <label for="txtName">Name:</label>
-            <input type="text" name="name" id="txtName" required>
+            <label for ="password">Password:</label>
+        <input id="password" name="password" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Must have at least 6 characters' : ''); if(this.checkValidity()) 
+        form.password_two.pattern = this.value;" required>
         </div>
+
+        <br>
+
+        <div class="flex-col mb">
+        <label for="password_two">Confirm Password:</label>
+        <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Please enter the same password as above' : '');" required>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="password_two">Please select an avatar:</label>
+            <input type="radio" name="avatar" class="flex-col mb" id="male">
+            <label for="male">
+                <img src="http://findicons.com/files/icons/1688/web_blog/48/user_male_white_red_brown.png">
+            </label>
+            <input type="radio" name="avatar" class="flex-col mb" id="female">
+            <label for="female">
+                <img src="http://findicons.com/files/icons/1688/web_blog/48/user_female_white_pink_black.png">
+            </label>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="txtfname">First name:</label>
+            <input type="text" name="fname" id="txtfname" required>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="txtlname">Last name:</label>
+            <input type="text" name="fname" id="txtlname" required>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="dob">Date of birth:</label>
+            <input type="date" name="dob" id="dob" required>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="bio">Tell us a bit about yourself:</label>
+            <input type="textarea" name="bio" id="bio" rows="4" cols="50" required>
+        </div>
+
+        {{!-- <textarea rows="4" cols="50" name="comment" form="usrform">
+        Enter text here...</textarea> --}}
+
+        <br>
 
         <div class="flex-row justify-sb align-center">
             <button type="submit">Create account</button>
         </div>
+
     </form>
+
 
 </div>
