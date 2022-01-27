@@ -6,6 +6,8 @@ const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 
 
 router.get("/login", function (req, res) {
+
+    res.locals.title = "Login | WEBSITE NAME";
     if (res.locals.user) {
         res.redirect("/");
     }
@@ -24,6 +26,7 @@ router.get("/logout", function (req, res) {
 });
 
 router.get("/", verifyAuthenticated, async function (req, res) {
+    res.locals.title = "Home | WEBSITE NAME";
     const user = res.locals.user;
     res.render("home");
 });
@@ -32,7 +35,7 @@ router.get("/", verifyAuthenticated, async function (req, res) {
 // If they match a user in the database, give that user an authToken, save the authToken
 // in a cookie, and redirect to "/". Otherwise, redirect to "/login", with a "login failed" message.
 router.post("/login", async function (req, res) {
-
+    
     // Get the username and password submitted in the form
     const username = req.body.username;
     const password = req.body.password;
@@ -61,7 +64,7 @@ router.post("/login", async function (req, res) {
 });
 
 router.get("/newAccount", function(req, res) {
-
+    res.locals.title = "New Account | WEBSITE NAME";
 
     res.render("new-account");
 });

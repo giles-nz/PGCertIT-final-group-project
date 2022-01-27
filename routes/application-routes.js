@@ -12,7 +12,7 @@ const testDao = require("../modules/test-dao.js");
 // });
 
 router.get("/articles", async function(req, res) {
-
+    res.locals.title = "Articles | WEBSITE NAME";
 
 
     res.render("articles");
