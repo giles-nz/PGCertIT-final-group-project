@@ -10,6 +10,7 @@
     {{/if}}
     <link rel="stylesheet" href="./css/site.css">
     <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@400;800&display=swap');</style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.tiny.cloud/1/cq7c0kz5cfk762vhm8wh6sryppgbhuuawwwij58d4jizb3up/tinymce/5/tinymce.min.js" referrerpolicy="origin">
     </script>
@@ -20,6 +21,7 @@
         toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist'
         });
     </script>
+    <script type="text/javascript" src="./script/script.js"></script>
 </head>
 
 <body>
@@ -27,18 +29,18 @@
     <div id="container-Main">
        <nav id="nav">
            <div id="leftnav">
-               <a href="/">Home</a>
-               <a href="/">About</a>
-               <a href="articles">Articles</a>
-               <a href="/">Contact</a>
-               <a href="/">Advertise</a>
+               <a href="/" class="nav-a">Home</a>
+               <a href="/" class="nav-a">About</a>
+               <a href="articles" class="nav-a">Articles</a>
+               <a href="/" class="nav-a">Contact</a>
+               <a href="/" class="nav-a">Advertise</a>
            </div>
            <div id="rightnav">
-               <a href="#" class="fa fa-facebook"></a>
-               <a href="#" class="fa fa-twitter"></a>
-               <a href="#" class="fa fa-instagram"></a>
-               <a href="#" class="fa fa-rss"></a>
-               <a href="/logout">Log out</a>
+               <a href="#" class="fa fa-facebook" id="facebook"></a>
+               <a href="#" class="fa fa-twitter" id="twitter"></a>
+               <a href="#" class="fa fa-instagram" id="instagram"></a>
+               <a href="#" class="fa fa-rss" id="rss"></a>
+               <a href="/logout" class="nav-a">Log out</a>
 
            </div>
           {{!-- <a href="login">SIGN IN</a>
