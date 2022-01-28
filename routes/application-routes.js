@@ -25,7 +25,7 @@ router.get("/articles", async function(req, res) {
 router.get("/content", async function(req, res) {
 
 
-
+    res.locals.image = `images/protest.jpg`;
     res.render("content");
 });
 
@@ -42,7 +42,10 @@ router.post("/uploadImage", upload.single("imageFile"), async function(req, res)
     image.resize(320, jimp.AUTO);
     await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
 
+    const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
+
     res.locals.title = "Your new recipe | @Flavourful";
+    res.locals.image = thumbnail;
     res.render("content");
 
 });
