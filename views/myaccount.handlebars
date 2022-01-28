@@ -1,0 +1,107 @@
+
+<div class="container-create">
+
+    {{! Display a message if one was provided. }}
+    {{#if toastMessage}}
+    <p>{{toastMessage}}</p>
+
+    {{/if}}
+
+<div class="container-create">
+
+    <h1>{{user.fname}}'s Account Details</h1>
+    <form action="./myAccount" method="POST">
+
+        <div class="flex-col mb">
+            <label for="username">New Username:</label>
+            <input type="text" name="username" id="username">
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for ="password">New Password:</label>
+        <input id="password" name="password" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Must have at least 6 characters' : ''); if(this.checkValidity()) 
+        form.password_two.pattern = this.value;">
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">Confirm New Password:</label>
+        <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Please enter the same password as above' : '');">
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="avatar">Please select a new avatar:</label>
+            <br>
+            <input type="radio" name="avatar" class="avatar-img" id="1" value="1">
+            <label for="1">
+                <img src="./images/avatars/1.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="2" value="2">
+            <label for="2">
+                <img src="./images/avatars/2.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="3" value="3">
+            <label for="3">
+                <img src="./images/avatars/3.png">
+            </label>
+            <br>
+            <input type="radio" name="avatar" class="avatar-img" id="6" value="6">
+            <label for="6">
+                <img src="./images/avatars/6.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="7" value="7">
+            <label for="7">
+                <img src="./images/avatars/7.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="11" value="11">
+            <label for="11">
+                <img src="./images/avatars/11.png">
+            </label>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="fname">Changed first name:</label>
+            <input type="text" name="fname" id="fname">
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="lname">Changed last name:</label>
+            <input type="text" name="lname" id="lname" >
+        </div>
+
+        <br>
+        
+        <div class="flex-col mb">
+            <label for="dob">Changed date of birth:</label>
+            <input type="date" name="dob" id="dob">
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="bio">Tell us a bit more about yourself:</label>
+            <input type="text" name="bio" id="bio">
+        </div>
+
+        <br>
+
+        <div class="flex-row justify-sb align-center">
+            <button type="submit">Change account details</button>
+        </div>
+
+    </form>
+
+
+</div>
