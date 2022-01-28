@@ -27,6 +27,12 @@ app.use(cookieParser());
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
+
+const multer = require("multer");
+const upload = multer({
+    dest: path.join(__dirname, "temp")
+});
+const fs = require("fs");
 // Use the toaster middleware
 app.use(require("./middleware/toaster-middleware.js"));
 
@@ -39,6 +45,13 @@ app.use(require("./routes/application-routes.js"));
 
 const loginRouter = require("./routes/login-routes.js");
 app.use(loginRouter);
+
+app.post("/uploadImage", upload.single("imageFile"), function(req, res) { 
+    const fileInfo = req.file;
+    const oldFileName = fileInfo.path;
+    const newFileName = `./public/images/uploadedFiles/${fileInfo.originalname}`;
+    fs.renameSync(oldFileName, newFileName);
+});
 
 // Start the server running.
 app.listen(port, function () {
