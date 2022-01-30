@@ -1,7 +1,7 @@
 const SQL = require("sql-template-strings");
 const dbPromise = require("./database.js");
 
-
+//ths function is receive whole all articles
 async function retrieveAllArticles() {
     const db = await dbPromise;
 
@@ -12,6 +12,7 @@ async function retrieveAllArticles() {
     return result;
 }
 
+//ths function is receive whole all articles sort by name
 async function retrieveAllArticlesByName() {
     const db = await dbPromise;
 
@@ -24,6 +25,7 @@ async function retrieveAllArticlesByName() {
     return result;
 }
 
+//ths function is receive whole all articles sort by date
 async function retrieveAllArticlesByDate() {
     const db = await dbPromise;
 
@@ -35,6 +37,7 @@ async function retrieveAllArticlesByDate() {
     return result;
 }
 
+//ths function is receive whole all articles sort by title
 async function retrieveAllArticlesByTitle() {
     const db = await dbPromise;
 
@@ -46,6 +49,7 @@ async function retrieveAllArticlesByTitle() {
     return result;
 }
 
+//ths function is receive a articles from people click
 async function retrieveArticleFromID(id) {
     const db = await dbPromise;
 

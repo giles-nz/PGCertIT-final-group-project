@@ -7,14 +7,7 @@ const jimp = require("../middleware/jimp-image_processor.js");
 
 const articleDao = require("../modules/article-dao.js");
 
-// router.get("/", async function(req, res) {
-
-//     res.locals.title = "My route title!";
-//     res.locals.allTestData = await testDao.retrieveAllTestData();
-
-//     res.render("home");
-// });
-
+//this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
     res.locals.title = "Articles | WEBSITE NAME";
     const allArticles = await articleDao.retrieveAllArticles();
@@ -23,13 +16,7 @@ router.get("/articles", async function(req, res) {
     res.render("articles");
 });
 
-// router.post("/articles", async function(req, res) {
-    
-
-
-//     res.render("articles");
-// });
-
+//this function is receive the specific article from database and show in the content handlebar
 router.get("/content", async function(req, res) {
 
     const articleID = req.query.id;
@@ -40,10 +27,11 @@ router.get("/content", async function(req, res) {
     res.render("content");
 });
 
+//this function will be invoke when people click the sort button
 router.post("/sortBy", async function(req, res) {
 
     const sortName = req.body.sortName;
-    
+
     if(sortName == "name"){
         const allArticlesSortByName = await articleDao.retrieveAllArticlesByName();
         res.locals.allArticles = allArticlesSortByName;
