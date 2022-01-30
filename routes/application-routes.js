@@ -5,28 +5,49 @@ const upload = require("../middleware/multer-uploader.js");
 const fs = require("../middleware/fs-directory_scanner.js");
 const jimp = require("../middleware/jimp-image_processor.js");
 
-const testDao = require("../modules/test-dao.js");
+const articleDao = require("../modules/article-dao.js");
 
-// router.get("/", async function(req, res) {
-
-//     res.locals.title = "My route title!";
-//     res.locals.allTestData = await testDao.retrieveAllTestData();
-
-//     res.render("home");
-// });
-
+//this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
     res.locals.title = "Articles | WEBSITE NAME";
-
+    const allArticles = await articleDao.retrieveAllArticles();
+    res.locals.allArticles = allArticles;
 
     res.render("articles");
 });
 
+//this function is receive the specific article from database and show in the content handlebar
 router.get("/content", async function(req, res) {
 
+    const articleID = req.query.id;
 
-    res.locals.image = `images/protest.jpg`;
+    const content = await articleDao.retrieveArticleFromID(articleID);
+    console.log(content);
+    res.locals.content = content;
     res.render("content");
+});
+
+//this function will be invoke when people click the sort button
+router.post("/sortBy", async function(req, res) {
+
+    const sortName = req.body.sortName;
+
+    if(sortName == "name"){
+        const allArticlesSortByName = await articleDao.retrieveAllArticlesByName();
+        res.locals.allArticles = allArticlesSortByName;
+        res.locals.sele1 = `selected = ${"selected"}`;
+        res.render("articles");
+    }else if(sortName == "date"){
+        const allArticlesSortByDate= await articleDao.retrieveAllArticlesByDate();
+        res.locals.allArticles = allArticlesSortByDate;
+        res.locals.sele2 = `selected = ${"selected"}`;
+        res.render("articles");
+    }else if(sortName == "title"){
+        const allArticlesSortByTitle= await articleDao.retrieveAllArticlesByTitle();
+        res.locals.allArticles = allArticlesSortByTitle;
+        res.locals.sele3 = `selected = ${"selected"}`;
+        res.render("articles");
+    }    
 });
 
 router.post("/uploadImage", upload.single("imageFile"), async function(req, res) { 
