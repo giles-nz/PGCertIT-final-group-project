@@ -1,85 +1,84 @@
-
 /* *{
     border: 1px solid black;
 }  */
 #container-Main {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 23px;
-} 
+  font-family: "Open Sans", sans-serif;
+  line-height: 23px;
+}
 /* --------------------------- Nav part */
 body {
   margin: 0px;
 }
 
-.nav-a:link{
-    color: black;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+.nav-a:link {
+  color: black;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
 .nav-a:visited {
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
-#facebook:link{
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+#facebook:link {
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
 #facebook:visited {
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
-#twitter:link{
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+#twitter:link {
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
 #twitter:visited {
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
-#instagram:link{
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+#instagram:link {
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
 #instagram:visited {
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
-#rss:link{
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+#rss:link {
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
 #rss:visited {
-    color: white;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-    text-decoration: none;
-    display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 a:hover {
@@ -97,10 +96,9 @@ a:hover {
 }
 /* --------------------------- Nav part */
 
-
 /* --------------------------- homepage part */
-#home-page{
-    margin: 20px;
+#home-page {
+  margin: 20px;
 }
 #nav-image {
   display: block;
@@ -113,7 +111,7 @@ a:hover {
   flex-direction: row;
   color: #0e1c40;
 }
-.container-login{
+.container-login {
   background-color: white;
   color: black;
   position: absolute;
@@ -125,7 +123,7 @@ a:hover {
   padding: 50px;
   text-align: center;
 }
-.container-create{
+.container-create {
   background-color: white;
   color: black;
   position: absolute;
@@ -146,70 +144,158 @@ a:hover {
 /* --------------------------- homepage part */
 
 /* --------------------------- article display part */
-#container-all-article{
-    font-family: 'Lato', sans-serif;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    margin-top: 40px;
+#container-all-article {
+  font-family: "Lato", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin-top: 40px;
 }
-.card{
-    display: flex;
-    flex-direction: row;
-    margin: 10px 300px 10px 300px;
+.card {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 300px 10px 300px;
 }
-.card-image{
-    width: 400px;
-    height: 300px;
-    object-fit: cover;
-    object-position:center;
+.card-image {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
 }
-.card-body{
-    padding: 20px;
-    margin: 20px;
+.card-body {
+  padding: 20px;
+  margin: 20px;
 }
-.card-image:hover{
-    transform: scale(1.1);
-    transition: transform .5s;
+.card-image:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
 }
-.card-title{
-   font-size: 30px;
+.card-title {
+  font-size: 30px;
 }
-.articl-a{
-    color: black;
-    text-decoration: none;
+.articl-a {
+  color: black;
+  text-decoration: none;
 }
-.articl-a:hover{
-    color: #2a53c1;
+.articl-a:hover {
+  color: #2a53c1;
 }
 /* --------------------------- article display part */
 
 /* --------------------------- content display part */
-#container-content{
-    text-align: center;
+#container-content {
+  text-align: center;
 }
-#img-inside{
-    float: left;
-    padding: 2px;
-    border: 1px solid #2a53c1;
-    margin: 10px;
+#img-inside {
+  float: left;
+  padding: 2px;
+  border: 1px solid #2a53c1;
+  margin: 10px;
 }
-#comment-submit{
-    text-align: center;
+#comment-submit {
+  text-align: center;
 }
-#txtContent{
-    width: 80%;
+#txtContent {
+  width: 80%;
 }
-#small-header{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: small;
+#small-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: small;
 }
-#author-content{
-    padding: 0px 50px 0px 0px;
+#author-content {
+  padding: 0px 50px 0px 0px;
 }
-#time-content{
-    padding: 0px 0px 0px 50px;
+#time-content {
+  padding: 0px 0px 0px 50px;
 }
 /* --------------------------- content display part */
+
+
+/* CSS for the slideshow:
+
+/* Slideshow container */
+
+.slideshow-container {
+  width: 60%;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* The bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}

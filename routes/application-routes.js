@@ -9,10 +9,9 @@ const articleDao = require("../modules/article-dao.js");
 
 //this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
-    res.locals.title = "Articles | WEBSITE NAME";
+    res.locals.title = "Articles | FlavourFul";
     const allArticles = await articleDao.retrieveAllArticles();
     res.locals.allArticles = allArticles;
-
     res.render("articles");
 });
 
@@ -69,6 +68,11 @@ router.post("/uploadImage", upload.single("imageFile"), async function(req, res)
     res.locals.image = thumbnail;
     res.render("content");
 
+});
+
+router.post("/uploadRecipe", function(req, res) {
+    const textNewArticle = req.body.textEditor;
+    console.log(textNewArticle);
 });
 
 module.exports = router;

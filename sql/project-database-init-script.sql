@@ -3,9 +3,8 @@
  * It should contain all DROP TABLE and CREATE TABLE statments, and any INSERT statements
  * required.
  */
-
-drop table if exists users;
 drop table if exists articles;
+drop table if exists users;
 drop table if exists comments;
 drop table if exists test;
 

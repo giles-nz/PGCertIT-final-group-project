@@ -7,7 +7,7 @@ const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 
 router.get("/login", function (req, res) {
 
-    res.locals.title = "Login | WEBSITE NAME";
+    res.locals.title = "Login | FlavourFul";
     if (res.locals.user) {
         res.redirect("/");
     }
@@ -26,9 +26,15 @@ router.get("/logout", function (req, res) {
 });
 
 router.get("/", verifyAuthenticated, async function (req, res) {
-    res.locals.title = "Home | WEBSITE NAME";
+    res.locals.title = "Home | FlavourFul";
     const user = res.locals.user;
     res.render("home");
+});
+
+router.get("/myAccount", verifyAuthenticated, async function (req, res) {
+    res.locals.title = "My Account | FlavourFul";
+    const user = res.locals.user;
+    res.render("myaccount");
 });
 
 // Whenever we POST to /login, check the username and password submitted by the user.
@@ -64,7 +70,7 @@ router.post("/login", async function (req, res) {
 });
 
 router.get("/newAccount", function(req, res) {
-    res.locals.title = "New Account | WEBSITE NAME";
+    res.locals.title = "New Account | FlavourFul";
     res.render("new-account");
 });
 
@@ -93,19 +99,44 @@ router.post("/newAccount", function(req, res) {
 
  });
 
-//  router.post("/newAccount", function (req,res){
+ router.post("/deleteAccount", async function(req,res){
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    try{
+        userDao.deleteUser(user.id);
+        res.setToastMessage("Sorry to see you go! Your account has been deleted.");
+        res.redirect("/login")
+    } catch(err){
+        res.setToastMessage("Sorry, something went wrong!");
+        res.redirect("/myAccount");
+    }
+    
+ });
 
-//     let user = {
-//         username: req.body.username,
-//         password: req.body.password,
-//         fname: req.body.fname,
-//         lname: req.body.lname,
-//     }
-   
-//     userDao.createUser(user);
-//     console.log(user.fname);
-//     res.setToastMessage("User created successfully!");
-//     res.redirect("/login")
-// });
+ router.post("/myAccount", async function(req, res) {
+    let user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    
+    newValues = {
+        username: req.body.username,
+        lname: req.body.lname,
+        password: req.body.password,
+        fname: req.body.fname,
+        bio: req.body.bio,
+        avatar: req.body.avatar,
+        dob: req.body.dob
+    };
+    console.log(user);
+    console.log(newValues);   
+
+    try {
+        userDao.updateUser(user);
+        res.setToastMessage(`Thanks, ${user.fname}! Your information has been updated.`);
+        res.redirect("/")
+    }
+    catch (err) {
+        res.setToastMessage("That username was already taken!");
+        res.redirect("/newAccount");
+    }
+
+ });
 
 module.exports = router;
