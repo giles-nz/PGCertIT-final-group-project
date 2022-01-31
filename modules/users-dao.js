@@ -1,5 +1,7 @@
 const SQL = require("sql-template-strings");
 const dbPromise = require("./database.js");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 /**
  * Inserts the given user into the database. Then, reads the ID which the database auto-assigned, and adds it
@@ -10,10 +12,12 @@ const dbPromise = require("./database.js");
 async function createUser(user) {
     const db = await dbPromise;
 
+    const hash = bcrypt.hashSync(user.password, saltRounds);
+
     const result = await db.run(SQL`
-        insert into users (fname, lname, bio, username, password, dob, avatar) values (${user.fname},${user.lname},${user.bio},${user.username},${user.password},${user.dob},${user.avatar})`);
+        insert into users (fname, lname, bio, username, password, dob, avatar) values (${user.fname},${user.lname},${user.bio},${user.username},${hash},${user.dob},${user.avatar})`);
     // Get the auto-generated ID value, and assign it back to the user object.
-    
+    console.log(hash);
     user.id = result.lastID;
 }
 
@@ -45,10 +49,17 @@ async function retrieveUserWithCredentials(username, password) {
 
     const user = await db.get(SQL`
         select * from users
-        where username = ${username} and password = ${password}`);
+        where username = ${username}`);
 
-    return user;
-}
+        console.log(user);
+    const match = await bcrypt.compare(password,user.password);
+
+    if (match){
+        return user;
+    }
+
+
+ }
 
 /**
  * Gets the user with the given authToken from the database.
@@ -85,11 +96,23 @@ async function retrieveAllUsers() {
 async function updateUser(user) {
     const db = await dbPromise;
 
-    await db.run(SQL`
-        update users
-        set username = ${user.username}, password = ${user.password},
-            fname = ${user.fname}, authToken = ${user.authToken}
-        where id = ${user.id}`);
+    //also needs a hash here.
+
+    //maybe loop through all of the new data, and if it's not '' or 
+    //not undefined, update it. 
+    console.log("From update user:")
+    console.log(user)
+
+    if (user.fname!=""){
+        await db.run(SQL `update users set fname = ${user.fname}`)
+    }
+
+
+    // await db.run(SQL`
+    //     update users
+    //     set username = ${user.username}, password = ${user.password},
+    //         fname = ${user.fname}, authToken = ${user.authToken}
+    //     where id = ${user.id}`);
 }
 
 /**
