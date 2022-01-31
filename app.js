@@ -46,6 +46,9 @@ app.use(require("./routes/application-routes.js"));
 const loginRouter = require("./routes/login-routes.js");
 app.use(loginRouter);
 
+const commentRouter = require("./routes/comment-routes.js");
+app.use(commentRouter);
+
 // Start the server running.
 app.listen(port, function () {
     console.log(`App listening on port ${port}!`);

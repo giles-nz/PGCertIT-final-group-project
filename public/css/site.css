@@ -213,3 +213,38 @@ a:hover {
     padding: 0px 0px 0px 50px;
 }
 /* --------------------------- content display part */
+
+/* --------------------------- content comment part */
+#comment-display{
+    padding: 10px;
+}
+.comment-card{
+    padding: 20px 0px 20px 0px;
+}
+    
+.comment-title{
+    display: flex;
+    flex-direction: row;
+}
+.comment-card{
+    display: flex;
+    flex-direction: row; 
+}
+.comment-image{
+    width: 150%;
+    height: auto;
+}
+.comment-title{
+    padding-left: 50px;
+}
+.comment-text{
+    padding-left: 50px;
+}
+.comment-username{
+    font-weight: bold;
+    padding-right: 10px;
+}
+.comment-time{
+    color: gray;
+}
+/* --------------------------- content comment part */

@@ -6,6 +6,7 @@ const fs = require("../middleware/fs-directory_scanner.js");
 const jimp = require("../middleware/jimp-image_processor.js");
 
 const articleDao = require("../modules/article-dao.js");
+const commentDao = require("../modules/comment-dao.js");
 
 //this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
@@ -22,10 +23,14 @@ router.get("/content", async function(req, res) {
     const articleID = req.query.id;
 
     const content = await articleDao.retrieveArticleFromID(articleID);
-    console.log(content);
     res.locals.content = content;
+
+    const comments = await commentDao.retrieveAllCommentsFromContent(articleID);
+    res.locals.comments = comments;
+
     res.render("content");
 });
+
 
 //this function will be invoke when people click the sort button
 router.post("/sortBy", async function(req, res) {

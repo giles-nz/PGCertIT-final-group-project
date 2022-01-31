@@ -7,12 +7,31 @@
        </div>
     <h3>{{content.title}}</h3>
     <img id="img-inside" src="images/{{content.image}}" width="320px" height="auto">
-    {{content.method}}
+    {{{content.method}}}
+</div>
+
+<div id="comment-display">
+    <h3>Comments</h3><hr>
+
+    {{#each comments}}
+    <div class="comment-card">
+        <div class="comment-avater"><img class="comment-image" src="./images/avatars/{{avatar}}.png"></div>
+        <div class="comment-contents">
+            <div class="comment-title">
+                <p class="comment-username">{{username}}</p>
+                <p class="comment-time">{{timestamp}}</p>
+            </div>
+            <p class="comment-text">{{content}}</p>
+        </div>
+    </div>
+    {{/each}}
+
 </div>
 
 <div id="comment-submit">
-<h3>Comments</h3><hr>
-<form action="" method="">
+
+
+    <form action="./commentUpload" method="POST">
         <div class="">
             <p>Put your comment here:</p>
             <label for="txtContent"></label>
