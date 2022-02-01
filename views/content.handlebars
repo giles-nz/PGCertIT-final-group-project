@@ -10,8 +10,13 @@
     {{{content.method}}}
 </div>
 
+<div id="comment-button">
+    <h3>Comments</h3>
+    <button id="toggle">Show/Hide Comments</button>
+    <hr>
+</div>
+
 <div id="comment-display">
-    <h3>Comments</h3><hr>
 
     {{#each comments}}
     <div class="comment-card">
@@ -25,21 +30,25 @@
         </div>
     </div>
     {{/each}}
-
 </div>
+
 
 <div id="comment-submit">
 
-
-    <form action="./commentUpload" method="POST">
-        <div class="">
-            <p>Put your comment here:</p>
-            <label for="txtContent"></label>
-            <textarea name="content" id="txtContent" required rows="10" placeholder="Put your comment here......."></textarea>
-        </div>
-
-        <div class="">
-            <button type="submit">Comment!</button>
-        </div>
-    </form>
+    {{#if user}}
+{{!-- This is the add comment section --}}
+<h3>Add Comment</h3>
+<div>Hello {{user.username}}, welcome to leave comments here.</div>
+<form action="./commentUpload" method="GET">
+    <textarea name="content" id="txtContent" rows="10" placeholder="Type your comment here..." required></textarea>
+    <br><input type="submit">
+</form>
+<br>
+{{else}}
+<div>
+    <div>You don't have authority to leave comments!</div>
+    <p>Please <a href="./login">Log in</a></p>
+</div>
+<br>
+{{/if}}
 </div>

@@ -25,8 +25,21 @@ router.get("/content", async function(req, res) {
     const content = await articleDao.retrieveArticleFromID(articleID);
     res.locals.content = content;
 
+    
     const comments = await commentDao.retrieveAllCommentsFromContent(articleID);
     res.locals.comments = comments;
+
+ //this part is make auth from the user to leave comment, if they dont log in, they can't comment.
+    const data = req.cookies["authToken"];
+    const authToken = await commentDao.writeAuthFromArticleId(articleID);
+    if(res.locals.user){
+        if(data == authToken){
+            true;
+        }else{
+            false;
+        }
+
+    }
 
     res.render("content");
 });
