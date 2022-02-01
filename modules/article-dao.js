@@ -61,8 +61,6 @@ async function retrieveArticleFromID(id) {
     return result;
 }
 
-
-
 module.exports = {
     retrieveAllArticles,
     retrieveArticleFromID,

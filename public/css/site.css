@@ -1,16 +1,17 @@
+
 /* *{
     border: 1px solid black;
 }  */
 #container-Main {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   line-height: 23px;
-}
+} 
 /* --------------------------- Nav part */
 body {
-  margin: 0px;
+margin: 0px;
 }
 
-.nav-a:link {
+.nav-a:link{
   color: black;
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -24,7 +25,7 @@ body {
   text-decoration: none;
   display: inline-block;
 }
-#facebook:link {
+#facebook:link{
   color: white;
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -38,7 +39,7 @@ body {
   text-decoration: none;
   display: inline-block;
 }
-#twitter:link {
+#twitter:link{
   color: white;
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -52,7 +53,7 @@ body {
   text-decoration: none;
   display: inline-block;
 }
-#instagram:link {
+#instagram:link{
   color: white;
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -66,7 +67,7 @@ body {
   text-decoration: none;
   display: inline-block;
 }
-#rss:link {
+#rss:link{
   color: white;
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -82,254 +83,168 @@ body {
 }
 
 a:hover {
-  color: #706f6f;
-  background-color: transparent;
-  text-decoration: none;
+color: #706f6f;
+background-color: transparent;
+text-decoration: none;
 }
 #nav {
-  background-color: #2a53c1;
-  padding: 20px;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+background-color: #2a53c1;
+padding: 20px;
+color: white;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
 }
 /* --------------------------- Nav part */
 
+
 /* --------------------------- homepage part */
-#home-page {
+#home-page{
   margin: 20px;
 }
 #nav-image {
-  display: block;
-  margin: auto;
+display: block;
+margin: auto;
 }
 .welcome-text {
-  font-size: 40px;
-  margin-left: 70px;
-  display: flex;
-  flex-direction: row;
-  color: #0e1c40;
+font-size: 40px;
+margin-left: 70px;
+display: flex;
+flex-direction: row;
+color: #0e1c40;
 }
-.container-login {
-  background-color: white;
-  color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 40%;
-  padding: 50px;
-  text-align: center;
+.container-login{
+background-color: white;
+color: black;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 80%;
+height: 40%;
+padding: 50px;
+text-align: center;
 }
-.container-create {
-  background-color: white;
-  color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 70%;
-  padding: 40px;
-  text-align: center;
+.container-create{
+background-color: white;
+color: black;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 80%;
+height: 70%;
+padding: 40px;
+text-align: center;
 }
 .home-page-avatar {
-  height: 50%;
-  width: auto;
-  display: block;
-  margin: auto;
-}
-/* CSS for the slideshow:
-
-/* Slideshow container */
-
-.slideshow-container {
-  width: 60%;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* The bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
+height: 50%;
+width: auto;
+display: block;
+margin: auto;
 }
 /* --------------------------- homepage part */
 
 /* --------------------------- article display part */
-#container-all-article {
-  font-family: "Lato", sans-serif;
+#container-all-article{
+  font-family: 'Lato', sans-serif;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   margin-top: 40px;
 }
-.card {
+.card{
   display: flex;
   flex-direction: row;
   margin: 10px 300px 10px 300px;
 }
-.card-image {
+.card-image{
   width: 400px;
   height: 300px;
   object-fit: cover;
-  object-position: center;
+  object-position:center;
 }
-.card-body {
+.card-body{
   padding: 20px;
   margin: 20px;
 }
-.card-image:hover {
+.card-image:hover{
   transform: scale(1.1);
-  transition: transform 0.5s;
+  transition: transform .5s;
 }
-.card-title {
-  font-size: 30px;
+.card-title{
+ font-size: 30px;
 }
-.articl-a {
+.articl-a{
   color: black;
   text-decoration: none;
 }
-.articl-a:hover {
+.articl-a:hover{
   color: #2a53c1;
 }
 /* --------------------------- article display part */
 
 /* --------------------------- content display part */
-#container-content {
+#container-content{
   text-align: center;
 }
-#img-inside {
+#img-inside{
   float: left;
   padding: 2px;
   border: 1px solid #2a53c1;
   margin: 10px;
 }
-#comment-submit {
+#comment-submit{
   text-align: center;
 }
-#txtContent {
+#txtContent{
   width: 80%;
 }
-#small-header {
+#small-header{
   display: flex;
   flex-direction: row;
   justify-content: center;
   font-size: small;
 }
-#author-content {
+#author-content{
   padding: 0px 50px 0px 0px;
 }
-#time-content {
+#time-content{
   padding: 0px 0px 0px 50px;
 }
 /* --------------------------- content display part */
 
 /* --------------------------- content comment part */
 #comment-display{
-    padding: 10px;
+  padding: 10px;
 }
 .comment-card{
-    padding: 20px 0px 20px 0px;
+  padding: 20px 0px 20px 0px;
 }
-    
+  
 .comment-title{
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .comment-card{
-    display: flex;
-    flex-direction: row; 
+  display: flex;
+  flex-direction: row; 
 }
 .comment-image{
-    width: 150%;
-    height: auto;
+  width: 150%;
+  height: auto;
 }
 .comment-title{
-    padding-left: 50px;
+  padding-left: 50px;
 }
 .comment-text{
-    padding-left: 50px;
+  padding-left: 50px;
 }
 .comment-username{
-    font-weight: bold;
-    padding-right: 10px;
+  font-weight: bold;
+  padding-right: 10px;
 }
 .comment-time{
-    color: gray;
+  color: gray;
 }
 /* --------------------------- content comment part */
-

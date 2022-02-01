@@ -15,7 +15,6 @@
     "sql-template-strings": "^2.2.2",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2",
-    "tinymce": "^5.10.2",
     "uuid": "^8.3.2"
   }
 }

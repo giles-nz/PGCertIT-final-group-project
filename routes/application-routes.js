@@ -10,9 +10,10 @@ const commentDao = require("../modules/comment-dao.js");
 
 //this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
-    res.locals.title = "Articles | FlavourFul";
+    res.locals.title = "Articles | WEBSITE NAME";
     const allArticles = await articleDao.retrieveAllArticles();
     res.locals.allArticles = allArticles;
+
     res.render("articles");
 });
 

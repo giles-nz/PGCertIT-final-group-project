@@ -1,6 +1,6 @@
 const SQL = require("sql-template-strings");
 const dbPromise = require("./database.js");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 /**
@@ -14,10 +14,11 @@ async function createUser(user) {
 
     const hash = bcrypt.hashSync(user.password, saltRounds);
 
+
     const result = await db.run(SQL`
         insert into users (fname, lname, bio, username, password, dob, avatar) values (${user.fname},${user.lname},${user.bio},${user.username},${hash},${user.dob},${user.avatar})`);
     // Get the auto-generated ID value, and assign it back to the user object.
-    console.log(hash);
+    
     user.id = result.lastID;
 }
 
@@ -57,9 +58,7 @@ async function retrieveUserWithCredentials(username, password) {
     if (match){
         return user;
     }
-
-
- }
+}
 
 /**
  * Gets the user with the given authToken from the database.
@@ -96,23 +95,11 @@ async function retrieveAllUsers() {
 async function updateUser(user) {
     const db = await dbPromise;
 
-    //also needs a hash here.
-
-    //maybe loop through all of the new data, and if it's not '' or 
-    //not undefined, update it. 
-    console.log("From update user:")
-    console.log(user)
-
-    if (user.fname!=""){
-        await db.run(SQL `update users set fname = ${user.fname}`)
-    }
-
-
-    // await db.run(SQL`
-    //     update users
-    //     set username = ${user.username}, password = ${user.password},
-    //         fname = ${user.fname}, authToken = ${user.authToken}
-    //     where id = ${user.id}`);
+    await db.run(SQL`
+        update users
+        set username = ${user.username}, password = ${user.password},
+            fname = ${user.fname}, authToken = ${user.authToken}
+        where id = ${user.id}`);
 }
 
 /**
