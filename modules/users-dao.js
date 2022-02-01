@@ -93,8 +93,10 @@ async function retrieveAllUsers() {
  * @param user the user to update
  */
 async function updateUser(user) {
+
     const db = await dbPromise;
 
+    //also needs a hash
     await db.run(SQL`
         update users
         set username = ${user.username}, password = ${user.password},

@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
+const { all } = require("express/lib/application");
 
 
 router.get("/login", function (req, res) {
@@ -110,19 +111,42 @@ router.post("/newAccount", function(req, res) {
 
  });
 
-//  router.post("/newAccount", function (req,res){
+ router.post("/myAccount", function(req, res) {
+    const currentUser = res.locals.user;
 
-//     let user = {
-//         username: req.body.username,
-//         password: req.body.password,
-//         fname: req.body.fname,
-//         lname: req.body.lname,
-//     }
-   
-//     userDao.createUser(user);
-//     console.log(user.fname);
-//     res.setToastMessage("User created successfully!");
-//     res.redirect("/login")
-// });
+    const newUsername = req.body.username;
+
+    let newData = {
+        username: req.body.username,
+        lname: req.body.lname,
+        password: req.body.password,
+        fname: req.body.fname,
+        bio: req.body.bio,
+        avatar: req.body.avatar,
+        dob: req.body.dob,
+        id: currentUser.id
+    };
+
+    
+    //get all users. compare the id with the current user id.
+    //userDao.retrieveUserById(user.id);
+
+    
+    //check if currentUserId properties are different to the newData properties. If they are, update the database?
+
+    try {
+        userDao.updateUser(newData);
+        console.log(newData)
+        res.setToastMessage(`Thanks, ${user.fname}! We've updated your details!`);
+        res.redirect("/login")
+    }
+    catch (err) {
+        res.setToastMessage("Something went wrong!");
+        res.redirect("/newAccount");
+    }
+
+ });
+
+
 
 module.exports = router;
