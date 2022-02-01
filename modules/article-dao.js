@@ -61,10 +61,20 @@ async function retrieveArticleFromID(id) {
     return result;
 }
 
+// this function adds a new article (recipe) to the articles table in project-database.db
+async function addArticle(title, image, ingredients, method, creator_user_id) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        INSERT INTO articles (title, image, ingredients, method, creator_user_id)
+        VALUES (${title}, ${image}, ${ingredients}, ${method}, ${creator_user_id})`);
+}
+
 module.exports = {
     retrieveAllArticles,
     retrieveArticleFromID,
     retrieveAllArticlesByName,
     retrieveAllArticlesByDate,
-    retrieveAllArticlesByTitle
+    retrieveAllArticlesByTitle,
+    addArticle
 };

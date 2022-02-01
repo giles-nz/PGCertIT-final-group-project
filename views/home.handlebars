@@ -21,12 +21,22 @@
     >read more</a></p>
 
   <div id="recipeUpload">
-    <h3>Add your new Recipe here:</h3>
+
+    <h3>Add your new @Flavourful recipe here:</h3>
 
     <form action="./uploadRecipe" method="POST">
 
       <div class="wysiwygEditor">
         <textarea name="textEditor" id="textEditor">
+
+          <div id="recipeTitleDiv">
+            <label for="recipeTitle">Name your new @Flavourful recipe:</label>
+            <input type="text" name="title" id="recipeTitle" required>
+          </div>
+          
+          <div id="ingredientsDiv">
+            
+          </div>
         </textarea>
       </div>
 

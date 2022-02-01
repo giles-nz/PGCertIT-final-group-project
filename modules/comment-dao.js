@@ -17,7 +17,7 @@ async function retrieveAllCommentsFromContent(articleId){
 async function addComment(article_id, content, user_id){
     const db = await dbPromise;
     await db.run(SQL`
-    NSERT INTO comments (article_id, content, user_id)	VALUES
+    INSERT INTO comments (article_id, content, user_id)	VALUES
     (${article_id}, ${content}, ${user_id})`);
 }
 
