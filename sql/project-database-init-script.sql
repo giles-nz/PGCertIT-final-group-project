@@ -3,10 +3,9 @@
  * It should contain all DROP TABLE and CREATE TABLE statments, and any INSERT statements
  * required.
  */
-drop table if exists articles;
 drop table if exists comments;
+drop table if exists articles;
 drop table if exists users;
-
 drop table if exists test;
 
 
@@ -77,3 +76,12 @@ INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_
 INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('6', 'Rugby World Cup 2023 Semi-Finals', 'rouby.jpg', 'Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis ante vitae urna lacinia, non tincidunt magna ultricies. Morbi tellus erat, placerat non arcu ut, commodo fermentum nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ut imperdiet neque. Fusce placerat felis sed neque rutrum, nec tincidunt est semper. Integer nibh diam, scelerisque ac vulputate vel, interdum eu est. Donec fringilla sapien in elit viverra faucibus. Vestibulum ipsum justo, viverra a sagittis quis, vehicula non ante. Vivamus vel mattis tortor. Phasellus luctus nulla a leo gravida viverra. Suspendisse eros nunc, imperdiet eget mi at, euismod faucibus mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, libero eu accumsan hendrerit, nunc lectus volutpat urna, ac malesuada justo est eget mi.</p>
     <p>Donec elementum ipsum est, ut mollis risus commodo ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam vel suscipit ante. Aenean pellentesque dapibus felis, eget lobortis orci hendrerit pretium. Pellentesque blandit lacus elementum, vestibulum nunc quis, volutpat magna. Nunc commodo volutpat congue. Morbi sodales, massa vel lobortis pretium, erat velit placerat risus, vitae luctus purus sapien in sapien.</p>
     <p>Integer nibh ipsum, elementum et facilisis at, efficitur vitae nulla. Aenean eget lacinia massa. Donec dui elit, maximus vel lorem ac, varius consequat nisi. Nam placerat odio eget est tristique, luctus consequat sapien auctor. In non arcu risus. Sed fermentum vitae neque a consequat. Nam scelerisque placerat elementum. Praesent eleifend sed lectus ut vestibulum. Donec ante ligula, feugiat ut urna vitae, sagittis eleifend felis. Mauris non ipsum felis. In commodo tellus sed sagittis fringilla. Vestibulum a nisl in mi efficitur dictum. In massa ipsum, dignissim sed mollis posuere, finibus at mauris.</p>', '1', '2022-01-30 10:03:56');
+	
+	
+
+
+INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "level", "content", "user_id") VALUES ('1', '1', '2019-01-31 10:11:01', '0', '0', 'very nice', '1');
+INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "level", "content", "user_id") VALUES ('2', '1', '2020-01-31 10:11:01', '0', '0', 'cool', '1');
+INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "level", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '0', '0', 'best article I have seen!', '2');
+
+	
