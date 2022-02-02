@@ -25,10 +25,12 @@
             <div class="comment-title">
                 <p class="comment-username">{{username}}</p>
                 <p class="comment-time">{{timestamp}}</p>
-                <a href="./voteComment?id={{id}}&type=Like">Like +{{this.like}}</a>
-                <a href="./voteComment?id={{id}}&type=Dislike">Dislike +{{this.dislike}}</a>
-                {{#if authToken}}
-                <a href="./deleteComment?id={{id}}">Delete</a>
+                {{#if voteAuth}}
+                <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p>{{upvote}}</p>
+                <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p>{{downvote}}</p>
+                {{/if}}
+                {{#if delectAuth}}
+                <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
                 {{/if}}
             </div>
             <p class="comment-text">{{content}}</p>

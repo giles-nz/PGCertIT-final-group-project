@@ -26,13 +26,12 @@ async function retrieveAllCommentsFromContent(articleId){
 async function writeAuthFromArticleId(articleId){
     const db = await dbPromise;
 
-    const result = await db.all(SQL`
+    const result = await db.get(SQL`
     SELECT  users.authToken
     FROM users, articles
     WHERE users.id = articles.creator_user_id AND articles.id = ${articleId}`);
     
     return result;
-
 }
 
 
@@ -52,10 +51,69 @@ async function deleteComment(commentId) {
         where id = ${commentId}`);
 }
 
+async function retrieveACommentFromID(commentId) {
+    const db = await dbPromise;
+
+    const result = await db.get(SQL`
+            SELECT * FROM  comments
+            WHERE id = ${commentId}`);
+
+    return result;
+}
+
+async function upvote(id, value) {
+
+    const db = await dbPromise;
+
+    //also needs a hash
+    await db.run(SQL`
+    UPDATE comments
+    SET upvote = ${value}
+    WHERE id = ${id}`);
+}
+
+async function downvote(id, value) {
+
+    const db = await dbPromise;
+
+    //also needs a hash
+    await db.run(SQL`
+    UPDATE comments
+    SET downvote = ${value}
+    WHERE id = ${id}`);
+}
+
+async function unUpvote(id, value) {
+
+    const db = await dbPromise;
+
+    //also needs a hash
+    await db.run(SQL`
+    UPDATE comments
+    SET upvote = ${value}
+    WHERE id = ${id}`);
+}
+
+async function unDownvote(id, value) {
+
+    const db = await dbPromise;
+
+    //also needs a hash
+    await db.run(SQL`
+    UPDATE comments
+    SET downvote = ${value}
+    WHERE id = ${id}`);
+}
+
 module.exports = {
     retrieveAllComments,
     retrieveAllCommentsFromContent,
     addComment,
     writeAuthFromArticleId,
-    deleteComment
+    deleteComment,
+    retrieveACommentFromID,
+    upvote,
+    downvote,
+    unUpvote,
+    unDownvote
 };
