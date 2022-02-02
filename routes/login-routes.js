@@ -114,18 +114,32 @@ router.post("/newAccount", function(req, res) {
  router.post("/myAccount", function(req, res) {
     const currentUser = res.locals.user;
 
-    const newUsername = req.body.username;
+    let newUsername = req.body.username;
+    if(newUsername == ""){
+        newUsername = currentUser.username;
+    };
+
+    let newLname = req.body.lname,
+    if(newLname == ""){
+        newLname = currentUser.lname;
+    };
+
+    let newPassword= bcrypt.hashSync(req.body.password, saltRounds)
+    if(newPassword == ""){
+        newPassword = currentUser.password;
+    };
 
     let newData = {
-        username: req.body.username,
-        lname: req.body.lname,
-        password: req.body.password,
+        username: newUsername,
+        lname: newLname,
+        password: newPassword,
         fname: req.body.fname,
         bio: req.body.bio,
         avatar: req.body.avatar,
         dob: req.body.dob,
         id: currentUser.id
     };
+    console.log(newData);
 
     
     //get all users. compare the id with the current user id.
