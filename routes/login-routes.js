@@ -176,12 +176,12 @@ router.post("/newAccount", function(req, res) {
     try {
         userDao.updateUser(newData);
         console.log(newData)
-        res.setToastMessage(`Thanks, ${user.fname}! We've updated your details!`);
-        res.redirect("/login")
+        res.setToastMessage(`Thanks${newData.fname}! We've updated your details!`);
+        res.redirect("/")
     }
     catch (err) {
         res.setToastMessage("Something went wrong!");
-        res.redirect("/newAccount");
+        res.redirect("/myaccount");
     }
 
  });
