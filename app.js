@@ -33,6 +33,10 @@ const fs = require("fs");
 // Setup JIMP for image processing
 const jimp = require("jimp");
 
+//Accessing database
+const SQL = require("sql-template-strings");;
+const dbPromise = app.use(require("./modules/database.js"));
+
 // Use the toaster middleware
 app.use(require("./middleware/toaster-middleware.js"));
 
