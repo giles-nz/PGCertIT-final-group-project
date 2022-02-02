@@ -13,7 +13,9 @@ window.addEventListener("load", function(){
     });
 
 });
-
+//Can't have these here.
+const SQL = require("sql-template-strings");
+const dbPromise = require("./database.js");
 
 async function updateValue(username) {
     //check username for database
