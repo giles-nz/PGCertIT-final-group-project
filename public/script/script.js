@@ -14,21 +14,11 @@ window.addEventListener("load", function(){
 
 });
 
+const input = document.querySelector(".usernamecheck");
+const log = document.querySelector("#log");
 
-async function updateValue(username) {
-    //check username for database
-    //if username is in database, change #log inner html to "not available"
-    //if username is not in database, change #log inner html to "that username is available"
-         const db = await dbPromise;
-    
-        const user = await db.get(SQL`
-            select * from users
-            where username = ${username}`);
-        
-        if(user){
-            return "That username is not available!"
-        } else{
-            return "That username is available"
-        }
-
-};
+input.addEventListener("change", function(){
+    log.innerHTML=updateValue(input.value);
+    let request = await fetch(`http://localhost:3000/getallusersdata`)
+    console.log(request);
+});

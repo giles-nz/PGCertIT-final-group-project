@@ -71,11 +71,17 @@ router.get("/myAccount", verifyAuthenticated, function (req, res) {
     res.locals.title = "My Account | FlavourFul";
      const user = res.locals.user;
     res.render("myaccount");
+
 });
 
-router.get("/newAccount", function(req, res) {
+router.get("/newAccount", async function(req, res) {
     res.locals.title = "New Account | WEBSITE NAME";
     res.render("new-account");
+});
+
+router.get("/getAllUsersDetails", async function(req,res){
+    const allUserDetail = await userDao.retrieveAllUsers();
+    res.json(allUserDetail);
 });
 
 router.post("/deleteAccount", async function(req,res){
