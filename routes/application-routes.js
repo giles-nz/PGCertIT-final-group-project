@@ -40,6 +40,7 @@ router.get("/content", async function(req, res) {
         }
 
     }
+    
 
     res.render("content");
 });

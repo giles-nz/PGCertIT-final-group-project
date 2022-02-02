@@ -164,7 +164,6 @@ router.post("/newAccount", function(req, res) {
         authToken: currentUser.authToken,
         id: currentUser.id
     };
-    console.log(newData);
 
     
     //get all users. compare the id with the current user id.
@@ -175,7 +174,6 @@ router.post("/newAccount", function(req, res) {
 
     try {
         userDao.updateUser(newData);
-        console.log(newData)
         res.setToastMessage(`Thanks${newData.fname}! We've updated your details!`);
         res.redirect("/")
     }
