@@ -108,11 +108,17 @@ async function updateUser(user) {
 
 /**
  * Deletes the user with the given id from the database.
- * 
+ * Also deletes all of the users' comments and articles.
  * @param {number} id the user's id
  */
 async function deleteUser(id) {
     const db = await dbPromise;
+
+    await db.run(SQL`
+        delete from comments where user_id = ${id}`);
+
+    await db.run(SQL`
+        delete from articles where creator_user_id = ${id}`);
 
     await db.run(SQL`
         delete from users
