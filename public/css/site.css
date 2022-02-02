@@ -148,83 +148,64 @@ a:hover {
 
 .slideshow-container {
   width: 100%;
-  max-height:350px;
+  max-height: 350px;
   position: relative;
   margin: auto;
   object-fit: cover;
-  left:auto;
-  right:auto;
-  display:block
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* The bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-  background-color: #717171;
+  left: auto;
+  right: auto;
+  display: block;
 }
 
 /* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+.fade-in {
+  animation: fadeIn ease 3s;
+  -webkit-animation: fadeIn ease 3s;
+  -moz-animation: fadeIn ease 3s;
+  -o-animation: fadeIn ease 3s;
+  -ms-animation: fadeIn ease 3s;
 }
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.4;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
 
-@keyframes fade {
-  from {
-    opacity: 0.4;
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  to {
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }
@@ -300,43 +281,42 @@ a:hover {
 /* --------------------------- content display part */
 
 /* --------------------------- content comment part */
-#comment-display{
-    padding: 10px;
-}
-#comment-button{
+#comment-display {
   padding: 10px;
 }
-.comment-card{
-    padding: 20px 0px 20px 0px;
-    display: none;
-}   
-.comment-dispear{
+#comment-button {
+  padding: 10px;
+}
+.comment-card {
+  padding: 20px 0px 20px 0px;
   display: none;
 }
-.comment-title{
-    display: flex;
-    flex-direction: row;
+.comment-dispear {
+  display: none;
 }
-.comment-card{
-    display: flex;
-    flex-direction: row; 
+.comment-title {
+  display: flex;
+  flex-direction: row;
 }
-.comment-image{
-    width: 150%;
-    height: auto;
+.comment-card {
+  display: flex;
+  flex-direction: row;
 }
-.comment-title{
-    padding-left: 50px;
+.comment-image {
+  width: 150%;
+  height: auto;
 }
-.comment-text{
-    padding-left: 50px;
+.comment-title {
+  padding-left: 50px;
 }
-.comment-username{
-    font-weight: bold;
-    padding-right: 10px;
+.comment-text {
+  padding-left: 50px;
 }
-.comment-time{
-    color: gray;
+.comment-username {
+  font-weight: bold;
+  padding-right: 10px;
+}
+.comment-time {
+  color: gray;
 }
 /* --------------------------- content comment part */
-
