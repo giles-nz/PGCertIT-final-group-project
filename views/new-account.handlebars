@@ -22,8 +22,31 @@
             
         </div>
     
-    <!-- if there's a user, render 'There's a user with that name' -->
+<script>
+    //Actually what I could do is have a handlebars if here
+    //and process everything server side. 
+    //maybe use toastmessage?
+    const input = document.querySelector(".usernamecheck");
+    const log = document.querySelector("#log");
 
+    input.addEventListener("change", async function(){
+    let request = await fetch(`http://localhost:3000/getAllUsersDetails`);
+    let allDetails = await request.json();
+    let count = 0;
+    for(let i = 0; i < allDetails.length; i++){
+        if(input.value == allDetails[i].username){
+            count ++;
+        }else{
+            count += 0
+        }
+    }
+    if(count > 0){
+        log.innerHTML = "This user name is already taken.";
+    }else{
+        log.innerHTML = "you can take this user name.";
+    }
+    });
+</script>
 
         <br>
 

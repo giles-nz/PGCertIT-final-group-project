@@ -12,13 +12,5 @@ window.addEventListener("load", function(){
         comments.classList.toggle("comment-dispear");
     });
 
-});
 
-const input = document.querySelector(".usernamecheck");
-const log = document.querySelector("#log");
-
-input.addEventListener("change", function(){
-    log.innerHTML=updateValue(input.value);
-    let request = await fetch(`http://localhost:3000/getallusersdata`)
-    console.log(request);
 });
