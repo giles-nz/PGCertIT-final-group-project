@@ -144,7 +144,7 @@ router.post("/newAccount", function(req, res) {
     };
 
     let newAvatar = req.body.avatar;
-    if(newAvatar == ""){
+    if(newAvatar == null){
         newAvatar = currentUser.avatar;
     };
 
