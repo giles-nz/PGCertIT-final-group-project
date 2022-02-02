@@ -161,6 +161,7 @@ router.post("/newAccount", function(req, res) {
         bio: newBio,
         avatar: newAvatar,
         dob: newDob,
+        authToken: currentUser.authToken,
         id: currentUser.id
     };
     console.log(newData);

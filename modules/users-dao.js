@@ -100,8 +100,10 @@ async function updateUser(user) {
     await db.run(SQL`
         update users
         set username = ${user.username}, password = ${user.password},
-            fname = ${user.fname}, authToken = ${user.authToken}
-        where id = ${user.id}`);
+            fname = ${user.fname}, authToken = ${user.authToken},
+            lname = ${user.lname}, bio = ${user.bio},
+             avatar = ${user.avatar}, dob = ${user.dob}
+            where id = ${user.id}`);
 }
 
 /**
