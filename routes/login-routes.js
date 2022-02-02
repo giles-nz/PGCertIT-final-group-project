@@ -2,6 +2,7 @@ const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 const { all } = require("express/lib/application");
@@ -125,10 +126,12 @@ router.post("/newAccount", function(req, res) {
         newLname = currentUser.lname;
     };
 
-    let newPassword= bcrypt.hashSync(req.body.password, saltRounds);
+    let newPassword = req.body.password;
     if(newPassword == ""){
         newPassword = currentUser.password;
-    };
+    }else{
+        newPassword = bcrypt.hashSync(newPassword, saltRounds);
+    }
 
     let newFname = req.body.fname;
     if(newFname == ""){
