@@ -1,6 +1,7 @@
 const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
+const bcrypt = require('bcrypt');
 const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 const { all } = require("express/lib/application");
@@ -119,24 +120,44 @@ router.post("/newAccount", function(req, res) {
         newUsername = currentUser.username;
     };
 
-    let newLname = req.body.lname,
+    let newLname = req.body.lname;
     if(newLname == ""){
         newLname = currentUser.lname;
     };
 
-    let newPassword= bcrypt.hashSync(req.body.password, saltRounds)
+    let newPassword= bcrypt.hashSync(req.body.password, saltRounds);
     if(newPassword == ""){
         newPassword = currentUser.password;
+    };
+
+    let newFname = req.body.fname;
+    if(newFname == ""){
+        newFname = currentUser.fname;
+    };
+
+    let newBio = req.body.bio
+    if(newBio == ""){
+        newBio = currentUser.bio;
+    };
+
+    let newAvatar = req.body.avatar;
+    if(newAvatar == ""){
+        newAvatar = currentUser.avatar;
+    };
+
+    let newDob = req.body.dob;
+    if(newDob == ""){
+        newDob = currentUser.dob;
     };
 
     let newData = {
         username: newUsername,
         lname: newLname,
         password: newPassword,
-        fname: req.body.fname,
-        bio: req.body.bio,
-        avatar: req.body.avatar,
-        dob: req.body.dob,
+        fname: newFname,
+        bio: newBio,
+        avatar: newAvatar,
+        dob: newDob,
         id: currentUser.id
     };
     console.log(newData);
