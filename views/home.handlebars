@@ -1,5 +1,9 @@
 <div id="home-page">
 
+{{#if toastMessage}}
+    <p>{{toastMessage}}</p>
+    {{/if}}
+
   <div class="welcome-text">
     <h1>Welcome Back |</h1>
     <h1>{{user.fname}}</h1>
