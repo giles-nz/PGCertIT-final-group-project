@@ -49,6 +49,10 @@ parent_comment_id integer default 0,
 level integer default 0,
 content varchar(500),
 user_id integer not null,
+delectAuth varchar(5),
+voteAuth varchar(5),
+upvote integer default 0,
+downvote integer default 0,
 primary key (id),
 foreign key (user_id) references users (id),
 foreign key (article_id) references articles (id)
@@ -84,4 +88,7 @@ INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "lev
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "level", "content", "user_id") VALUES ('2', '1', '2020-01-31 10:11:01', '0', '0', 'cool', '1');
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "level", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '0', '0', 'best article I have seen!', '2');
 
+	
+	
+	
 	
