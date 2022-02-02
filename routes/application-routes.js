@@ -55,30 +55,39 @@ router.post("/sortBy", async function(req, res) {
     }    
 });
 
-router.post("/uploadImage", upload.single("imageFile"), async function(req, res) { 
+// router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res) { 
     
-    const fileInfo = req.file;
+//     const title = req.body.title;
+//     console.log(title);
+
+//     const textNewArticle = req.body.textEditor;
+//     console.log(textNewArticle);
+
+//     const fileInfo = req.file;
     
-    const oldFileName = fileInfo.path;
-    const newFileName = `./public/images/uploadedFiles/${fileInfo.originalname}`;
+//     const oldFileName = fileInfo.path;
+//     const newFileName = `./public/images/uploadedFiles/${fileInfo.originalname}`;
     
-    fs.renameSync(oldFileName, newFileName);
+//     fs.renameSync(oldFileName, newFileName);
 
-    const image = await jimp.read(newFileName);
-    image.resize(320, jimp.AUTO);
-    await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
+//     const image = await jimp.read(newFileName);
+//     image.resize(320, jimp.AUTO);
+//     await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
 
-    const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
+//     const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
 
-    res.locals.title = "Your new recipe | @Flavourful";
-    res.locals.image = thumbnail;
-    res.render("content");
+//     res.locals.title = "Your new recipe | @Flavourful";
+//     res.locals.image = thumbnail;
+//     // res.render("content");
 
-});
+// });
 
-router.post("/uploadRecipe", function(req, res) {
-    const textNewArticle = req.body.textEditor;
-    console.log(textNewArticle);
-});
+// router.post("/uploadRecipe", function(req, res) {
+//     const title = req.body.title;
+//     console.log(title);
+
+//     const textNewArticle = req.body.textEditor;
+//     console.log(textNewArticle);
+// });
 
 module.exports = router;

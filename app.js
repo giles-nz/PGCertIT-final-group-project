@@ -49,6 +49,9 @@ app.use(loginRouter);
 const commentRouter = require("./routes/comment-routes.js");
 app.use(commentRouter);
 
+const uploadRecipeRouter = require("./routes/upload-recipe-routes.js");
+app.use(uploadRecipeRouter);
+
 // Start the server running.
 app.listen(port, function () {
     console.log(`App listening on port ${port}!`);
