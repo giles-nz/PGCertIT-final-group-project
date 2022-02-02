@@ -166,13 +166,6 @@ router.post("/newAccount", function(req, res) {
     };
     console.log(newData);
 
-    
-    //get all users. compare the id with the current user id.
-    //userDao.retrieveUserById(user.id);
-
-    
-    //check if currentUserId properties are different to the newData properties. If they are, update the database?
-
     try {
         userDao.updateUser(newData);
         console.log(newData)

@@ -12,4 +12,12 @@ window.addEventListener("load", function(){
         comments.classList.toggle("comment-dispear");
     });
 
+    const input = document.querySelector(".usernamecheck");
+    const log = document.querySelector("#log");
+    input.addEventListener("change", updateValue);
+
+    function updateValue() {
+        console.log("Hello!");
+    }
+
 });
