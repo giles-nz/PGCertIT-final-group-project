@@ -17,4 +17,15 @@ router.get("/commentUpload", async function(req, res) {
     res.redirect(`/content?id=${article_id}`);
 });
 
+router.get("/deleteComment", async function (req, res) {
+
+    const article_id = req.cookies["articleID"];
+
+    const commentId = req.query.id;
+
+    await commentDao.deleteComment(commentId);
+
+    res.redirect(`/content?id=${article_id}`);
+})
+
 module.exports = router;

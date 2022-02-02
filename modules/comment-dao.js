@@ -14,7 +14,7 @@ async function retrieveAllCommentsFromContent(articleId){
     const db = await dbPromise;
 
     const result = await db.all(SQL`
-    SELECT comments.*, users.username, users.avatar
+    SELECT comments.*, users.username, users.avatar, users.authToken
     FROM comments, users, articles
     WHERE comments.article_id = articles.id AND comments.user_id = users.id AND  comments.article_id = ${articleId}
     ORDER BY comments.timestamp DESC`);
@@ -44,9 +44,18 @@ async function addComment(article_id, content, user_id) {
         (${article_id}, datetime('now', 'localtime'), ${content}, ${user_id})`);
 }
 
+async function deleteComment(commentId) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        delete from comments
+        where id = ${commentId}`);
+}
+
 module.exports = {
     retrieveAllComments,
     retrieveAllCommentsFromContent,
     addComment,
-    writeAuthFromArticleId
+    writeAuthFromArticleId,
+    deleteComment
 };

@@ -25,13 +25,22 @@ router.get("/content", async function(req, res) {
 
     const content = await articleDao.retrieveArticleFromID(articleID);
     res.locals.content = content;
-
-    
+// this part is check auth to make sure the delect button appear
+    const data = req.cookies["authToken"];
     const comments = await commentDao.retrieveAllCommentsFromContent(articleID);
-    res.locals.comments = comments;
+    let auth = [];
+    for(let i = 0; i < comments.length; i++){
+        res.locals.comments = comments;
+        if(data == comments[i].authToken){
+            comments[i].authToken = true;
+
+        }else{
+            comments[i].authToken = false;
+        }
+
+    }
 
  //this part is make auth from the user to leave comment, if they dont log in, they can't comment.
-    const data = req.cookies["authToken"];
     const authToken = await commentDao.writeAuthFromArticleId(articleID);
     if(res.locals.user){
         if(data == authToken){
@@ -41,6 +50,8 @@ router.get("/content", async function(req, res) {
         }
 
     }
+
+
     
 
     res.render("content");

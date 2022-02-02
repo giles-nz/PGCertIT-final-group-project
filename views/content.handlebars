@@ -25,6 +25,11 @@
             <div class="comment-title">
                 <p class="comment-username">{{username}}</p>
                 <p class="comment-time">{{timestamp}}</p>
+                <a href="./voteComment?id={{id}}&type=Like">Like +{{this.like}}</a>
+                <a href="./voteComment?id={{id}}&type=Dislike">Dislike +{{this.dislike}}</a>
+                {{#if authToken}}
+                <a href="./deleteComment?id={{id}}">Delete</a>
+                {{/if}}
             </div>
             <p class="comment-text">{{content}}</p>
         </div>
