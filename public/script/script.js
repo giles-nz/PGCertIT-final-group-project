@@ -12,12 +12,23 @@ window.addEventListener("load", function(){
         comments.classList.toggle("comment-dispear");
     });
 
-    const input = document.querySelector(".usernamecheck");
-    const log = document.querySelector("#log");
-    input.addEventListener("change", updateValue);
-
-    function updateValue() {
-        console.log("Hello!");
-    }
-
 });
+
+
+async function updateValue(username) {
+    //check username for database
+    //if username is in database, change #log inner html to "not available"
+    //if username is not in database, change #log inner html to "that username is available"
+         const db = await dbPromise;
+    
+        const user = await db.get(SQL`
+            select * from users
+            where username = ${username}`);
+        
+        if(user){
+            return "That username is not available!"
+        } else{
+            return "That username is available"
+        }
+
+};

@@ -119,6 +119,8 @@ async function deleteUser(id) {
         where id = ${id}`);
 }
 
+
+
 // Export functions.
 module.exports = {
     createUser,
