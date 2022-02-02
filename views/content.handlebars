@@ -1,12 +1,14 @@
 <div id="container-content">
     <h1>{{content.title}}</h1>
-       <div id="small-header">
-           <p id="author-content">Author: {{content.fname}}</p>
-           <p id="time-content">Time: {{content.timestamp}}</p>
-
-       </div>
-    <h3>{{content.title}}</h3>
-    <img id="img-inside" src="images/thumbnails/{{content.image}}" width="320px" height="auto">
+    <div id="small-header">
+        <p id="author-content">Author: {{content.fname}}</p>
+        <p id="time-content">Time: {{content.timestamp}}</p>
+    </div>
+    
+    <img id="img-inside" src="images/thumbnails/{{content.image}}" width="640px" height="auto">
+    <h3><em>@Flavourful</em> ingredients:</h3>
+    {{content.ingredients}}
+    <h3><em>@Flavourful</em> instructions:</h3>
     {{{content.method}}}
 </div>
 
