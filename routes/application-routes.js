@@ -21,6 +21,7 @@ router.get("/articles", async function(req, res) {
 router.get("/content", async function(req, res) {
 
     const articleID = req.query.id;
+    res.cookie("articleID", articleID);
 
     const content = await articleDao.retrieveArticleFromID(articleID);
     res.locals.content = content;
