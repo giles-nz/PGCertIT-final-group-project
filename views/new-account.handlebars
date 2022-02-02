@@ -9,18 +9,44 @@
 
 <div class="container-create">
 
-    <h1>New Account</h1>
+    <h1>Create Your New Account</h1>
     <form action="./newAccount" method="POST">
 
         <div class="flex-col mb">
-            <label for="username">Username:</label>
+            <label for="fname">First name</label>
+            <p></p>
+            <input type="text" name="fname" id="fname" required>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="lname">Last name</label>
+            <p></p>
+            <input type="text" name="lname" id="lname" required>
+        </div>
+
+        <br>
+        
+        <div class="flex-col mb">
+            <label for="dob">Date of birth</label>
+            <p></p>
+            <input type="date" name="dob" id="dob" required>
+        </div>
+
+        <br>
+
+        <div class="flex-col mb">
+            <label for="username">Username</label>
+            <p></p>
             <input type="text" name="username" id="username" required>
         </div>
 
         <br>
 
         <div class="flex-col mb">
-            <label for ="password">Password:</label>
+            <label for ="password">Password</label>
+            <p></p>
         <input id="password" name="password" type="password" pattern="^\S{6,}$" 
         onchange="this.setCustomValidity(this.validity.patternMismatch ? 
         'Must have at least 6 characters' : ''); if(this.checkValidity()) 
@@ -30,7 +56,8 @@
         <br>
 
         <div class="flex-col mb">
-        <label for="password_two">Confirm Password:</label>
+        <label for="password_two">Confirm Password</label>
+        <p></p>
         <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" 
         onchange="this.setCustomValidity(this.validity.patternMismatch ? 
         'Please enter the same password as above' : '');" required>
@@ -40,9 +67,9 @@
 
         <div class="flex-col mb">
             <label for="avatar">Please select an avatar:</label>
-            <br>
-            <input type="radio" name="avatar" class="avatar-img" id="1" value="1">
-            <label for="1">
+            <p></p>
+            <input type="radio" name="avatar" class="avatar-img" id="A1" value="1">
+            <label for="A1">
                 <img src="./images/avatars/1.png">
             </label>
             <input type="radio" name="avatar" class="avatar-img" id="2" value="2">
@@ -71,35 +98,15 @@
         <br>
 
         <div class="flex-col mb">
-            <label for="fname">First name:</label>
-            <input type="text" name="fname" id="fname" required>
-        </div>
-
-        <br>
-
-        <div class="flex-col mb">
-            <label for="lname">Last name:</label>
-            <input type="text" name="lname" id="lname" required>
-        </div>
-
-        <br>
-        
-        <div class="flex-col mb">
-            <label for="dob">Date of birth:</label>
-            <input type="date" name="dob" id="dob" required>
-        </div>
-
-        <br>
-
-        <div class="flex-col mb">
-            <label for="bio">Tell us a bit about yourself:</label>
+            <label for="bio">Tell us a bit about yourself</label>
+            <p></p>
             <input type="text" name="bio" id="bio"required>
         </div>
 
         <br>
 
         <div class="flex-row justify-sb align-center">
-            <button type="submit">Create account</button>
+            <button type="submit">CREATE ACCOUNT</button>
         </div>
 
     </form>
