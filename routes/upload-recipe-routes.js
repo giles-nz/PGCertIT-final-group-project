@@ -25,7 +25,7 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     const fileInfo = req.file;
     
     const oldFileName = fileInfo.path;
-    const newFileName = `./public/images/uploadedFiles/${fileInfo.originalname}`;
+    const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
     
     fs.renameSync(oldFileName, newFileName);
 
