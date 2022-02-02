@@ -30,7 +30,7 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     fs.renameSync(oldFileName, newFileName);
 
     const image = await jimp.read(newFileName);
-    image.resize(320, jimp.AUTO);
+    image.resize(1280, 720);
     await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
 
     const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
