@@ -19,7 +19,10 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     const title = req.body.title;
     console.log(title);
 
-    const newRecipe = req.body.textEditor;
+    const ingredients = req.body.ingredients;
+    console.log(ingredients);
+
+    const newRecipe = req.body.method;
     console.log(newRecipe);
 
     const fileInfo = req.file;
@@ -33,13 +36,13 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     image.resize(1280, 720);
     await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
 
-    const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
+    // const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
 
-    await articleDao.addArticle(title, fileInfo.originalname, newRecipe, user.id);
+    await articleDao.addArticle(title, fileInfo.originalname, ingredients, newRecipe, user.id);
 
-    res.locals.title = "Your new recipe | @Flavourful";
-    // res.locals.image = thumbnail;
-    // res.render("content");
+    // res.locals.title = "Your new recipe | @Flavourful";
+    
+    res.redirect("./articles");
 
 });
 

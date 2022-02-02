@@ -22,6 +22,7 @@
   <div id="recipeUpload">
 
     <h3>Add your new <em>@Flavourful</em> recipe here:</h3>
+    <br>
 
     <form action="./uploadRecipe" method="POST" enctype="multipart/form-data">
 
@@ -30,13 +31,21 @@
           <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" required>
       </div>
       <br>
-      <p>List ingredients and give instructions for preparing your <em>@Flavourful</em> recipe:</p>
-      <div class="wysiwygEditor">
-        <textarea name="textEditor" id="textEditor" required>
-
+      
+      <p>List <em>@Flavourful</em> ingredients:</p>
+      <div id="ingredientsDiv">
+        <textarea class="wysiwygEditor" name="ingredients" id="ingredientsEditor" required>
         </textarea>
       </div>
       <br>
+      
+      <p>Give instructions for preparing your <em>@Flavourful</em> recipe:</p>
+      <div id="methodDiv">
+        <textarea class="wysiwygEditor" name="method" id="methodEditor" required>
+        </textarea>
+      </div>
+      <br>
+      
       <label for="inpFile">Upload an image of your <em>@Flavourful</em> dish:</label>
       <input
         id="inpFile"
