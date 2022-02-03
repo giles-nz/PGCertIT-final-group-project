@@ -51,11 +51,15 @@ async function retrieveUserWithCredentials(username, password) {
     const user = await db.get(SQL`
         select * from users
         where username = ${username}`);
+        let match = false;
+        try{
+            match = await bcrypt.compare(password,user.password);
+        } catch{
+            return;
+        }
 
-        console.log(user);
-    const match = await bcrypt.compare(password,user.password);
 
-    if (match){
+    if (match==true){
         return user;
     }
 }
