@@ -28,7 +28,7 @@ router.get("/userArticles", async function(req, res) {
         const userArticles = await articleDao.retrieveUserArticles(user.id);
         if (!userArticles.length) {
             // console.log("Array is empty");
-            res.locals.noUserRecipes = "Please upload recipes on the @FLAVOURFUL homepage!";
+            res.locals.noUserRecipes = "Please upload recipes on your @FLAVOURFUL homepage!";
         }    
         res.locals.userArticles = userArticles;
         res.locals.title = "Your Recipes | @FLAVOURFUL";
