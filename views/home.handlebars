@@ -1,20 +1,19 @@
 <div id="home-page">
 
-{{#if toastMessage}}
+  {{#if toastMessage}}
     <p>{{toastMessage}}</p>
-    {{/if}}
+  {{/if}}
 
   <div class="welcome-text">
     <h1>Welcome Back |</h1>
     <h1>{{user.fname}}</h1>
     <img class="home-page-avatar" src="./images/avatars/{{user.avatar}}.png" />
-
   </div>
 {{!-- 
   <div class="bg-image">
     <img
       id="nav-image"
-      src="images/wepik-2022026-232743.png"
+      src="images/thumbnails/wepik-2022026-232743.png"
       height="500px"
       width="auto"
     />
@@ -32,11 +31,11 @@
  function change(){
  var image = document.getElementById('circle');
  if(image_tracker=='orange'){
- image.src='./images/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg';
+ image.src='./images/thumbnails/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg';
  image_tracker='airplant';
  }
  else{
- image.src='./images/davide-cantelli-jpkfc5_d-DI-unsplash.jpg';
+ image.src='./images/thumbnails/davide-cantelli-jpkfc5_d-DI-unsplash.jpg';
  image_tracker='davide';
  }
  }
@@ -57,7 +56,7 @@
  </script>
  
  
-<img src="./images/lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Circle" id="circle" class ="slideshow-container fade-in"onclick="stop();">
+<img src="./images/thumbnails/lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Circle" id="circle" class ="slideshow-container fade-in"onclick="stop();">
  
 {{!--   
 
@@ -67,52 +66,44 @@
 
   <div id="recipeUpload">
 
-    <h3>Add your new @Flavourful recipe here:</h3>
+    <h3>Add your new <em>@Flavourful</em> recipe here:</h3>
+    <br>
 
     <form action="./uploadRecipe" method="POST" enctype="multipart/form-data">
 
       <div id="recipeTitleDiv">
-          <label for="recipeTitle">Give your new @Flavourful recipe a tasty name:</label>
+          <label for="recipeTitle">Give your recipe an <em>@Flavourful</em> name:</label>
           <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" required>
       </div>
       <br>
-      <p>List ingredients and give instructions for your @Flavourful recipe:</p>
-      <div class="wysiwygEditor">
-        <textarea name="textEditor" id="textEditor" required>
-
+      
+      <p>List <em>@Flavourful</em> ingredients:</p>
+      <div id="ingredientsDiv">
+        <textarea class="wysiwygEditor" name="ingredients" id="ingredientsEditor" required>
         </textarea>
       </div>
       <br>
-        {{!-- <button type="submit">Post!</button> --}}
-
-        {{!-- </form> --}}
-
-        {{!-- </div> --}}
-
-        {{!-- <div id="imageUpload"> --}}
-      <h3>Upload an image of your @Flavourful dish here:</h3>
-
-        {{!-- <form action="./uploadImage" method="POST" enctype="multipart/form-data"> --}}
-
-      <label for="inpFile">Upload an image here!</label>
+      
+      <p>Give instructions for preparing your <em>@Flavourful</em> recipe:</p>
+      <div id="methodDiv">
+        <textarea class="wysiwygEditor" name="method" id="methodEditor" required>
+        </textarea>
+      </div>
+      <br>
+      
+      <label for="inpFile">Upload an image of your <em>@Flavourful</em> dish:</label>
       <input
         id="inpFile"
         type="file"
         name="imageFile"
         accept=".png,.jpg,.jpeg,.bmp"
       />
-      <br />
-        {{!-- <label for="txtCaption">Caption:</label>
-        <input id="txtCaption" type="text" name="caption" /> --}}
-      <br />
-      <button type="submit">Upload!</button>
+      <br>
+      <br>
+      <button type="submit"><strong>SHARE <em>@Flavourful</em></strong></button>
 
     </form>
 
   </div>
 
 </div>
-
-<!-- Add WYSIWYG to create and edit articles -->
-
-<!-- Add functionality for user to change their details -->

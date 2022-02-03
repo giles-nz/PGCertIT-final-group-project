@@ -19,27 +19,35 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     const title = req.body.title;
     console.log(title);
 
-    const newRecipe = req.body.textEditor;
+    const ingredients = req.body.ingredients;
+    console.log(ingredients);
+
+    const newRecipe = req.body.method;
     console.log(newRecipe);
 
     const fileInfo = req.file;
     
-    const oldFileName = fileInfo.path;
-    const newFileName = `./public/images/uploadedFiles/${fileInfo.originalname}`;
+    if (fileInfo) {
+        
+        // console.log(fileInfo);
+            
+        const oldFileName = fileInfo.path;
+        const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
     
-    fs.renameSync(oldFileName, newFileName);
+        fs.renameSync(oldFileName, newFileName);
 
-    const image = await jimp.read(newFileName);
-    image.resize(320, jimp.AUTO);
-    await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
+        const image = await jimp.read(newFileName);
+        image.resize(1280, 720);
+        await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
 
-    const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
-
-    await articleDao.addArticle(title, fileInfo.originalname, newRecipe, user.id);
-
-    res.locals.title = "Your new recipe | @Flavourful";
-    // res.locals.image = thumbnail;
-    // res.render("content");
+        await articleDao.addArticle(title, fileInfo.originalname, ingredients, newRecipe, user.id);
+    
+    } else {
+        
+        await articleDao.addArticle(title, "default.jpg", ingredients, newRecipe, user.id);
+    }
+    
+    res.redirect("./articles");
 
 });
 
