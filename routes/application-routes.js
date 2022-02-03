@@ -13,8 +13,6 @@ router.get("/articles", async function(req, res) {
     res.locals.title = "Articles | WEBSITE NAME";
     const allArticles = await articleDao.retrieveAllArticles();
     res.locals.allArticles = allArticles;
-    res.cookie("upvote", 0);
-    res.cookie("downvote", 0);
     res.render("articles");
 });
 
