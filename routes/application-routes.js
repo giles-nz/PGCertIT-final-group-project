@@ -1,12 +1,14 @@
+const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
 
-const upload = require("../middleware/multer-uploader.js");
-const fs = require("../middleware/fs-directory_scanner.js");
-const jimp = require("../middleware/jimp-image_processor.js");
+// const upload = require("../middleware/multer-uploader.js");
+// const fs = require("../middleware/fs-directory_scanner.js");
+// const jimp = require("../middleware/jimp-image_processor.js");
 
 const articleDao = require("../modules/article-dao.js");
 const commentDao = require("../modules/comment-dao.js");
+const userDao = require("../modules/users-dao.js");
 
 //this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
@@ -16,6 +18,17 @@ router.get("/articles", async function(req, res) {
     res.cookie("upvote", 0);
     res.cookie("downvote", 0);
     res.render("articles");
+});
+
+router.get("/userArticles", async function(req, res) {
+    
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    
+    const allUserArticles = await articleDao.retrieveAllUserArticles(user.id);
+    
+    res.locals.allUserArticles = allUserArticles;
+    res.locals.title = "Your Recipes | @FLAVOURFUL";
+    res.render("user_articles");
 });
 
 //this function is receive the specific article from database and show in the content handlebar

@@ -47,7 +47,7 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
         await articleDao.addArticle(title, "default.jpg", ingredients, newRecipe, user.id);
     }
     
-    res.redirect("./articles");
+    res.redirect("./userArticles");
 
 });
 

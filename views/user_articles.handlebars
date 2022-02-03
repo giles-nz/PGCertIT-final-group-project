@@ -1,0 +1,33 @@
+<!-- 
+    This page should show all of the logged-in user's articles.
+    These can be sorted by date or article title.
+-->
+
+<div id="container-all-article">
+
+
+  <div id="checkBox"> 
+    <form action="./sortBy" method="POST">
+        <label for="sort_id">Sort by:</label>
+        <select name="sortName" id="sort_id">
+            {{!-- <option {{sele1}} value="name">name</option> --}}
+            <option {{sele2}} value="date">date</option>
+            <option {{sele3}} value="title">title</option>
+        </select>
+        <input type="submit" value="Sort">
+    </form>
+  </div>  
+
+    {{#each allUserArticles}}
+    <div class="card">
+        <div class="card-header"><a href="/content?id={{id}}"><img class="card-image" src="images/thumbnails/{{image}}"></a></div>
+        <div class="card-body"><a href="/content?id={{id}}" class="articl-a">
+            <h1 class="card-title">{{title}}</h1>
+            <br>
+            <h3><em>@Flavourful</em> ingredients:</h3>
+            <p class="card-text">{{{ingredients}}}</p>
+        </a></div>
+    </div>
+    {{/each}}
+
+</div>

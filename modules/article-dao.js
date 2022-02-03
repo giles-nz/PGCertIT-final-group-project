@@ -13,6 +13,18 @@ async function retrieveAllArticles() {
     return result;
 }
 
+// this function retrieves all of the user's articles
+async function retrieveAllUserArticles(user_id) {
+    const db = await dbPromise;
+
+    const result = await db.all(SQL`
+    SELECT *
+    FROM articles AS a
+    WHERE a.creator_user_id = ${user_id}`);
+
+    return result;
+}
+
 //ths function is receive whole all articles sort by name
 async function retrieveAllArticlesByName() {
     const db = await dbPromise;
@@ -73,6 +85,7 @@ async function addArticle(title, image, ingredients, method, creator_user_id) {
 
 module.exports = {
     retrieveAllArticles,
+    retrieveAllUserArticles,
     retrieveArticleFromID,
     retrieveAllArticlesByName,
     retrieveAllArticlesByDate,
