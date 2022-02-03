@@ -136,11 +136,12 @@ a:hover {
   padding: 40px;
   text-align: center;
 }
-.home-page-avatar {
-  height: 50%;
-  width: auto;
-  display: block;
+.avatar-img {
+  
+  max-height: 100px;
+  max-width: auto;
   margin: auto;
+
 }
 /* CSS for the slideshow:
 

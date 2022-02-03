@@ -43,6 +43,9 @@ router.post("/login", async function (req, res) {
     const username = req.body.username;
     const password = req.body.password;
 
+    res.cookie("upvote", 0);
+    res.cookie("downvote", 0);
+
     // Find a matching user in the database
     const user = await userDao.retrieveUserWithCredentials(username, password);
 

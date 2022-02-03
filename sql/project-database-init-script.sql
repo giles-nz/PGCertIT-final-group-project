@@ -58,6 +58,15 @@ foreign key (user_id) references users (id),
 foreign key (article_id) references articles (id)
 );
 
+create table votes (
+    id integer not null primary key,
+    commentId integer not null,
+    userId integer not null,
+	isvoted integer default 0,
+    foreign key (commentId) references comments (id),
+    foreign key (userId) references users (id)
+);
+
 insert into users (id, fname, lname, bio, username, password, dob, avatar) values (1,'Bryson','Newman','User number one of our site','user1','pa55word','1967-12-03',1);
 insert into users (id, fname, lname, bio, username, password, dob, avatar) values (2,'Miles','Hartman','User number two of our site','user2','pa55word','1954-12-03',1);
 
@@ -88,7 +97,9 @@ INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "lev
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "level", "content", "user_id") VALUES ('2', '1', '2020-01-31 10:11:01', '0', '0', 'cool', '1');
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "level", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '0', '0', 'best article I have seen!', '2');
 
-	
+
+       delete from votes
+        where commentId = 4;
 	
 	
 	
