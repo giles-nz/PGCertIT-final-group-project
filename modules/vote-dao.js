@@ -1,7 +1,7 @@
 const SQL = require("sql-template-strings");
 const dbPromise = require("./database.js");
 
-// Retrieve all likes by comment id
+// Retrieve all upvote by comment id
 async function retrieveUpvote(commentId) {
     const db = await dbPromise;
 
@@ -13,7 +13,7 @@ async function retrieveUpvote(commentId) {
     return upvote.length;
 }
 
-// Retrieve all dislikes by comment id
+// Retrieve all downvote by comment id
 async function retrieveDownvote(commentId) {
     const db = await dbPromise;
 
@@ -42,7 +42,6 @@ async function downvote(commentId, userId) {
             (${commentId}, ${userId}, 1)`);
 }
 
-// Unovte (delete vote) in database by comment id, user id
 async function deleteVote(commentId, userId) {
     const db = await dbPromise;
 
@@ -50,18 +49,6 @@ async function deleteVote(commentId, userId) {
     delete from votes
     WHERE commentId = ${commentId} AND userId = ${userId}`);
 }
-
-// // Delete all votes associated with a comment by comment id
-// // This is called when a comment is deleted, thus delete all votes as well
-// async function deleteAllVotes(commentID) {
-//     const db = await dbPromise;
-
-//     await db.run(SQL`
-//         delete from VOTE
-//         where commentID = ${commentID}`);
-// }
-
-// // Retrive a single vote by comment id and user id
 
 async function retreiveAVote(commentId, userId) {
     const db = await dbPromise;
