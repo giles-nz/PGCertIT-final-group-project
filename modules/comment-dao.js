@@ -47,8 +47,12 @@ async function deleteComment(commentId) {
     const db = await dbPromise;
 
     await db.run(SQL`
-        delete from comments
-        where id = ${commentId}`);
+    delete from votes
+    where commentId = ${commentId}`);
+
+    await db.run(SQL`
+    delete from comments
+    where id = ${commentId}`);
 }
 
 async function retrieveACommentFromID(commentId) {
@@ -83,27 +87,6 @@ async function downvote(id, value) {
     WHERE id = ${id}`);
 }
 
-async function unUpvote(id, value) {
-
-    const db = await dbPromise;
-
-    //also needs a hash
-    await db.run(SQL`
-    UPDATE comments
-    SET upvote = ${value}
-    WHERE id = ${id}`);
-}
-
-async function unDownvote(id, value) {
-
-    const db = await dbPromise;
-
-    //also needs a hash
-    await db.run(SQL`
-    UPDATE comments
-    SET downvote = ${value}
-    WHERE id = ${id}`);
-}
 
 module.exports = {
     retrieveAllComments,
@@ -113,7 +96,5 @@ module.exports = {
     deleteComment,
     retrieveACommentFromID,
     upvote,
-    downvote,
-    unUpvote,
-    unDownvote
+    downvote
 };
