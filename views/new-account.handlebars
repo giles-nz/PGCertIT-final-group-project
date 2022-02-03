@@ -23,9 +23,6 @@
         </div>
     
 <script>
-    //Actually what I could do is have a handlebars if here
-    //and process everything server side. 
-    //maybe use toastmessage?
     const input = document.querySelector(".usernamecheck");
     const log = document.querySelector("#log");
 
@@ -41,9 +38,9 @@
         }
     }
     if(count > 0){
-        log.innerHTML = "This user name is already taken.";
+        log.innerHTML = "This username is already taken!";
     }else{
-        log.innerHTML = "you can take this user name.";
+        log.innerHTML = "This username is available!";
     }
     });
 </script>
@@ -85,17 +82,17 @@
                 <img src="./images/avatars/3.png">
             </label>
             <br>
+            <input type="radio" name="avatar" class="avatar-img" id="4" value="4">
+            <label for="6">
+                <img src="./images/avatars/4.png">
+            </label>
+            <input type="radio" name="avatar" class="avatar-img" id="5" value="5">
+            <label for="5">
+                <img src="./images/avatars/5.png">
+            </label>
             <input type="radio" name="avatar" class="avatar-img" id="6" value="6">
             <label for="6">
                 <img src="./images/avatars/6.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="7" value="7">
-            <label for="7">
-                <img src="./images/avatars/7.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="11" value="11">
-            <label for="11">
-                <img src="./images/avatars/11.png">
             </label>
         </div>
 
