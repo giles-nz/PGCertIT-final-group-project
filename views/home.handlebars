@@ -7,62 +7,26 @@
   <div class="welcome-text">
     <h1>Welcome Back |</h1>
     <h1>{{user.fname}}</h1>
-    <img class="home-page-avatar" src="./images/avatars/{{user.avatar}}.png" />
+    <img class="home-page-avatar avatar-img" src="./images/avatars/{{user.avatar}}.png" />
   </div>
-{{!-- 
-  <div class="bg-image">
-    <img
-      id="nav-image"
-      src="images/thumbnails/wepik-2022026-232743.png"
-      height="500px"
-      width="auto"
-    />
-  </div> --}}
-   <script type="text/javascript">
- 
- /* In the previous tutorial, we changed an image by clicking on it.
- This time the image will change by itself over time.
- This could be used for an ad banner that changes every few seconds.
- It uses much of the existing code from the previous tutorial.
- */
- 
- var image_tracker = 'orange';
- 
- function change(){
- var image = document.getElementById('circle');
- if(image_tracker=='orange'){
- image.src='./images/thumbnails/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg';
- image_tracker='airplant';
- }
- else{
- image.src='./images/thumbnails/davide-cantelli-jpkfc5_d-DI-unsplash.jpg';
- image_tracker='davide';
- }
- }
- 
- // Either the setTimeout() method or the setInterval() method can be used.
- // With the setTimeout() method, it takes two parameters.
- // The first parameter is the code to run, the second parameter is time in milliseconds. 1 sec = 1000 ms.
- // the setTimeout() method only runs once. To repeat, we use the setInterval() method instead.
- // It also uses two parameters, the code to run (or function to use), and the timer interval.
- 
- var timer = setInterval('change();',3000); 
- 
- // this function is called when the onclick event runs. It stops the timer running.
- function stop(){
- clearInterval(timer); //the clearInterval method stops the timer from running
- }
- 
+
+
+  <img src="./images/thumbnails/lily-banse--YHSwy6uqvk-unsplash.jpg" id="image" class ="slideshow-container fade-in"onclick="stop();">
+
+  <script type = "text/javascript">
+    let image = document.getElementById("image");
+    let i = 0;
+    const images = ["./images/thumbnails/lily-banse--YHSwy6uqvk-unsplash.jpg", "./images/thumbnails/davide-cantelli-jpkfc5_d-DI-unsplash.jpg", "./images/thumbnails/brooke-lark-jUPOXXRNdcA-unsplash.jpg","./images/thumbnails/brooke-lark-M4E7X3z80PQ-unsplash.jpg"]
+
+      function changePhoto() {
+        i<images.length-1?i+=1:i=0; 
+      document.getElementById("image")
+        image.src=images[i];}
+  
+  setInterval(changePhoto, 3000);
+            
  </script>
  
- 
-<img src="./images/thumbnails/lily-banse--YHSwy6uqvk-unsplash.jpg" alt="Circle" id="circle" class ="slideshow-container fade-in"onclick="stop();">
- 
-{{!--   
-
-  <p>urabitur ut imperdiet neque. Fusce placerat felis sed neque rutru...<a
-      href="#"
-    >read more</a></p> --}}
 
   <div id="recipeUpload">
 
