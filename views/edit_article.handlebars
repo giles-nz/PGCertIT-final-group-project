@@ -1,0 +1,44 @@
+<div id="edit-page">
+    
+    <div id="editRecipe">
+
+    <h3>Edit your <em>@Flavourful</em> recipe here:</h3>
+    <br>
+
+    <form action="./editRecipe" method="POST" enctype="multipart/form-data">
+
+      <div id="recipeTitleDiv">
+          <label for="recipeTitle">Give your recipe an <em>@Flavourful</em> name:</label>
+          <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" required>
+      </div>
+      <br>
+      
+      <p>Edit <em>@Flavourful</em> ingredients:</p>
+      <div id="ingredientsDiv">
+        <textarea class="wysiwygEditor" name="ingredients" id="ingredientsEditor" required>
+        </textarea>
+      </div>
+      <br>
+      
+      <p>Edit instructions for preparing your <em>@Flavourful</em> recipe:</p>
+      <div id="methodDiv">
+        <textarea class="wysiwygEditor" name="method" id="methodEditor" required>
+        </textarea>
+      </div>
+      <br>
+      
+      <label for="inpFile">Upload a replacement image of your <em>@Flavourful</em> dish:</label>
+      <input
+        id="inpFile"
+        type="file"
+        name="imageFile"
+        accept=".png,.jpg,.jpeg,.bmp"
+      />
+      <br>
+      <br>
+      <button type="submit"><strong>SHARE <em>@Flavourful</em></strong></button>
+
+    </form>
+
+  </div>
+</div>

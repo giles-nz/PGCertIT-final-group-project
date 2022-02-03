@@ -1,19 +1,40 @@
+const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
 
-const upload = require("../middleware/multer-uploader.js");
-const fs = require("../middleware/fs-directory_scanner.js");
-const jimp = require("../middleware/jimp-image_processor.js");
+// const upload = require("../middleware/multer-uploader.js");
+// const fs = require("../middleware/fs-directory_scanner.js");
+// const jimp = require("../middleware/jimp-image_processor.js");
 
 const articleDao = require("../modules/article-dao.js");
 const commentDao = require("../modules/comment-dao.js");
+const userDao = require("../modules/users-dao.js");
 
 //this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
-    res.locals.title = "Articles | WEBSITE NAME";
+    res.locals.title = "All Recipes | @FLAVOURFUL";
     const allArticles = await articleDao.retrieveAllArticles();
     res.locals.allArticles = allArticles;
     res.render("articles");
+});
+
+router.get("/userArticles", async function(req, res) {
+    
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+
+    if (user) {
+        const userArticles = await articleDao.retrieveUserArticles(user.id);
+        if (!userArticles.length) {
+            // console.log("Array is empty");
+            res.locals.noUserRecipes = "Please upload recipes on your @FLAVOURFUL homepage!";
+        }    
+        res.locals.userArticles = userArticles;
+        res.locals.title = "Your Recipes | @FLAVOURFUL";
+        res.render("user_articles");
+    } else {
+        // res.setToastMessage("Please login or create a new @FLAVOURFUL account")
+        res.redirect("articles");
+    }
 });
 
 //this function is receive the specific article from database and show in the content handlebar
@@ -81,6 +102,25 @@ router.post("/sortBy", async function(req, res) {
         res.locals.allArticles = allArticlesSortByTitle;
         res.locals.sele3 = `selected = ${"selected"}`;
         res.render("articles");
+    }    
+});
+
+// sorts list of user's articles by date or title
+router.post("/userArticlesSortBy", async function(req, res) {
+
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    const sortName = req.body.sortName;
+
+    if (sortName == "date") {
+        const userArticlesSortByDate= await articleDao.retrieveUserArticlesByDate(user.id);
+        res.locals.userArticles = userArticlesSortByDate;
+        res.locals.sele1 = `selected = ${"selected"}`;
+        res.render("user_articles");
+    } else if (sortName == "title") {
+        const userArticlesSortByTitle= await articleDao.retrieveUserArticlesByTitle(user.id);
+        res.locals.userArticles = userArticlesSortByTitle;
+        res.locals.sele2 = `selected = ${"selected"}`;
+        res.render("user_articles");
     }    
 });
 
