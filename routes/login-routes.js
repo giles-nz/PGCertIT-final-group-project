@@ -71,11 +71,17 @@ router.get("/myAccount", verifyAuthenticated, function (req, res) {
     res.locals.title = "My Account | FlavourFul";
      const user = res.locals.user;
     res.render("myaccount");
+
 });
 
-router.get("/newAccount", function(req, res) {
+router.get("/newAccount", async function(req, res) {
     res.locals.title = "New Account | WEBSITE NAME";
     res.render("new-account");
+});
+
+router.get("/getAllUsersDetails", async function(req,res){
+    const allUserDetail = await userDao.retrieveAllUsers();
+    res.json(allUserDetail);
 });
 
 router.post("/deleteAccount", async function(req,res){
@@ -164,18 +170,9 @@ router.post("/newAccount", function(req, res) {
         authToken: currentUser.authToken,
         id: currentUser.id
     };
-    console.log(newData);
-
-    
-    //get all users. compare the id with the current user id.
-    //userDao.retrieveUserById(user.id);
-
-    
-    //check if currentUserId properties are different to the newData properties. If they are, update the database?
 
     try {
         userDao.updateUser(newData);
-        console.log(newData)
         res.setToastMessage(`Thanks${newData.fname}! We've updated your details!`);
         res.redirect("/")
     }
