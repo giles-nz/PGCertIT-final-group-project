@@ -6,19 +6,22 @@
 <div id="container-all-article">
 
 
-  <div id="checkBox"> 
-    <form action="./sortBy" method="POST">
-        <label for="sort_id">Sort by:</label>
-        <select name="sortName" id="sort_id">
-            {{!-- <option {{sele1}} value="name">name</option> --}}
-            <option {{sele2}} value="date">date</option>
-            <option {{sele3}} value="title">title</option>
-        </select>
-        <input type="submit" value="Sort">
-    </form>
-  </div>  
+    <div id="checkBox"> 
+        <form action="./userArticlesSortBy" method="POST">
+            <label for="sort_id">Sort by:</label>
+            <select name="sortName" id="sort_id">
+                <option {{sele1}} value="date">date</option>
+                <option {{sele2}} value="title">title</option>
+            </select>
+            <input type="submit" value="Sort">
+        </form>
+    </div>
 
-    {{#each allUserArticles}}
+    {{#if noUserRecipes}}
+    <h3>{{noUserRecipes}}</h3>
+    {{/if}}
+
+    {{#each userArticles}}
     <div class="card">
         <div class="card-header"><a href="/content?id={{id}}"><img class="card-image" src="images/thumbnails/{{image}}"></a></div>
         <div class="card-body"><a href="/content?id={{id}}" class="articl-a">
