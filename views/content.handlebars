@@ -18,6 +18,18 @@
         {{{content.method}}}
     </div>
 
+    <div id="container-edit">
+        {{!-- {{#if content.creator_user_id == user.id}} --}}
+        <form action="./editRecipe" method="POST">
+        <button type="submit">EDIT this recipe</button>
+        </form>
+        <br>
+        <form action="./deleteRecipe" method="POST">
+        <button type="submit">DELETE this recipe!</button>
+        </form>
+        {{!-- {{/if}} --}}
+    </div>
+
 </div>
 
 <div id="comment-button">
