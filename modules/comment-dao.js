@@ -43,6 +43,14 @@ async function addComment(article_id, content, user_id) {
         (${article_id}, datetime('now', 'localtime'), ${content}, ${user_id})`);
 }
 
+async function addChildComment(article_id, content, parent_comment_id, user_id) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        insert into comments (article_id, timestamp, content, parent_comment_id, user_id) values
+        (${article_id}, datetime('now', 'localtime'), ${content}, ${parent_comment_id}, ${user_id})`);
+}
+
 async function deleteComment(commentId) {
     const db = await dbPromise;
 
@@ -92,6 +100,7 @@ module.exports = {
     retrieveAllComments,
     retrieveAllCommentsFromContent,
     addComment,
+    addChildComment,
     writeAuthFromArticleId,
     deleteComment,
     retrieveACommentFromID,

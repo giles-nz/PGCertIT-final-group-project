@@ -41,6 +41,11 @@
                 {{/if}}
                 {{#if delectAuth}}
                 <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
+                <a href="#1" class="replyToggle">Reply</a><div class="replyPopup1"><form action="./replyComment" method="GET">
+                <textarea name="content" rows="5" cols="50" placeholder="Type your reply here..." required></textarea>
+                <input type="hidden" name="comment_id" value="{{id}}">
+                <br><input type="submit">
+            </form></div>
                 {{/if}}
             </div>
             <p class="comment-text">{{content}}</p>

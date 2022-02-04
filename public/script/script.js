@@ -70,4 +70,14 @@ window.addEventListener("load", function(){
         });
 
     });
+
+
+    const replyToggle = document.querySelectorAll(".replyToggle");
+    const replyPopup1 = document.querySelectorAll(".replyPopup1");
+    replyToggle.forEach(function(ele, count){
+        ele.addEventListener("click", function(){
+            replyPopup1[count].classList.toggle("replyPopup2");
+        });
+    });
+
 });

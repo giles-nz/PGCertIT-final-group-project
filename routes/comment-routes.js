@@ -76,6 +76,25 @@ router.get("/voteCommentDown", async function (req, res) {
     // res.redirect(`/content?id=${article_id}`);
 })
 
+router.get("/commentReply", async function(req, res) {
+
+    // const article_id = req.cookies["articleID"];
+    // const commentId = req.query.id;
+    // console.log(commentId);
+    // res.cookie("commentId", commentId);
+});
+
+router.get("/replyComment", async function(req, res) {
+
+    const article_id = req.cookies["articleID"];
+    const commentId = req.query.comment_id;
+    const content = req.query.content;
+    const id = res.locals.user.id;
+
+    await commentDao.addChildComment(article_id, content, commentId, id);
+
+});
+
 
 async function getAllComments(article_id){
 
