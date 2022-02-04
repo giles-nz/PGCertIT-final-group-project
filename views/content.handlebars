@@ -1,17 +1,32 @@
 <div id="container-content">
     <h1>{{content.title}}</h1>
-       <div id="small-header">
-           <p id="author-content">Author: {{content.fname}}</p>
-           <p id="time-content">Time: {{content.timestamp}}</p>
 
-       </div>
-    <h3>{{content.title}}</h3>
-    <img id="img-inside" src="images/{{content.image}}" width="320px" height="auto">
-    {{{content.method}}}
+    <div id="small-header">
+        <p id="author-content">Author: {{content.fname}}</p>
+        <p id="time-content">Time: {{content.timestamp}}</p>
+    </div>
+
+    <div id="container-image">
+        <img id="img-inside" src="images/thumbnails/{{content.image}}" width="640px" height="auto">
+    </div>
+    
+    <div id="container-recipe">
+        <h3><em>@Flavourful</em> ingredients:</h3>
+        {{{content.ingredients}}}
+
+        <h3><em>@Flavourful</em> instructions:</h3>
+        {{{content.method}}}
+    </div>
+
+</div>
+
+<div id="comment-button">
+    <h3>Comments</h3>
+    <button id="toggle">Show/Hide Comments</button>
+    <hr>
 </div>
 
 <div id="comment-display">
-    <h3>Comments</h3><hr>
 
     {{#each comments}}
     <div class="comment-card">
@@ -20,26 +35,37 @@
             <div class="comment-title">
                 <p class="comment-username">{{username}}</p>
                 <p class="comment-time">{{timestamp}}</p>
+                {{#if voteAuth}}
+                <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p>{{upvote}}</p>
+                <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p>{{downvote}}</p>
+                {{/if}}
+                {{#if delectAuth}}
+                <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
+                {{/if}}
             </div>
             <p class="comment-text">{{content}}</p>
         </div>
     </div>
     {{/each}}
-
 </div>
+
 
 <div id="comment-submit">
 
-
-    <form action="./commentUpload" method="POST">
-        <div class="">
-            <p>Put your comment here:</p>
-            <label for="txtContent"></label>
-            <textarea name="content" id="txtContent" required rows="10" placeholder="Put your comment here......."></textarea>
-        </div>
-
-        <div class="">
-            <button type="submit">Comment!</button>
-        </div>
-    </form>
+    {{#if user}}
+{{!-- This is the add comment section --}}
+<h3>Add Comment</h3>
+<div>Hello {{user.username}}, welcome to leave comments here.</div>
+<form action="./commentUpload" method="POST">
+    <textarea name="content" id="txtContent" rows="10" placeholder="Type your comment here..." required></textarea>
+    <br><input type="submit" id="submit">
+</form>
+<br>
+{{else}}
+<div>
+    <div>You don't have authority to leave comments!</div>
+    <p>Please <a href="./login">Log in</a></p>
+</div>
+<br>
+{{/if}}
 </div>

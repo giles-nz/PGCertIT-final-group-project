@@ -7,7 +7,8 @@ async function retrieveAllArticles() {
 
     const result = await db.all(SQL`
     SELECT *
-    FROM articles`);
+    FROM articles
+    ORDER BY timestamp DESC`);
     
     return result;
 }
@@ -49,6 +50,45 @@ async function retrieveAllArticlesByTitle() {
     return result;
 }
 
+// this function retrieves all of the user's articles (most recent first)
+async function retrieveUserArticles(user_id) {
+    const db = await dbPromise;
+
+    const result = await db.all(SQL`
+    SELECT *
+    FROM articles AS a
+    WHERE a.creator_user_id = ${user_id}
+    ORDER BY timestamp DESC`);
+
+    return result;
+}
+
+// this function sorts user's articles by date (oldest first)
+async function retrieveUserArticlesByDate(user_id) {
+    const db = await dbPromise;
+
+    const result = await db.all(SQL`
+    SELECT *
+    FROM articles AS a
+    WHERE a.creator_user_id = ${user_id}
+    ORDER BY timestamp`);
+
+    return result;
+}
+
+// this function sorts user's articles by title
+async function retrieveUserArticlesByTitle(user_id) {
+    const db = await dbPromise;
+
+    const result = await db.all(SQL`
+    SELECT *
+    FROM articles AS a
+    WHERE a.creator_user_id = ${user_id}
+    ORDER BY title`);
+
+    return result;
+}
+
 //ths function is receive a articles from people click
 async function retrieveArticleFromID(id) {
     const db = await dbPromise;
@@ -61,10 +101,23 @@ async function retrieveArticleFromID(id) {
     return result;
 }
 
+// this function adds a new article (recipe) to the articles table in project-database.db
+async function addArticle(title, image, ingredients, method, creator_user_id) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        INSERT INTO articles (title, image, ingredients, method, creator_user_id)
+        VALUES (${title}, ${image}, ${ingredients}, ${method}, ${creator_user_id})`);
+}
+
 module.exports = {
     retrieveAllArticles,
-    retrieveArticleFromID,
     retrieveAllArticlesByName,
     retrieveAllArticlesByDate,
-    retrieveAllArticlesByTitle
+    retrieveAllArticlesByTitle,
+    retrieveUserArticles,
+    retrieveUserArticlesByDate,
+    retrieveUserArticlesByTitle,
+    retrieveArticleFromID,
+    addArticle
 };

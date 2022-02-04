@@ -1,8 +1,11 @@
 const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
+const { all } = require("express/lib/application");
 
 
 router.get("/login", function (req, res) {
@@ -40,6 +43,9 @@ router.post("/login", async function (req, res) {
     const username = req.body.username;
     const password = req.body.password;
 
+    res.cookie("upvote", 0);
+    res.cookie("downvote", 0);
+
     // Find a matching user in the database
     const user = await userDao.retrieveUserWithCredentials(username, password);
 
@@ -68,11 +74,17 @@ router.get("/myAccount", verifyAuthenticated, function (req, res) {
     res.locals.title = "My Account | FlavourFul";
      const user = res.locals.user;
     res.render("myaccount");
+
 });
 
-router.get("/newAccount", function(req, res) {
+router.get("/newAccount", async function(req, res) {
     res.locals.title = "New Account | WEBSITE NAME";
     res.render("new-account");
+});
+
+router.get("/getAllUsersDetails", async function(req,res){
+    const allUserDetail = await userDao.retrieveAllUsers();
+    res.json(allUserDetail);
 });
 
 router.post("/deleteAccount", async function(req,res){
@@ -110,19 +122,70 @@ router.post("/newAccount", function(req, res) {
 
  });
 
-//  router.post("/newAccount", function (req,res){
+ router.post("/myAccount", function(req, res) {
+    const currentUser = res.locals.user;
 
-//     let user = {
-//         username: req.body.username,
-//         password: req.body.password,
-//         fname: req.body.fname,
-//         lname: req.body.lname,
-//     }
-   
-//     userDao.createUser(user);
-//     console.log(user.fname);
-//     res.setToastMessage("User created successfully!");
-//     res.redirect("/login")
-// });
+    let newUsername = req.body.username;
+    if(newUsername == ""){
+        newUsername = currentUser.username;
+    };
+
+    let newLname = req.body.lname;
+    if(newLname == ""){
+        newLname = currentUser.lname;
+    };
+
+    let newPassword = req.body.password;
+    if(newPassword == ""){
+        newPassword = currentUser.password;
+    }else{
+        newPassword = bcrypt.hashSync(newPassword, saltRounds);
+    }
+
+    let newFname = req.body.fname;
+    if(newFname == ""){
+        newFname = currentUser.fname;
+    };
+
+    let newBio = req.body.bio
+    if(newBio == ""){
+        newBio = currentUser.bio;
+    };
+
+    let newAvatar = req.body.avatar;
+    if(newAvatar == null){
+        newAvatar = currentUser.avatar;
+    };
+
+    let newDob = req.body.dob;
+    if(newDob == ""){
+        newDob = currentUser.dob;
+    };
+
+    let newData = {
+        username: newUsername,
+        lname: newLname,
+        password: newPassword,
+        fname: newFname,
+        bio: newBio,
+        avatar: newAvatar,
+        dob: newDob,
+        authToken: currentUser.authToken,
+        id: currentUser.id
+    };
+
+    try {
+        userDao.updateUser(newData);
+        res.setToastMessage(`Thanks${newData.fname}! We've updated your details!`);
+        res.redirect("/")
+    }
+    catch (err) {
+        res.setToastMessage("Something went wrong!");
+        res.redirect("/myaccount");
+    }
+
+ });
+
+
 
 module.exports = router;

@@ -51,11 +51,15 @@ async function retrieveUserWithCredentials(username, password) {
     const user = await db.get(SQL`
         select * from users
         where username = ${username}`);
+        let match = false;
+        try{
+            match = await bcrypt.compare(password,user.password);
+        } catch{
+            return;
+        }
 
-        console.log(user);
-    const match = await bcrypt.compare(password,user.password);
 
-    if (match){
+    if (match==true){
         return user;
     }
 }
@@ -93,27 +97,59 @@ async function retrieveAllUsers() {
  * @param user the user to update
  */
 async function updateUser(user) {
+
     const db = await dbPromise;
 
+    //also needs a hash
     await db.run(SQL`
         update users
         set username = ${user.username}, password = ${user.password},
-            fname = ${user.fname}, authToken = ${user.authToken}
-        where id = ${user.id}`);
+            fname = ${user.fname}, authToken = ${user.authToken},
+            lname = ${user.lname}, bio = ${user.bio},
+             avatar = ${user.avatar}, dob = ${user.dob}
+            where id = ${user.id}`);
 }
 
 /**
  * Deletes the user with the given id from the database.
- * 
+ * Also deletes all of the users' comments and articles.
  * @param {number} id the user's id
  */
 async function deleteUser(id) {
     const db = await dbPromise;
 
     await db.run(SQL`
+        delete from comments where user_id = ${id}`);
+
+    await db.run(SQL`
+        delete from articles where creator_user_id = ${id}`);
+
+    await db.run(SQL`
         delete from users
         where id = ${id}`);
 }
+
+async function updateValue(username) {
+    //check username for database
+    //if username is in database, change #log inner html to "not available"
+    //if username is not in database, change #log inner html to "that username is available"
+         const db = await dbPromise;
+    
+        const user = await db.get(SQL`
+            select * from users
+            where username = ${username}`);
+        
+
+        if (user){
+            return "That username is not available!"
+        } else{
+            return "That username is available!";
+        }
+        
+
+};
+
+
 
 // Export functions.
 module.exports = {
@@ -123,5 +159,6 @@ module.exports = {
     retrieveUserWithAuthToken,
     retrieveAllUsers,
     updateUser,
+    updateValue,
     deleteUser
 };

@@ -1,32 +1,82 @@
+const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
 
-const upload = require("../middleware/multer-uploader.js");
-const fs = require("../middleware/fs-directory_scanner.js");
-const jimp = require("../middleware/jimp-image_processor.js");
+// const upload = require("../middleware/multer-uploader.js");
+// const fs = require("../middleware/fs-directory_scanner.js");
+// const jimp = require("../middleware/jimp-image_processor.js");
 
 const articleDao = require("../modules/article-dao.js");
 const commentDao = require("../modules/comment-dao.js");
+const userDao = require("../modules/users-dao.js");
 
 //this function is receive the whole articles from the database
 router.get("/articles", async function(req, res) {
-    res.locals.title = "Articles | WEBSITE NAME";
+    res.locals.title = "All Recipes | @FLAVOURFUL";
     const allArticles = await articleDao.retrieveAllArticles();
     res.locals.allArticles = allArticles;
-
     res.render("articles");
+});
+
+router.get("/userArticles", async function(req, res) {
+    
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+
+    if (user) {
+        const userArticles = await articleDao.retrieveUserArticles(user.id);
+        if (!userArticles.length) {
+            // console.log("Array is empty");
+            res.locals.noUserRecipes = "Please upload recipes on your @FLAVOURFUL homepage!";
+        }    
+        res.locals.userArticles = userArticles;
+        res.locals.title = "Your Recipes | @FLAVOURFUL";
+        res.render("user_articles");
+    } else {
+        // res.setToastMessage("Please login or create a new @FLAVOURFUL account")
+        res.redirect("articles");
+    }
 });
 
 //this function is receive the specific article from database and show in the content handlebar
 router.get("/content", async function(req, res) {
 
     const articleID = req.query.id;
+    res.cookie("articleID", articleID);
 
     const content = await articleDao.retrieveArticleFromID(articleID);
     res.locals.content = content;
-
+    
+// this part is check auth to make sure the delect button appear
+    const data = req.cookies["authToken"];
     const comments = await commentDao.retrieveAllCommentsFromContent(articleID);
+    for(let i = 0; i < comments.length; i++){
+        if(data == comments[i].authToken){
+            comments[i].delectAuth = true;
+
+        }else{
+            comments[i].delectAuth = false;
+        }
+        if(data != null){
+            comments[i].voteAuth = true;
+        }else{
+            comments[i].voteAuth = false;
+        }
+    }
     res.locals.comments = comments;
+
+ //this part is make auth from the user to leave comment, if they dont log in, they can't comment.
+//  const authToken = await commentDao.writeAuthFromArticleId(articleID);
+//  if(res.locals.user){
+//      if(data == authToken){
+//          true;
+//      }else{
+//          false;
+//      }
+
+//  }
+
+
+    
 
     res.render("content");
 });
@@ -55,30 +105,23 @@ router.post("/sortBy", async function(req, res) {
     }    
 });
 
-router.post("/uploadImage", upload.single("imageFile"), async function(req, res) { 
-    
-    const fileInfo = req.file;
-    
-    const oldFileName = fileInfo.path;
-    const newFileName = `./public/images/uploadedFiles/${fileInfo.originalname}`;
-    
-    fs.renameSync(oldFileName, newFileName);
+// sorts list of user's articles by date or title
+router.post("/userArticlesSortBy", async function(req, res) {
 
-    const image = await jimp.read(newFileName);
-    image.resize(320, jimp.AUTO);
-    await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    const sortName = req.body.sortName;
 
-    const thumbnail = `images/thumbnails/${fileInfo.originalname}`;
-
-    res.locals.title = "Your new recipe | @Flavourful";
-    res.locals.image = thumbnail;
-    res.render("content");
-
-});
-
-router.post("/uploadRecipe", function(req, res) {
-    const textNewArticle = req.body.textEditor;
-    console.log(textNewArticle);
+    if (sortName == "date") {
+        const userArticlesSortByDate= await articleDao.retrieveUserArticlesByDate(user.id);
+        res.locals.userArticles = userArticlesSortByDate;
+        res.locals.sele1 = `selected = ${"selected"}`;
+        res.render("user_articles");
+    } else if (sortName == "title") {
+        const userArticlesSortByTitle= await articleDao.retrieveUserArticlesByTitle(user.id);
+        res.locals.userArticles = userArticlesSortByTitle;
+        res.locals.sele2 = `selected = ${"selected"}`;
+        res.render("user_articles");
+    }    
 });
 
 module.exports = router;
