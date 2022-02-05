@@ -55,6 +55,17 @@ async function deleteComment(commentId) {
     where id = ${commentId}`);
 }
 
+// this function will delete all the comments linked to a particular article
+async function deleteArticleCommentsVotes(article_id) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        DELETE comments, votes FROM comments
+        INNER JOIN votes ON comments.id = votes.commentId
+        WHERE comments.article_id = ${article_id}`
+    );
+}
+
 async function retrieveACommentFromID(commentId) {
     const db = await dbPromise;
 
@@ -94,6 +105,7 @@ module.exports = {
     addComment,
     writeAuthFromArticleId,
     deleteComment,
+    deleteArticleCommentsVotes,
     retrieveACommentFromID,
     upvote,
     downvote
