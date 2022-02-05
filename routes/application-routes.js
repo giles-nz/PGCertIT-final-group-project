@@ -45,14 +45,12 @@ router.get("/content", async function(req, res) {
 
     const content = await articleDao.retrieveArticleFromID(articleID);
     res.locals.content = content;
-    console.log(content);
+    // console.log(content);
 
     const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
-    if (user) {
-        console.log(user.id);
-        if (content.creator_user_id == user.id) {
-            console.log("This user is the author");
-        }
+    if (user && (content.creator_user_id == user.id)) {
+        // console.log("This user is the author");
+        res.locals.userAuthor = user;
     }
     
 // this part is check auth to make sure the delect button appear

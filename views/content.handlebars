@@ -20,7 +20,7 @@
     </div>
 
     <div id="container-edit">
-        {{!-- {{#if content.creator_user_id == user.id}} --}}
+        {{#if userAuthor}}
         <form action="./editRecipe" method="POST">
         <button type="submit">EDIT this recipe</button>
         </form>
@@ -28,7 +28,7 @@
         <form action="./deleteRecipe" method="POST">
         <button type="submit">DELETE this recipe!</button>
         </form>
-        {{!-- {{/if}} --}}
+        {{/if}}
     </div>
 
 </div>
