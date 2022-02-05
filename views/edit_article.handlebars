@@ -32,11 +32,19 @@
       </div>
       <br>
       
-      <p>This is the current image for your <em>@Flavourful</em> recipe.</p>
-      <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="640px" height="auto">
+      {{#if defaultImage}}
+      <p>This is the current image for your <em>@Flavourful</em> recipe:</p>
+      <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
+      {{else}}
+      <p>This is the current image for your <em>@Flavourful</em> recipe:</p>
+      <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
+      <br> 
+      <p>If you prefer, your current image can be replaced with this <em>@Flavourful</em> default image:</p>
+      <img id="defaultImage" src="./images/thumbnails/default.jpg"  alt="Photo of various spices - default @Flavourful image" width="320px" height="auto">
+      {{/if}}
       <br>
       <br>
-      <label for="inpFile">Upload a replacement image of your <em>@Flavourful</em> dish here:</label>
+      <label for="inpFile">Alternatively, upload a replacement image of your <em>@Flavourful</em> dish here:</label>
       <input
         id="inpFile"
         type="file"

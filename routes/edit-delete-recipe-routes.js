@@ -28,15 +28,22 @@ router.post("/deleteRecipe", async function(req, res) {
 // this router redirects the user to the edit_article.handlebars page
 router.post("/editRecipe", async function(req, res) {
     
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
     const article_id = req.cookies["articleID"];
 
     const content = await articleDao.retrieveArticleFromID(article_id);
     // console.log(content);
 
-    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    const defaultImage = "default.jpg";
+
+    if (content.image == defaultImage) {
+        console.log(defaultImage);
+        res.locals.defaultImage = defaultImage;
+    }
     
-    res.locals.content = content;
     res.locals.user = user;
+    res.locals.content = content;
+    res.locals.title = "Edit Recipe | @FLAVOURFUL";
     
     res.render("edit_article");
 
