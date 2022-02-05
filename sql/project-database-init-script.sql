@@ -63,7 +63,7 @@ create table votes (
     commentId integer not null,
     userId integer not null,
 	isvoted integer default 0,
-    foreign key (commentId) references comments (id),
+    foreign key (commentId) references comments (id) ON DELETE CASCADE,
     foreign key (userId) references users (id)
 );
 
