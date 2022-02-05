@@ -112,23 +112,23 @@ async function addArticle(title, image, ingredients, method, creator_user_id) {
 }
 
 // this function updates a recipe and its image in the articles table in project-database.db
-async function updateArticleAndImage(article_id, editTitle, editImage, editIngredients, editMethod, editTimestamp) {
+async function updateArticleAndImage(article_id, editTitle, editImage, editIngredients, editMethod) {
     const db = await dbPromise;
 
     await db.run(SQL`
         UPDATE articles
-        SET title = ${editTitle}, image = ${editImage}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = ${editTimestamp}
+        SET title = ${editTitle}, image = ${editImage}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = CURRENT_TIMESTAMP
         WHERE id = ${article_id}`
     );
 }
 
 // this function updates a recipe, keeping the current image, in the articles table in project-database.db
-async function updateArticleNotImage(article_id, editTitle, editIngredients, editMethod, editTimestamp) {
+async function updateArticleNotImage(article_id, editTitle, editIngredients, editMethod) {
     const db = await dbPromise;
 
     await db.run(SQL`
         UPDATE articles
-        SET title = ${editTitle}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = ${editTimestamp}
+        SET title = ${editTitle}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = CURRENT_TIMESTAMP
         WHERE id = ${article_id}`
     );
 }
