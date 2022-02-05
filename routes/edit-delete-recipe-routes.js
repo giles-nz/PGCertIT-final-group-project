@@ -9,7 +9,7 @@ const articleDao = require("../modules/article-dao.js");
 const commentDao = require("../modules/comment-dao.js");
 const userDao = require("../modules/users-dao.js");
 
-// this function deletes the recipe from the articles database
+// this function deletes the recipe from the articles table 
 router.post("/deleteRecipe", async function(req, res) {
     
     const article_id = req.cookies["articleID"];
@@ -18,10 +18,6 @@ router.post("/deleteRecipe", async function(req, res) {
     const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
     console.log(user.id)
 
-    // first delete all comments linked to the recipe
-    await commentDao.deleteArticleCommentsVotes(article_id);
-
-    // then delete the recipe
     await articleDao.deleteArticle(article_id, user.id);
 
     res.redirect("./userArticles");

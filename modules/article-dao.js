@@ -111,7 +111,10 @@ async function addArticle(title, image, ingredients, method, creator_user_id) {
     );
 }
 
-// this function deletes the article (recipe) from the articles table in project-database.db
+// this function deletes the recipe from the articles table in project-database.db
+// ON DELETE CASCADE referential action for comments table FOREIGN KEY article_id
+// ON DELETE CASCADE for votes table FOREIGN KEY commentId
+// this ensures all comments and all votes linked to the recipe being deleted will also be deleted
 async function deleteArticle(article_id, user_id) {
     const db = await dbPromise;
 

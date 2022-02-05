@@ -46,7 +46,8 @@ async function addComment(article_id, content, user_id) {
 async function deleteComment(commentId) {
     const db = await dbPromise;
 
-    // ON DELETE CASCADE will also delete the votes linked to the comment being deleted
+    // ON DELETE CASCADE referential action for votes table FOREIGN KEY commentId
+    // this ensures that all votes linked to the comment being deleted will also be deleted
 
     // await db.run(SQL`
     // delete from votes
@@ -55,25 +56,6 @@ async function deleteComment(commentId) {
     await db.run(SQL`
     delete from comments
     where id = ${commentId}`);
-}
-
-// this function will delete all the comments (and their votes) linked to a particular article
-async function deleteArticleCommentsVotes(article_id) {
-    const db = await dbPromise;
-
-    // uses ON DELETE CASCADE referential action for votes table FOREIGN KEY commentId 
-    await db.run(SQL`
-        DELETE FROM comments
-        WHERE article_id = ${article_id}`
-    );
-
-    // await db.run(SQL`
-    //     DELETE comments, votes
-    //     FROM comments
-    //     INNER JOIN votes
-    //     ON comments.id = votes.commentId
-    //     WHERE comments.article_id = ${article_id}`
-    // );
 }
 
 async function retrieveACommentFromID(commentId) {
@@ -115,7 +97,6 @@ module.exports = {
     addComment,
     writeAuthFromArticleId,
     deleteComment,
-    deleteArticleCommentsVotes,
     retrieveACommentFromID,
     upvote,
     downvote

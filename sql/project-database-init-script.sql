@@ -55,7 +55,7 @@ upvote integer default 0,
 downvote integer default 0,
 primary key (id),
 foreign key (user_id) references users (id),
-foreign key (article_id) references articles (id)
+foreign key (article_id) references articles (id) ON DELETE CASCADE
 );
 
 create table votes (
