@@ -83,7 +83,7 @@ router.get("/content", async function(req, res) {
 //  }
 
 
-    
+    res.locals.title = "Recipe | @FLAVOURFUL";    
 
     res.render("content");
 });
