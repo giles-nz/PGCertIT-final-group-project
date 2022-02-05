@@ -94,9 +94,9 @@ async function retrieveArticleFromID(id) {
     const db = await dbPromise;
 
     const result = await db.get(SQL`
-    SELECT articles.title, articles.image, articles.ingredients, articles.method, articles.timestamp, users.fname 
-    FROM articles, users
-    WHERE articles.creator_user_id = users.id AND articles.id= ${id}`);
+    SELECT a.title, a.image, a.ingredients, a.method, a.creator_user_id, a.timestamp, u.username, u.avatar  
+    FROM articles AS a, users AS u
+    WHERE a.creator_user_id = u.id AND a.id= ${id}`);
     
     return result;
 }
