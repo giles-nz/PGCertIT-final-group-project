@@ -111,6 +111,28 @@ async function addArticle(title, image, ingredients, method, creator_user_id) {
     );
 }
 
+// this function updates a recipe and its image in the articles table in project-database.db
+async function updateArticleAndImage(article_id, editTitle, editImage, editIngredients, editMethod, editTimestamp) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        UPDATE articles
+        SET title = ${editTitle}, image = ${editImage}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = ${editTimestamp}
+        WHERE id = ${article_id}`
+    );
+}
+
+// this function updates a recipe, keeping the current image, in the articles table in project-database.db
+async function updateArticleNotImage(article_id, editTitle, editIngredients, editMethod, editTimestamp) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        UPDATE articles
+        SET title = ${editTitle}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = ${editTimestamp}
+        WHERE id = ${article_id}`
+    );
+}
+
 // this function deletes the recipe from the articles table in project-database.db
 // ON DELETE CASCADE referential action for comments table FOREIGN KEY article_id
 // ON DELETE CASCADE for votes table FOREIGN KEY commentId
@@ -134,5 +156,7 @@ module.exports = {
     retrieveUserArticlesByTitle,
     retrieveArticleFromID,
     addArticle,
+    updateArticleAndImage,
+    updateArticleNotImage,
     deleteArticle
 };

@@ -40,6 +40,50 @@ router.post("/editRecipe", async function(req, res) {
     
     res.render("edit_article");
 
-});  
+});
+
+// this function updates a recipe in the articles table of project-database.db
+router.post("/updateRecipe", upload.single("imageFile"), async function(req, res) { 
+    
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    console.log(user.id);
+
+    const article_id = req.cookies["articleID"];
+    console.log(article_id); 
+    
+    const editTitle = req.body.title;
+    console.log(editTitle);
+
+    const editIngredients = req.body.ingredients;
+    console.log(editIngredients);
+
+    const editRecipe = req.body.method;
+    console.log(editRecipe);
+
+    const fileInfo = req.file;
+    
+    if (fileInfo) {
+        
+        // console.log(fileInfo);
+            
+        const oldFileName = fileInfo.path;
+        const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
+    
+        fs.renameSync(oldFileName, newFileName);
+
+        const image = await jimp.read(newFileName);
+        image.resize(1280, 720);
+        await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
+
+        await articleDao.updateArticleAndImage(article_id, editTitle, fileInfo.originalname, editIngredients, editRecipe);
+    
+    } else {
+        
+        await articleDao.updateArticleNotImage(article_id, editTitle, editIngredients, editRecipe);
+    }
+    
+    res.redirect("./userArticles");
+
+});
 
 module.exports = router;
