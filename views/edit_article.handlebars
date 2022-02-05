@@ -1,21 +1,25 @@
 <div id="edit-page">
-    
-    <div id="editRecipe">
 
-    <h3>Edit your <em>@Flavourful</em> recipe here:</h3>
-    <br>
+  <div class="welcome-text">
+    <h1>Edit your <em>@Flavourful</em> recipe |</h1>
+    <h1>&nbsp;{{user.fname}}</h1>
+    <img class="avatar-img" src="./images/avatars/{{user.avatar}}.png" />
+  </div>
+    
+  <div id="editRecipe">
 
     <form action="./updateRecipe" method="POST" enctype="multipart/form-data">
 
       <div id="recipeTitleDiv">
           <label for="recipeTitle">Change your recipe's <em>@Flavourful</em> name:</label>
-          <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" required>
+          <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" value="{{content.title}}" required>
       </div>
       <br>
       
       <p>Edit <em>@Flavourful</em> ingredients:</p>
       <div id="ingredientsDiv">
         <textarea class="wysiwygEditor" name="ingredients" id="ingredientsEditor" required>
+          {{content.ingredients}}
         </textarea>
       </div>
       <br>
@@ -23,11 +27,16 @@
       <p>Edit instructions for preparing your <em>@Flavourful</em> recipe:</p>
       <div id="methodDiv">
         <textarea class="wysiwygEditor" name="method" id="methodEditor" required>
+          {{content.method}}
         </textarea>
       </div>
       <br>
       
-      <label for="inpFile">Upload a replacement image of your <em>@Flavourful</em> dish:</label>
+      <p>This is the current image for your <em>@Flavourful</em> recipe.</p>
+      <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="640px" height="auto">
+      <br>
+      <br>
+      <label for="inpFile">Upload a replacement image of your <em>@Flavourful</em> dish here:</label>
       <input
         id="inpFile"
         type="file"
@@ -36,9 +45,10 @@
       />
       <br>
       <br>
-      <button type="submit"><strong>SHARE <em>@Flavourful</em></strong></button>
+      <button type="submit"><strong>POST your changes <em>@Flavourful</em></strong></button>
 
     </form>
 
   </div>
+
 </div>

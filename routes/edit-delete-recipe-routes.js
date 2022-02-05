@@ -9,7 +9,8 @@ const articleDao = require("../modules/article-dao.js");
 const commentDao = require("../modules/comment-dao.js");
 const userDao = require("../modules/users-dao.js");
 
-// this function deletes the recipe from the articles table 
+// this function deletes the recipe from the articles table in project-database.db
+// all comments and all votes linked to the recipe will also be deleted
 router.post("/deleteRecipe", async function(req, res) {
     
     const article_id = req.cookies["articleID"];
@@ -23,5 +24,22 @@ router.post("/deleteRecipe", async function(req, res) {
     res.redirect("./userArticles");
 
 });
+
+// this router redirects the user to the edit_article.handlebars page
+router.post("/editRecipe", async function(req, res) {
+    
+    const article_id = req.cookies["articleID"];
+
+    const content = await articleDao.retrieveArticleFromID(article_id);
+    // console.log(content);
+
+    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    
+    res.locals.content = content;
+    res.locals.user = user;
+    
+    res.render("edit_article");
+
+});  
 
 module.exports = router;
