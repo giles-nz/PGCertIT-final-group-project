@@ -70,6 +70,44 @@ router.get("/content", async function(req, res) {
             childComent.push(comments[i]);
         }
     }
+    // console.log(childComent);
+    // console.log(parentComment);
+    // let child = [];
+    // for(let i = 0; i < parentComment.length; i++){
+    //     for(let l = 0; l < childComent.length; l++){
+    //         if(parentComment[i].id == childComent[l].parent_comment_id){
+    //             child.push(childComent[l]);
+    //         }
+    //         parentComment.children.push(child);
+    //     }
+    // }
+    // console.log(parentComment);
+
+
+
+
+    //---------------------------------------------
+    const unflatten = data => {
+        const tree = data.map(e => ({...e}))
+          .sort((a, b) => a.id - b.id)
+          .reduce((a, e) => {
+            a[e.id] = a[e.id] || e;
+            a[e.parent_comment_id] = a[e.parent_comment_id] || {};
+            const parent = a[e.parent_comment_id];
+            parent.children = parent.children || [];
+            parent.children.push(e);
+            return a;
+          }, {})
+        ;
+        return Object.values(tree)
+          .find(e => e.id === undefined).children;
+      };
+      const unflattened = unflatten(comments);
+      console.log(unflattened);
+
+
+      //------------------
+
     res.locals.comments = parentComment;
     res.locals.childComment = childComent;
 
