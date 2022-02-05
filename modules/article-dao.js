@@ -107,7 +107,18 @@ async function addArticle(title, image, ingredients, method, creator_user_id) {
 
     await db.run(SQL`
         INSERT INTO articles (title, image, ingredients, method, creator_user_id)
-        VALUES (${title}, ${image}, ${ingredients}, ${method}, ${creator_user_id})`);
+        VALUES (${title}, ${image}, ${ingredients}, ${method}, ${creator_user_id})`
+    );
+}
+
+// this function deletes the article (recipe) from the articles table in project-database.db
+async function deleteArticle(article_id, user_id) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        DELETE FROM articles
+        WHERE id = ${article_id} AND creator_user_id = ${user_id}`
+    );
 }
 
 module.exports = {
@@ -119,5 +130,6 @@ module.exports = {
     retrieveUserArticlesByDate,
     retrieveUserArticlesByTitle,
     retrieveArticleFromID,
-    addArticle
+    addArticle,
+    deleteArticle
 };
