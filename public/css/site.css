@@ -112,6 +112,10 @@ a:hover {
   flex-direction: row;
   color: #0e1c40;
 }
+
+#login-word{
+  color: #0e1c40;
+}
 .login {
   background-color: rgb(246, 242, 241);
   color: rgb(89, 18, 34);
