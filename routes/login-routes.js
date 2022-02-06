@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
-const { all } = require("express/lib/application");
 
 //set up a login router, when the login page is called
 router.get("/login", function (req, res) {
@@ -222,6 +221,92 @@ router.post("/newAccount", function(req, res) {
 
  });
 
+//This is an api function, when a authentication success the 204 response will return, if fail the 401 response will return.
+ router.post("/api/login", async function (req, res) {
+    // request username and password from html
+    const username = req.body.username;
+    const password = req.body.password;
 
+
+    // Find a matching user in the database
+    const user = await userDao.retrieveUserWithCredentials(username, password);
+
+    // if matching...
+    if (user) {
+        const authToken = uuid();
+        user.authToken = authToken;
+        await userDao.updateUser(user);
+        res.cookie("authToken", authToken);
+        //return 204 response...
+        return res.status(204).send("Successfully authenticated");
+    }
+    // Otherwise.
+    else {
+       //return 402 response...
+       return res.status(401).send("Fail authenticated");
+    }
+});
+
+//This is an api function, when user log out successfully the 204 response will return...
+router.get("/api/logout", function (req, res) {
+    res.clearCookie("authToken");
+    //return 204 response...
+    return res.status(204).send("Successfully authenticated");
+});
+
+//This is an api function, when admin request all users deatil as json, if all action success the 204 response will return. Otherwise, 401 response will return...
+router.get("/api/users", async function(req, res){
+    
+    //retrieve authtoken from cookies...
+    const authToken = req.cookies.authToken;
+
+    //matching user with authtoken...
+    const adminUser = await userDao.retrieveUserWithAuthToken(authToken);
+
+    //check the user...
+    if(adminUser){
+        //if the isadmin = 1, all user detail will return as json...(if isadmin  = 1, user is admin, if isadmin = 0, user is not a admin)...
+        if(adminUser.isadmin == 1){
+
+            const allUserInfo = await userDao.retrieveAllUserProfile();
+            return res.json(allUserInfo);
+        }else{
+            //if not equal 1, return 401 response...
+            return res.status(401).send("Authentication failed because you are not admin!");
+        }
+    }else{
+        //this user is not exist, return 401 response...
+        return res.status(401).send("Authentication failed because user doesn't exist!");
+    }
+
+});
+
+//This is an api function, when admin request to delete a users and along with all of their articles and comments, if all action success the 204 response will return. Otherwise, 401 response will return...
+router.delete("/api/users/:id", async function(req, res){
+
+    //retrieve authtoken from cookies...
+    const authToken = req.cookies.authToken;
+
+    //matching user with authtoken...
+    const adminUser = await userDao.retrieveUserWithAuthToken(authToken);
+
+    //matching the user id as the :id properties...
+    const userId = req.params.id
+
+    //check the user...
+    if(adminUser){
+        //if the isadmin = 1, all user detail will return as json...(if isadmin  = 1, user is admin, if isadmin = 0, user is not a admin)...
+        if(adminUser.isadmin == 1){
+            await userDao.deleteUserByAdimn(userId);
+            return res.status(204).send("Successfully delete");
+        }else{
+             //if not equal 1, return 401 response...
+            return res.status(401).send("Delete failed because you are not admin!");
+        }
+    }else{
+         //this user is not exist, return 401 response...
+        return res.status(401).send("Delete failed because user doesn't exist!");
+    }
+});
 
 module.exports = router;
