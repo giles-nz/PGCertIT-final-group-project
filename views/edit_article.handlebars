@@ -11,8 +11,9 @@
     <form action="./updateRecipe" method="POST" enctype="multipart/form-data">
 
       <div id="recipeTitleDiv">
-          <label for="recipeTitle">Change your recipe's <em>@Flavourful</em> name:</label>
-          <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" value="{{content.title}}" required>
+        <br>  
+        <label for="recipeTitle">Change your recipe's <em>@Flavourful</em> name:</label>
+        <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" value="{{content.title}}" required>
       </div>
       <br>
       
@@ -32,25 +33,45 @@
       </div>
       <br>
       
-      {{#if defaultImage}}
-      <p>This is the current image for your <em>@Flavourful</em> recipe:</p>
-      <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
-      {{else}}
-      <p>This is the current image for your <em>@Flavourful</em> recipe:</p>
-      <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
-      <br> 
-      <p>If you prefer, your current image can be replaced with this <em>@Flavourful</em> default image:</p>
-      <img id="defaultImage" src="./images/thumbnails/default.jpg"  alt="Photo of various spices - default @Flavourful image" width="320px" height="auto">
-      {{/if}}
-      <br>
-      <br>
-      <label for="inpFile">Alternatively, upload a replacement image of your <em>@Flavourful</em> dish here:</label>
-      <input
+      <fieldset>
+
+        {{#if defaultImage}}
+        <input type="radio" name="editImage" id="currentImage" value="{{content.image}}" checked>
+        <label for="currentImage">Keep the current image for your <em>@Flavourful</em> recipe:</label>
+        <br>
+        <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
+        {{else}}
+        <input type="radio" name="editImage" id="currentImage" value="{{content.image}}" checked>
+        <label for="currentImage">Keep the current image for your <em>@Flavourful</em> recipe:</label>
+        <br>
+        <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
+        <br> 
+        <input type="radio" name="editImage" id="defaultImage" value="default.jpg">
+        <label for="defaultImage">Delete your current image and replace with this <em>@Flavourful</em> default image:</label>
+        <br>
+        <img id="defaultImage" src="./images/thumbnails/default.jpg"  alt="Photo of various spices - default @Flavourful image" width="320px" height="auto">
+        {{/if}}
+        <br>
+        <input type="radio" name="editImage" id="newImage">
+        <label for="newImage">Upload a replacement image of your <em>@Flavourful</em> dish here:</label>
+        <input
         id="inpFile"
         type="file"
         name="imageFile"
         accept=".png,.jpg,.jpeg,.bmp"
-      />
+        />
+
+      </fieldset>
+
+      <script>
+        const inputFile = document.querySelector("#inpFile");
+        const newImageRadio = document.getElementById("newImage");
+        inputFile.addEventListener("change", function(){
+          newImageRadio.focus();
+          newImageRadio.select();
+        });
+      </script>
+      
       <br>
       <br>
       <button type="submit"><strong>POST your changes <em>@Flavourful</em></strong></button>

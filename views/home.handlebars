@@ -29,7 +29,8 @@
  
 
   <div id="recipeUpload">
-
+    
+    <br>  
     <h3>Add your new <em>@Flavourful</em> recipe here:</h3>
     <br>
 
@@ -37,20 +38,20 @@
 
       <div id="recipeTitleDiv">
           <label for="recipeTitle">Give your recipe an <em>@Flavourful</em> name:</label>
-          <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" required>
+          <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" required aria-required="true">
       </div>
       <br>
       
       <p>List <em>@Flavourful</em> ingredients:</p>
       <div id="ingredientsDiv">
-        <textarea class="wysiwygEditor" name="ingredients" id="ingredientsEditor" required>
+        <textarea class="wysiwygEditor" name="ingredients" id="ingredientsEditor" required aria-required="true">
         </textarea>
       </div>
       <br>
       
       <p>Give instructions for preparing your <em>@Flavourful</em> recipe:</p>
       <div id="methodDiv">
-        <textarea class="wysiwygEditor" name="method" id="methodEditor" required>
+        <textarea class="wysiwygEditor" name="method" id="methodEditor" required aria-required="true">
         </textarea>
       </div>
       <br>
