@@ -1,7 +1,7 @@
 const SQL = require("sql-template-strings");
 const dbPromise = require("./database.js");
 
-//ths function is receive whole all articles
+//ths function is retrieve the whole all articles as a json...
 async function retrieveAllArticles() {
     const db = await dbPromise;
 
@@ -13,7 +13,7 @@ async function retrieveAllArticles() {
     return result;
 }
 
-//ths function is receive whole all articles sort by name
+//ths function is retrieve the whole all articles as a json and ordered by name...
 async function retrieveAllArticlesByName() {
     const db = await dbPromise;
 
@@ -26,7 +26,7 @@ async function retrieveAllArticlesByName() {
     return result;
 }
 
-//ths function is receive whole all articles sort by date
+//ths function is retrieve the whole all articles as a json and ordered by time...
 async function retrieveAllArticlesByDate() {
     const db = await dbPromise;
 
@@ -38,7 +38,7 @@ async function retrieveAllArticlesByDate() {
     return result;
 }
 
-//ths function is receive whole all articles sort by title
+//ths function is retrieve the whole all articles as a json and ordered by title...
 async function retrieveAllArticlesByTitle() {
     const db = await dbPromise;
 
@@ -50,7 +50,7 @@ async function retrieveAllArticlesByTitle() {
     return result;
 }
 
-// this function retrieves all of the user's articles (most recent first)
+//this function retrieves all of the user's articles (most recent first)
 async function retrieveUserArticles(user_id) {
     const db = await dbPromise;
 
@@ -146,6 +146,7 @@ async function deleteArticle(article_id, user_id) {
     );
 }
 
+// Export article DAO functions
 module.exports = {
     retrieveAllArticles,
     retrieveAllArticlesByName,
