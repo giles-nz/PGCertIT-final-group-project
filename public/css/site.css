@@ -7,8 +7,8 @@
 }
 /* --------------------------- Nav part */
 body {
-margin: 0px;
-background-color: rgb(246, 242, 241);
+  margin: 0px;
+  background-color: rgb(246, 242, 241);
 }
 
 .nav-a:link {
@@ -25,7 +25,7 @@ background-color: rgb(246, 242, 241);
   text-decoration: none;
   display: inline-block;
 }
-#facebook:link{
+#facebook:link {
   color: rgb(246, 242, 241);
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -39,7 +39,7 @@ background-color: rgb(246, 242, 241);
   text-decoration: none;
   display: inline-block;
 }
-#twitter:link{
+#twitter:link {
   color: rgb(246, 242, 241);
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -53,7 +53,7 @@ background-color: rgb(246, 242, 241);
   text-decoration: none;
   display: inline-block;
 }
-#instagram:link{
+#instagram:link {
   color: rgb(246, 242, 241);
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -67,7 +67,7 @@ background-color: rgb(246, 242, 241);
   text-decoration: none;
   display: inline-block;
 }
-#rss:link{
+#rss:link {
   color: rgb(246, 242, 241);
   text-align: center;
   padding: 0px 10px 0px 10px;
@@ -88,12 +88,12 @@ a:hover {
   text-decoration: none;
 }
 #nav {
-background-color: rgb(0, 42, 56);
-padding: 20px;
-color: rgb(246, 242, 241);
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+  background-color: rgb(0, 42, 56);
+  padding: 20px;
+  color: rgb(246, 242, 241);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 /* --------------------------- Nav part */
 
@@ -101,49 +101,55 @@ justify-content: space-between;
 #home-page {
   margin: 20px;
 }
+#edit-page {
+  margin: 20px;
+}
 #nav-image {
   display: block;
   margin: auto;
 }
 .welcome-text {
-font-size: 40px;
-margin-left: 70px;
-display: flex;
-flex-direction: row;
-color: #0e1c40;
-}
-.login{
-background-color: rgb(246, 242, 241);
-color: rgb(89, 18, 34);
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-padding: 10px;
-text-align: center;
-font-size: larger;
+  font-size: 40px;
+  margin-left: 70px;
+  display: flex;
+  flex-direction: row;
+  color: #0e1c40;
 }
 
-.login p{
+#login-word{
+  color: #0e1c40;
+}
+.login {
+  background-color: rgb(246, 242, 241);
+  color: rgb(89, 18, 34);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  text-align: center;
+  font-size: larger;
+}
+
+.login p {
   color: rgb(163, 1, 51);
 }
 
-.login label{
+.login label {
   position: relative;
   top: 20px;
   left: -40px;
 }
 
-
-#loginheader{
-  color: rgb(0 , 42, 56);
+#loginheader {
+  color: rgb(0, 42, 56);
   text-align: center;
   padding: 40px;
   font-size: larger;
   font-weight: lighter;
 }
 
-.login button{
+.login button {
   height: 25px;
   width: 100px;
   background-color: rgb(0 , 42, 56);
@@ -159,7 +165,20 @@ font-size: larger;
 
 }
 
-.container-create label{
+/*.container-create h1 {
+  background-color: rgb(246, 242, 241);
+  color: rgb(0, 42, 56);
+  font-weight: lighter;
+  position: relative;
+  top: 30%;
+  left: 20%;
+  transform: translate(-30%, -20%);
+  width: 80%;
+  height: 55%;
+  padding: 0px;
+  text-align: center;
+}*/
+.container-create label {
   color: rgb(89, 18, 34);
   font-weight: 100;
   position: relative;
@@ -169,7 +188,7 @@ font-size: larger;
   text-align: center;
 }
 
-.container-create input{
+.container-create input {
   border-radius: 7px;
   border-color: rgb(0, 42, 56);
   border-width: 1.5px;
@@ -179,7 +198,7 @@ font-size: larger;
   transform: translate(-35%, -35%);
   align-content: center;
 }
-.container-create button{
+.container-create button {
   background-color: rgb(0, 42, 56);
   color: rgb(246, 242, 241);
   font-size: 16px;
@@ -221,17 +240,17 @@ font-size: larger;
   left: 70%;
 }
 
-#avatar{
+#avatar {
   position: absolute;
   top: 22%;
   left: 60%;
 } 
 
 .home-page-avatar {
-height: 50%;
-width: auto;
-display: block;
-margin: auto;
+  height: 50%;
+  width: auto;
+  display: block;
+  margin: auto;
   font-size: 40px;
   margin-left: 70px;
   display: flex;
@@ -264,11 +283,9 @@ margin: auto;
   text-align: center;
 }*/
 .avatar-img {
-  
-  max-height: 50px;
+  max-height: 100px;
   max-width: auto;
   margin: auto;
-
 }
 /* CSS for the slideshow:
 
@@ -370,8 +387,8 @@ margin: auto;
 .card-title {
   font-size: 30px;
 }
-.articl-a{
-  color: rgb(0 , 42, 56);
+.articl-a {
+  color: rgb(0, 42, 56);
   text-decoration: none;
 }
 .articl-a:hover {
@@ -410,6 +427,12 @@ margin: auto;
 #time-content {
   padding: 0px 0px 0px 50px;
 }
+.replyPopup1{
+  display: none;
+}
+.replyPopup2{
+  display: block;
+}
 /* --------------------------- content display part */
 
 /* --------------------------- content comment part */
@@ -422,6 +445,8 @@ margin: auto;
 .comment-card {
   padding: 20px 0px 20px 0px;
   display: none;
+  display: flex;
+  flex-direction: row;
 }
 .comment-dispear {
   display: none;
@@ -429,20 +454,14 @@ margin: auto;
 .comment-title {
   display: flex;
   flex-direction: row;
-}
-.comment-card {
-  display: flex;
-  flex-direction: row;
+  padding-left: 30px;
 }
 .comment-image {
-  width: 150%;
+  width: 100%;
   height: auto;
 }
-.comment-title {
-  padding-left: 50px;
-}
 .comment-text {
-  padding-left: 50px;
+  padding-left: 30px;
 }
 .comment-username {
   font-weight: bold;
@@ -458,4 +477,62 @@ margin: auto;
   left: 80%;
 }
 
+.small-icon{
+  padding: 10px 3px 0px 10px; 
+}
+.comment-upvote{
+  padding-right: 10px;
+}
+.comment-downvote{
+  padding-right: 10px;
+}
+.replyToggle{
+  padding: 10px;
+}
+/* nested comment css design */
+.comment-card-child{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.comment-image-child{
+  width: 70%;
+  height: auto;
+}
+.comment-title-child {
+  display: flex;
+  flex-direction: row;
+}
+.comment-username-child {
+  font-weight: bold;
+  padding-right: 10px;
+  font-size: 90%;
+}
+.comment-time-child {
+  color: gray;
+  font-size: 90%;
+}
+/* second nested comment css design */
+.comment-card-child-second{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.comment-image-child-second{
+  width: 60%;
+  height: auto;
+}
+.comment-title-child-second {
+  display: flex;
+  flex-direction: row;
+}
+.comment-username-child-second {
+  font-weight: bold;
+  padding-right: 10px;
+  font-size: 80%;
+}
+.comment-time-child-second {
+  color: gray;
+  font-size: 70%;
+}
 /* --------------------------- content comment part */

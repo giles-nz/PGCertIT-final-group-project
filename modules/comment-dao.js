@@ -43,12 +43,23 @@ async function addComment(article_id, content, user_id) {
         (${article_id}, datetime('now', 'localtime'), ${content}, ${user_id})`);
 }
 
-async function deleteComment(commentId) {
+async function addChildComment(article_id, content, parent_comment_id, user_id) {
     const db = await dbPromise;
 
     await db.run(SQL`
-    delete from votes
-    where commentId = ${commentId}`);
+        insert into comments (article_id, timestamp, content, parent_comment_id, user_id) values
+        (${article_id}, datetime('now', 'localtime'), ${content}, ${parent_comment_id}, ${user_id})`);
+}
+
+async function deleteComment(commentId) {
+    const db = await dbPromise;
+
+    // ON DELETE CASCADE referential action for votes table FOREIGN KEY commentId
+    // this ensures that all votes linked to the comment being deleted will also be deleted
+
+    // await db.run(SQL`
+    // delete from votes
+    // where commentId = ${commentId}`);
 
     await db.run(SQL`
     delete from comments
@@ -92,6 +103,7 @@ module.exports = {
     retrieveAllComments,
     retrieveAllCommentsFromContent,
     addComment,
+    addChildComment,
     writeAuthFromArticleId,
     deleteComment,
     retrieveACommentFromID,

@@ -1,4 +1,3 @@
-const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
 
@@ -7,7 +6,6 @@ const fs = require("../middleware/fs-directory_scanner.js");
 const jimp = require("../middleware/jimp-image_processor.js");
 
 const articleDao = require("../modules/article-dao.js");
-const commentDao = require("../modules/comment-dao.js");
 const userDao = require("../modules/users-dao.js");
 
 // this function uploads a new recipe to the articles database

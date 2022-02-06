@@ -11,8 +11,8 @@ router.post("/commentUpload", async function(req, res) {
     const article_id = req.cookies["articleID"];
     const content = req.body.content;
     const userId = res.locals.user.id;
-
-    await commentDao.addComment(article_id, content, userId);
+    const addComment= await commentDao.addComment(article_id, content, userId);
+    return addComment;
 });
 
 router.get("/commentUpdate", async function(req, res) {
@@ -75,6 +75,22 @@ router.get("/voteCommentDown", async function (req, res) {
     await commentDao.downvote(commentId, countDown);
     // res.redirect(`/content?id=${article_id}`);
 })
+
+router.get("/replyComment", async function(req, res) {
+
+    const article_id = req.cookies["articleID"];
+    const commentId = req.query.comment_id;
+    const content = req.query.content;
+    const id = res.locals.user.id;
+
+    await commentDao.addChildComment(article_id, content, commentId, id);
+
+    const comments = await commentDao.retrieveAllCommentsFromContent(article_id);
+
+    return comments;
+
+
+});
 
 
 async function getAllComments(article_id){
