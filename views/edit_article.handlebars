@@ -1,21 +1,26 @@
 <div id="edit-page">
+
+  <div class="welcome-text">
+    <h1>Edit your <em>@Flavourful</em> recipe |</h1>
+    <h1>&nbsp;{{user.fname}}</h1>
+    <img class="avatar-img" src="./images/avatars/{{user.avatar}}.png" />
+  </div>
     
-    <div id="editRecipe">
+  <div id="editRecipe">
 
-    <h3>Edit your <em>@Flavourful</em> recipe here:</h3>
-    <br>
-
-    <form action="./editRecipe" method="POST" enctype="multipart/form-data">
+    <form action="./updateRecipe" method="POST" enctype="multipart/form-data">
 
       <div id="recipeTitleDiv">
-          <label for="recipeTitle">Give your recipe an <em>@Flavourful</em> name:</label>
-          <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" required>
+        <br>  
+        <label for="recipeTitle">Change your recipe's <em>@Flavourful</em> name:</label>
+        <input type="text" size="50" maxlength="32" name="title" id="recipeTitle" value="{{content.title}}" required>
       </div>
       <br>
       
       <p>Edit <em>@Flavourful</em> ingredients:</p>
       <div id="ingredientsDiv">
         <textarea class="wysiwygEditor" name="ingredients" id="ingredientsEditor" required>
+          {{content.ingredients}}
         </textarea>
       </div>
       <br>
@@ -23,22 +28,56 @@
       <p>Edit instructions for preparing your <em>@Flavourful</em> recipe:</p>
       <div id="methodDiv">
         <textarea class="wysiwygEditor" name="method" id="methodEditor" required>
+          {{content.method}}
         </textarea>
       </div>
       <br>
       
-      <label for="inpFile">Upload a replacement image of your <em>@Flavourful</em> dish:</label>
-      <input
+      <fieldset>
+
+        {{#if defaultImage}}
+        <input type="radio" name="editImage" id="currentImage" value="{{content.image}}" checked>
+        <label for="currentImage">Keep the current image for your <em>@Flavourful</em> recipe:</label>
+        <br>
+        <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
+        {{else}}
+        <input type="radio" name="editImage" id="currentImage" value="{{content.image}}" checked>
+        <label for="currentImage">Keep the current image for your <em>@Flavourful</em> recipe:</label>
+        <br>
+        <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
+        <br> 
+        <input type="radio" name="editImage" id="defaultImage" value="default.jpg">
+        <label for="defaultImage">Delete your current image and replace with this <em>@Flavourful</em> default image:</label>
+        <br>
+        <img id="defaultImage" src="./images/thumbnails/default.jpg"  alt="Photo of various spices - default @Flavourful image" width="320px" height="auto">
+        {{/if}}
+        <br>
+        <input type="radio" name="editImage" id="newImage">
+        <label for="newImage">Upload a replacement image of your <em>@Flavourful</em> dish here:</label>
+        <input
         id="inpFile"
         type="file"
         name="imageFile"
         accept=".png,.jpg,.jpeg,.bmp"
-      />
+        />
+
+      </fieldset>
+
+      <script>
+        const inputFile = document.querySelector("#inpFile");
+        const newImageRadio = document.getElementById("newImage");
+        inputFile.addEventListener("change", function(){
+          newImageRadio.focus();
+          newImageRadio.select();
+        });
+      </script>
+      
       <br>
       <br>
-      <button type="submit"><strong>SHARE <em>@Flavourful</em></strong></button>
+      <button type="submit"><strong>POST your changes <em>@Flavourful</em></strong></button>
 
     </form>
 
   </div>
+
 </div>

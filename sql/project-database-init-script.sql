@@ -56,7 +56,7 @@ upvote integer default 0,
 downvote integer default 0,
 primary key (id),
 foreign key (user_id) references users (id),
-foreign key (article_id) references articles (id)
+foreign key (article_id) references articles (id) ON DELETE CASCADE
 );
 
 create table votes (
@@ -64,7 +64,7 @@ create table votes (
     commentId integer not null,
     userId integer not null,
 	isvoted integer default 0,
-    foreign key (commentId) references comments (id),
+    foreign key (commentId) references comments (id) ON DELETE CASCADE,
     foreign key (userId) references users (id)
 );
 
