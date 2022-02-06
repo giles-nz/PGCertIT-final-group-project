@@ -3,6 +3,7 @@
  * It should contain all DROP TABLE and CREATE TABLE statments, and any INSERT statements
  * required.
  */
+ drop table if exists votes;
 drop table if exists comments;
 drop table if exists articles;
 drop table if exists users;
@@ -51,6 +52,7 @@ content varchar(500),
 user_id integer not null,
 delectAuth varchar(5),
 voteAuth varchar(5),
+replyAuth varchar(5),
 upvote integer default 0,
 downvote integer default 0,
 primary key (id),
@@ -67,8 +69,8 @@ create table votes (
     foreign key (userId) references users (id)
 );
 
-insert into users (id, fname, lname, bio, username, password, dob, avatar) values (1,'Bryson','Newman','User number one of our site','user1','pa55word','1967-12-03',1);
-insert into users (id, fname, lname, bio, username, password, dob, avatar) values (2,'Miles','Hartman','User number two of our site','user2','pa55word','1954-12-03',1);
+insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (1,'Bryson','Newman','User number one of our site','user1','pa55word','1967-12-03',1, "asioasdjkjdlaksqw");
+insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (2,'Miles','Hartman','User number two of our site','user2','pa55word','1954-12-03',1, "12jahdkhjwqdas");
 
 
 INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('1', 'Women''s Day March changed the game', 'protest.jpg', 'Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis ante vitae urna lacinia, non tincidunt magna ultricies. Morbi tellus erat, placerat non arcu ut, commodo fermentum nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ut imperdiet neque. Fusce placerat felis sed neque rutrum, nec tincidunt est semper. Integer nibh diam, scelerisque ac vulputate vel, interdum eu est. Donec fringilla sapien in elit viverra faucibus. Vestibulum ipsum justo, viverra a sagittis quis, vehicula non ante. Vivamus vel mattis tortor. Phasellus luctus nulla a leo gravida viverra. Suspendisse eros nunc, imperdiet eget mi at, euismod faucibus mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, libero eu accumsan hendrerit, nunc lectus volutpat urna, ac malesuada justo est eget mi.</p>

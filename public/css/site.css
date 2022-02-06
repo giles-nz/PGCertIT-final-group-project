@@ -300,6 +300,8 @@ a:hover {
 .comment-card {
   padding: 20px 0px 20px 0px;
   display: none;
+  display: flex;
+  flex-direction: row;
 }
 .comment-dispear {
   display: none;
@@ -307,20 +309,14 @@ a:hover {
 .comment-title {
   display: flex;
   flex-direction: row;
-}
-.comment-card {
-  display: flex;
-  flex-direction: row;
+  padding-left: 30px;
 }
 .comment-image {
-  width: 150%;
+  width: 100%;
   height: auto;
 }
-.comment-title {
-  padding-left: 50px;
-}
 .comment-text {
-  padding-left: 50px;
+  padding-left: 30px;
 }
 .comment-username {
   font-weight: bold;
@@ -328,5 +324,63 @@ a:hover {
 }
 .comment-time {
   color: gray;
+}
+.small-icon{
+  padding: 10px 3px 0px 10px; 
+}
+.comment-upvote{
+  padding-right: 10px;
+}
+.comment-downvote{
+  padding-right: 10px;
+}
+.replyToggle{
+  padding: 10px;
+}
+/* nested comment css design */
+.comment-card-child{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.comment-image-child{
+  width: 70%;
+  height: auto;
+}
+.comment-title-child {
+  display: flex;
+  flex-direction: row;
+}
+.comment-username-child {
+  font-weight: bold;
+  padding-right: 10px;
+  font-size: 90%;
+}
+.comment-time-child {
+  color: gray;
+  font-size: 90%;
+}
+/* second nested comment css design */
+.comment-card-child-second{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.comment-image-child-second{
+  width: 60%;
+  height: auto;
+}
+.comment-title-child-second {
+  display: flex;
+  flex-direction: row;
+}
+.comment-username-child-second {
+  font-weight: bold;
+  padding-right: 10px;
+  font-size: 80%;
+}
+.comment-time-child-second {
+  color: gray;
+  font-size: 70%;
 }
 /* --------------------------- content comment part */

@@ -25,7 +25,6 @@ router.get("/userArticles", async function(req, res) {
     if (user) {
         const userArticles = await articleDao.retrieveUserArticles(user.id);
         if (!userArticles.length) {
-            // console.log("Array is empty");
             res.locals.noUserRecipes = "Please upload recipes on your @FLAVOURFUL homepage!";
         }    
         res.locals.userArticles = userArticles;
@@ -49,8 +48,8 @@ router.get("/content", async function(req, res) {
 // this part is check auth to make sure the delect button appear
     const data = req.cookies["authToken"];
     const comments = await commentDao.retrieveAllCommentsFromContent(articleID);
-    const childComent = [];
-    const parentComment = [];
+ 
+
     for(let i = 0; i < comments.length; i++){
         if(data == comments[i].authToken){
             comments[i].delectAuth = true;
@@ -60,31 +59,12 @@ router.get("/content", async function(req, res) {
         }
         if(data != null){
             comments[i].voteAuth = true;
+            comments[i].replyAuth = true;
         }else{
             comments[i].voteAuth = false;
-        }
-
-        if(comments[i].parent_comment_id == 0){
-            parentComment.push(comments[i]);
-        }else{
-            childComent.push(comments[i]);
+            comments[i].replyAuth = false;
         }
     }
-    // console.log(childComent);
-    // console.log(parentComment);
-    // let child = [];
-    // for(let i = 0; i < parentComment.length; i++){
-    //     for(let l = 0; l < childComent.length; l++){
-    //         if(parentComment[i].id == childComent[l].parent_comment_id){
-    //             child.push(childComent[l]);
-    //         }
-    //         parentComment.children.push(child);
-    //     }
-    // }
-    // console.log(parentComment);
-
-
-
 
     //---------------------------------------------
     const unflatten = data => {
@@ -102,25 +82,29 @@ router.get("/content", async function(req, res) {
         return Object.values(tree)
           .find(e => e.id === undefined).children;
       };
-      const unflattened = unflatten(comments);
-      console.log(unflattened);
-
+        if(comments.length == 0){
+              res.locals.comments = null;
+        }else{
+            const unflattened = unflatten(comments);
+            let finalComments = [];
+            for(let i = unflattened.length - 1; i >= 0; i--){
+                finalComments.push(unflattened[i]);
+            };
+            res.locals.comments = finalComments;
+        }
 
       //------------------
 
-    res.locals.comments = parentComment;
-    res.locals.childComment = childComent;
-
  //this part is make auth from the user to leave comment, if they dont log in, they can't comment.
-//  const authToken = await commentDao.writeAuthFromArticleId(articleID);
-//  if(res.locals.user){
-//      if(data == authToken){
-//          true;
-//      }else{
-//          false;
-//      }
+  const authToken = await commentDao.writeAuthFromArticleId(articleID);
+  if(res.locals.user){
+     if(data == authToken){
+         true;
+     }else{
+         false;
+     }
 
-//  }
+ }
 
 
     
