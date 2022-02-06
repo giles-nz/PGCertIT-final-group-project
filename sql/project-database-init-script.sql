@@ -17,7 +17,8 @@ username varchar(32),
 password varchar(150),
 dob date,
 avatar varchar(150),
-authToken varchar(128)
+authToken varchar(128),
+isadmin integer default 0,
 );
 
 create table articles(
