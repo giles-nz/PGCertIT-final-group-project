@@ -377,8 +377,9 @@ a:hover {
   object-position: center;
 }
 .card-body {
-  padding: 20px;
-  margin: 20px;
+  padding: 0;
+  margin-left: 10%;
+  max-height: 50%;
 }
 .card-image:hover {
   transform: scale(1.1);
@@ -408,6 +409,9 @@ a:hover {
 }
 #container-recipe {
   text-align: left;
+  position: relative;
+  top:10%;
+  left:5%;
 }
 #comment-submit {
   text-align: center;

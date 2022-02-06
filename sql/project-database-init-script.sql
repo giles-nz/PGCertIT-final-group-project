@@ -7,17 +7,6 @@ drop table if exists votes;
 drop table if exists comments;
 drop table if exists articles;
 drop table if exists users;
-drop table if exists test;
-
-
-create table test (
-    id integer not null primary key,
-    stuff text  
-);
-
-insert into test (stuff) values
-    ('Things'),
-    ('More things');
 
 create table users(
 id integer not null primary key,
