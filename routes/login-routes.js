@@ -10,7 +10,7 @@ const { all } = require("express/lib/application");
 
 router.get("/login", function (req, res) {
 
-    res.locals.title = "Login | WEBSITE NAME";
+    res.locals.title = "Login | @FLAVOURFUL";
     if (res.locals.user) {
         res.redirect("/");
     }
@@ -29,7 +29,7 @@ router.get("/logout", function (req, res) {
 });
 
 router.get("/", verifyAuthenticated, async function (req, res) {
-    res.locals.title = "Home | WEBSITE NAME";
+    res.locals.title = "Home | @FLAVOURFUL";
     const user = res.locals.user;
     res.render("home");
 });
@@ -71,14 +71,14 @@ router.post("/login", async function (req, res) {
 
 
 router.get("/myAccount", verifyAuthenticated, function (req, res) {
-    res.locals.title = "My Account | FlavourFul";
+    res.locals.title = "My Account | @FLAVOURFUL";
      const user = res.locals.user;
     res.render("myaccount");
 
 });
 
 router.get("/newAccount", async function(req, res) {
-    res.locals.title = "New Account | WEBSITE NAME";
+    res.locals.title = "New Account | @FLAVOURFUL";
     res.render("new-account");
 });
 
@@ -112,7 +112,7 @@ router.post("/newAccount", function(req, res) {
 
     try {
         userDao.createUser(user);
-        res.setToastMessage(`Thanks, ${user.fname}! We've Created your account. Please log in using your new credentials.`);
+        res.setToastMessage(`Thanks, ${user.fname}! We've created your account. Please log in using your new credentials.`);
         res.redirect("/login")
     }
     catch (err) {
