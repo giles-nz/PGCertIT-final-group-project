@@ -94,9 +94,9 @@ async function retrieveArticleFromID(id) {
     const db = await dbPromise;
 
     const result = await db.get(SQL`
-    SELECT articles.title, articles.image, articles.ingredients, articles.method, articles.timestamp, users.fname 
-    FROM articles, users
-    WHERE articles.creator_user_id = users.id AND articles.id= ${id}`);
+    SELECT a.title, a.image, a.ingredients, a.method, a.creator_user_id, a.timestamp, u.username, u.avatar  
+    FROM articles AS a, users AS u
+    WHERE a.creator_user_id = u.id AND a.id= ${id}`);
     
     return result;
 }
@@ -107,7 +107,43 @@ async function addArticle(title, image, ingredients, method, creator_user_id) {
 
     await db.run(SQL`
         INSERT INTO articles (title, image, ingredients, method, creator_user_id)
-        VALUES (${title}, ${image}, ${ingredients}, ${method}, ${creator_user_id})`);
+        VALUES (${title}, ${image}, ${ingredients}, ${method}, ${creator_user_id})`
+    );
+}
+
+// this function updates a recipe and its image in the articles table in project-database.db
+async function updateArticleAndImage(article_id, editTitle, editImage, editIngredients, editMethod) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        UPDATE articles
+        SET title = ${editTitle}, image = ${editImage}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = CURRENT_TIMESTAMP
+        WHERE id = ${article_id}`
+    );
+}
+
+// this function updates a recipe, keeping the current image, in the articles table in project-database.db
+async function updateArticleNotImage(article_id, editTitle, editIngredients, editMethod) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        UPDATE articles
+        SET title = ${editTitle}, ingredients = ${editIngredients}, method = ${editMethod}, timestamp = CURRENT_TIMESTAMP
+        WHERE id = ${article_id}`
+    );
+}
+
+// this function deletes the recipe from the articles table in project-database.db
+// ON DELETE CASCADE referential action for comments table FOREIGN KEY article_id
+// ON DELETE CASCADE for votes table FOREIGN KEY commentId
+// this ensures all comments and all votes linked to the recipe being deleted will also be deleted
+async function deleteArticle(article_id, user_id) {
+    const db = await dbPromise;
+
+    await db.run(SQL`
+        DELETE FROM articles
+        WHERE id = ${article_id} AND creator_user_id = ${user_id}`
+    );
 }
 
 module.exports = {
@@ -119,5 +155,8 @@ module.exports = {
     retrieveUserArticlesByDate,
     retrieveUserArticlesByTitle,
     retrieveArticleFromID,
-    addArticle
+    addArticle,
+    updateArticleAndImage,
+    updateArticleNotImage,
+    deleteArticle
 };

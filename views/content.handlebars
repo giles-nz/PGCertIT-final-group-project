@@ -2,12 +2,13 @@
     <h1>{{content.title}}</h1>
 
     <div id="small-header">
-        <p id="author-content">Author: {{content.fname}}</p>
+        <p id="author-content">Author: {{content.username}}</p>
+        <img id="author-avatar" src="./images/avatars/{{content.avatar}}.png"/>
         <p id="time-content">Time: {{content.timestamp}}</p>
     </div>
 
     <div id="container-image">
-        <img id="img-inside" src="images/thumbnails/{{content.image}}" width="640px" height="auto">
+        <img id="img-inside" src="./images/thumbnails/{{content.image}}" width="640px" height="auto">
     </div>
     
     <div id="container-recipe">
@@ -16,6 +17,18 @@
 
         <h3><em>@Flavourful</em> instructions:</h3>
         {{{content.method}}}
+    </div>
+
+    <div id="container-edit">
+        {{#if userAuthor}}
+        <form action="./editRecipe" method="POST">
+        <button type="submit">EDIT this recipe</button>
+        </form>
+        <br>
+        <form action="./deleteRecipe" method="POST">
+        <button type="submit">DELETE this recipe!</button>
+        </form>
+        {{/if}}
     </div>
 
 </div>

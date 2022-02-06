@@ -54,9 +54,12 @@ async function addChildComment(article_id, content, parent_comment_id, user_id) 
 async function deleteComment(commentId) {
     const db = await dbPromise;
 
-    await db.run(SQL`
-    delete from votes
-    where commentId = ${commentId}`);
+    // ON DELETE CASCADE referential action for votes table FOREIGN KEY commentId
+    // this ensures that all votes linked to the comment being deleted will also be deleted
+
+    // await db.run(SQL`
+    // delete from votes
+    // where commentId = ${commentId}`);
 
     await db.run(SQL`
     delete from comments
