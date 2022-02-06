@@ -7,14 +7,13 @@
   
    {{! Display a message if one was provided. }}
   {{#if toastMessage}}
-    <p>{{toastMessage}}</p>
+    <p class="toast-message">{{toastMessage}}</p>
   {{/if}}
   
   <!--dispalying personalised welcome message-->
 
   <div class="welcome-text">
-    <h1>Welcome Back |</h1>
-    <h1>&nbsp;{{user.fname}}</h1>
+    <h1>Welcome Back |&nbsp;{{user.fname}}</h1>
     <img class="avatar-img" src="./images/avatars/{{user.avatar}}.png" />
   </div>
 
