@@ -25,7 +25,6 @@ router.get("/userArticles", async function(req, res) {
     if (user) {
         const userArticles = await articleDao.retrieveUserArticles(user.id);
         if (!userArticles.length) {
-            // console.log("Array is empty");
             res.locals.noUserRecipes = "Please upload recipes on your @FLAVOURFUL homepage!";
         }    
         res.locals.userArticles = userArticles;
@@ -56,6 +55,8 @@ router.get("/content", async function(req, res) {
 // this part is check auth to make sure the delect button appear
     const data = req.cookies["authToken"];
     const comments = await commentDao.retrieveAllCommentsFromContent(articleID);
+ 
+
     for(let i = 0; i < comments.length; i++){
         if(data == comments[i].authToken){
             comments[i].delectAuth = true;
@@ -65,22 +66,52 @@ router.get("/content", async function(req, res) {
         }
         if(data != null){
             comments[i].voteAuth = true;
+            comments[i].replyAuth = true;
         }else{
             comments[i].voteAuth = false;
+            comments[i].replyAuth = false;
         }
     }
-    res.locals.comments = comments;
+
+    //---------------------------------------------
+    const unflatten = data => {
+        const tree = data.map(e => ({...e}))
+          .sort((a, b) => a.id - b.id)
+          .reduce((a, e) => {
+            a[e.id] = a[e.id] || e;
+            a[e.parent_comment_id] = a[e.parent_comment_id] || {};
+            const parent = a[e.parent_comment_id];
+            parent.children = parent.children || [];
+            parent.children.push(e);
+            return a;
+          }, {})
+        ;
+        return Object.values(tree)
+          .find(e => e.id === undefined).children;
+      };
+        if(comments.length == 0){
+              res.locals.comments = null;
+        }else{
+            const unflattened = unflatten(comments);
+            let finalComments = [];
+            for(let i = unflattened.length - 1; i >= 0; i--){
+                finalComments.push(unflattened[i]);
+            };
+            res.locals.comments = finalComments;
+        }
+
+      //------------------
 
  //this part is make auth from the user to leave comment, if they dont log in, they can't comment.
-//  const authToken = await commentDao.writeAuthFromArticleId(articleID);
-//  if(res.locals.user){
-//      if(data == authToken){
-//          true;
-//      }else{
-//          false;
-//      }
+  const authToken = await commentDao.writeAuthFromArticleId(articleID);
+  if(res.locals.user){
+     if(data == authToken){
+         true;
+     }else{
+         false;
+     }
 
-//  }
+ }
 
 
     res.locals.title = "Recipe | @FLAVOURFUL";    

@@ -49,14 +49,93 @@
                 <p class="comment-username">{{username}}</p>
                 <p class="comment-time">{{timestamp}}</p>
                 {{#if voteAuth}}
-                <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p>{{upvote}}</p>
-                <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p>{{downvote}}</p>
+                <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p class="comment-upvote">{{upvote}}</p>
+                <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p class="comment-downvote">{{downvote}}</p>
                 {{/if}}
                 {{#if delectAuth}}
                 <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
                 {{/if}}
+                {{#if replyAuth}}
+                <a href="#1" class="replyToggle">Reply</a>
+                <div class="replyPopup1"><form action="./replyComment" method="GET">
+                <textarea name="content" rows="5" cols="50" placeholder="Type your reply here..." required></textarea>
+                <input type="hidden" name="comment_id" value="{{id}}">
+                <br><input type="submit" class="submit-second">
+                </form>
+                </div>
+                {{/if}}
             </div>
             <p class="comment-text">{{content}}</p>
+
+            {{#if children}}
+            {{#each children}}
+            <div class="comment-card-child">
+                <div class="comment-avater-child"><img class="comment-image-child" src="./images/avatars/{{avatar}}.png"></div>
+                <div class="comment-contents-child">
+                    <div class="comment-title-child">
+                        <p class="comment-username-child">{{username}}</p>
+                        <p class="comment-time-child">{{timestamp}}</p>
+                        {{#if voteAuth}}
+                        <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p class="comment-upvote">{{upvote}}</p>
+                        <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p class="comment-downvote">{{downvote}}</p>
+                        {{/if}}
+                        {{#if delectAuth}}
+                        <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
+                        {{/if}}
+                        {{#if replyAuth}}
+                        <a href="#1" class="replyToggle">Reply</a>
+                        <div class="replyPopup1"><form action="./replyComment" method="GET">
+                        <textarea name="content" rows="5" cols="50" placeholder="Type your reply here..." required></textarea>
+                        <input type="hidden" name="comment_id" value="{{id}}">
+                        <br><input type="submit" class="submit-second">
+                </form>
+                </div>
+                {{/if}}
+                    </div>
+                    <p class="comment-text-child">{{content}}</p>
+
+
+                               {{#if children}}
+            {{#each children}}
+            <div class="comment-card-child-second">
+                <div class="comment-avater-child-second"><img class="comment-image-child-second" src="./images/avatars/{{avatar}}.png"></div>
+                <div class="comment-contents-child-second">
+                    <div class="comment-title-child-second">
+                        <p class="comment-username-child-second">{{username}}</p>
+                        <p class="comment-time-child-second">{{timestamp}}</p>
+                        {{#if voteAuth}}
+                        <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p class="comment-upvote">{{upvote}}</p>
+                        <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p class="comment-downvote">{{downvote}}</p>
+                        {{/if}}
+                        {{#if delectAuth}}
+                        <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
+                        {{/if}}
+                        {{#if replyAuth}}
+                        <a href="#1" class="replyToggle">Reply</a>
+                        <div class="replyPopup1"><form action="./replyComment" method="GET">
+                        <textarea name="content" rows="5" cols="50" placeholder="Type your reply here..." required></textarea>
+                        <input type="hidden" name="comment_id" value="{{id}}">
+                        <br><input type="submit" class="submit-second">
+                </form>
+                </div>
+                {{/if}}
+                    </div>
+                    <p class="comment-text-child-second">{{content}}</p>
+                </div>
+
+            </div>
+
+            {{/each}}
+            {{/if}}
+
+                </div>
+
+            </div>
+
+            {{/each}}
+            {{/if}}
+
+            {{!-- <p>{{children}}</p> --}}
         </div>
     </div>
     {{/each}}

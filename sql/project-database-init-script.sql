@@ -52,6 +52,7 @@ content varchar(500),
 user_id integer not null,
 delectAuth varchar(5),
 voteAuth varchar(5),
+replyAuth varchar(5),
 upvote integer default 0,
 downvote integer default 0,
 primary key (id),
@@ -68,8 +69,8 @@ create table votes (
     foreign key (userId) references users (id)
 );
 
-insert into users (id, fname, lname, bio, username, password, dob, avatar) values (1,'Bryson','Newman','User number one of our site','user1','pa55word','1967-12-03',1);
-insert into users (id, fname, lname, bio, username, password, dob, avatar) values (2,'Miles','Hartman','User number two of our site','user2','pa55word','1954-12-03',1);
+insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (1,'Bryson','Newman','User number one of our site','user1','pa55word','1967-12-03',1, "asioasdjkjdlaksqw");
+insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (2,'Miles','Hartman','User number two of our site','user2','pa55word','1954-12-03',1, "12jahdkhjwqdas");
 
 
 INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('1', 
