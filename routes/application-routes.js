@@ -102,16 +102,6 @@ router.get("/content", async function(req, res) {
 
       //------------------
 
- //this part is make auth from the user to leave comment, if they dont log in, they can't comment.
-  const authToken = await commentDao.writeAuthFromArticleId(articleID);
-  if(res.locals.user){
-     if(data == authToken){
-         true;
-     }else{
-         false;
-     }
-
- }
 
 
     res.locals.title = "Recipe | @FLAVOURFUL";    
