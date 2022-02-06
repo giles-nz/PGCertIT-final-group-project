@@ -1,15 +1,23 @@
-<div id="home-page">
+<!-- 
+    This is the home handlebars. It shows a personalised welcome message, an automated gallery, and the functionality for a user
+    to upload their recipes and images.
+-->
 
+<div id="home-page">
+  
+   {{! Display a message if one was provided. }}
   {{#if toastMessage}}
-    <p>{{toastMessage}}</p>
+    <p class="toast-message">{{toastMessage}}</p>
   {{/if}}
+  
+  <!--dispalying personalised welcome message-->
 
   <div class="welcome-text">
-    <h1>Welcome Back |</h1>
-    <h1>&nbsp;{{user.fname}}</h1>
+    <h1>Welcome Back |&nbsp;{{user.fname}}</h1>
     <img class="avatar-img" src="./images/avatars/{{user.avatar}}.png" />
   </div>
 
+  <!--displaying automated gallery/timer etc.-->
 
   <img src="./images/thumbnails/lily-banse--YHSwy6uqvk-unsplash.jpg" id="image" class ="slideshow-container fade-in"onclick="stop();">
 
@@ -27,6 +35,7 @@
             
  </script>
  
+  <!--displaying the upload recipe functionality-->
 
   <div id="recipeUpload">
     

@@ -149,7 +149,35 @@ async function updateValue(username) {
 
 };
 
+async function retrieveAllUserProfile(){
+    
+    const db = await dbPromise;
 
+    const allUser = await db.all(SQL`
+    SELECT users.*, count(articles.id) as authored_by_user
+    FROM users, articles
+    WHERE users.id = articles.creator_user_id`);
+
+    return allUser;
+}
+
+async function deleteUserByAdimn(id){
+    await db.run(SQL`
+        delete from votes 
+        where userId = ${id}`);
+
+    await db.run(SQL`
+        delete from comments 
+        where user_id = ${id}`);        
+        
+    await db.run(SQL`
+        delete from articles 
+        where creator_user_id = ${id}`);   
+        
+    await db.run(SQL`
+        delete from user 
+        where id = ${id}`); 
+}
 
 // Export functions.
 module.exports = {
@@ -160,5 +188,7 @@ module.exports = {
     retrieveAllUsers,
     updateUser,
     updateValue,
-    deleteUser
+    deleteUser,
+    retrieveAllUserProfile,
+    deleteUserByAdimn
 };

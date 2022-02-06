@@ -1,6 +1,10 @@
+<!-- 
+    This is the content handlebars. It shows each article's content, as well as detials about the user that created the article. 
+-->
+
 <div id="container-content">
     <h1>{{content.title}}</h1>
-
+<!--displaying the user's details and the article content-->
     <div id="small-header">
         <p id="author-content">Author: {{content.username}}</p>
         <img id="author-avatar" src="./images/avatars/{{content.avatar}}.png"/>
@@ -32,12 +36,12 @@
     </div>
 
 </div>
-
+<!--displaying the comments section with a toggle-->
 <div id="comment-button">
     <h3>Comments</h3>
     <button id="toggle">Show/Hide Comments</button>
     <hr>
-</div>
+</div><!--displaying the comments section-->
 
 <div id="comment-display">
 
@@ -68,6 +72,7 @@
                 {{/if}}
             </div>
             <p class="comment-text">{{content}}</p>
+<!--if there are children comments-->
 
             {{#if children}}
             {{#each children}}
@@ -95,7 +100,6 @@
                 {{/if}}
                     </div>
                     <p class="comment-text-child">{{content}}</p>
-
 
                                {{#if children}}
             {{#each children}}
@@ -137,17 +141,17 @@
             {{/each}}
             {{/if}}
 
-            {{!-- <p>{{children}}</p> --}}
         </div>
     </div>
     {{/each}}
 </div>
 
+<!--submitting the comments-->
 
 <div id="comment-submit">
 
     {{#if user}}
-{{!-- This is the add comment section --}}
+
 <h3>Add Comment</h3>
 <div>Hello {{user.username}}, welcome to leave comments here.</div>
 <form action="./commentUpload" method="POST">
