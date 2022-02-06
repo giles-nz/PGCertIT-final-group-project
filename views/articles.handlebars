@@ -1,12 +1,10 @@
 <!-- 
-    This page should show all of the articles, no matter whether the user is logged in or not.
-    We can have one article display at a time, and the user can click something like 'next' article
-    to display the next. Same with previous. Like the book lab. 
+    This page shows all of the articles, no matter whether the user is logged in or not.
 -->
 
 <div id="container-all-article">
 
-
+<!--displaying all sort methods-->
   <div id="checkBox"> 
     <form action="./sortBy" method="POST">
         <label for="sort_id">Sort by:</label>
@@ -18,7 +16,7 @@
         <input type="submit" value="Sort">
     </form>
   </div>  
-
+<!--displaying each article-->
     {{#each allArticles}}
     <div class="card">
         <div class="card-header"><a href="/content?id={{id}}">

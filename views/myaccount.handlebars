@@ -1,14 +1,18 @@
 
+<!-- 
+    This is the myaccount handlebars. It shows a personalised welcome message, and allows users to change any of their details
+-->
+
 <div class="container-create">
 
-    {{! Display a message if one was provided. }}
+ {{! Display a message if one was provided. }}
     {{#if toastMessage}}
-    <p>{{toastMessage}}</p>
+    <p class="toast-message"Message}}</p>
 
     {{/if}}
 
 <div class="container-create">
-
+  <!--dispalying personalised account details of current user-->
     <h1>{{user.fname}}'s Account Details</h1>
     <form action="./myAccount" method="POST">
 
@@ -19,7 +23,7 @@
         </div>
 
         <br>
-
+  <!--ensuring the passwords match, and that they're six or more characters long-->
         <div class="flex-col mb">
             <label for ="password">New Password</label>
             <p></p>
