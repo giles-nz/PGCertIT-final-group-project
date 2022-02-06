@@ -31,7 +31,9 @@
            <div id="leftnav">
                <a href="/" class="nav-a">Home</a>
                <a href="/articles" class="nav-a">All Recipes</a>
+                {{#if user}}
                <a href="/userArticles" class="nav-a">Your Recipes</a>
+               {{/if}}
                {{!-- <a href="/" class="nav-a">About</a> --}}
                {{!-- <a href="/" class="nav-a">Contact</a>
                <a href="/" class="nav-a">Advertise</a> --}}
@@ -46,6 +48,7 @@
                <a href="/logout" class="nav-a">Log out</a>
                {{else}}
                <a href="/newAccount" class="nav-a">Sign Up!</a>
+               <a href="/login" class="nav-a">Log in</a>
                {{/if}}
 
            </div>

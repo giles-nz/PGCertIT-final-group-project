@@ -112,7 +112,7 @@ router.post("/newAccount", function(req, res) {
 
     try {
         userDao.createUser(user);
-        res.setToastMessage(`Thanks, ${user.fname}! We've Created your account. Please log in using your new credentials.`);
+        res.setToastMessage(`Thanks, ${user.fname}! We've created your account. Please log in using your new credentials.`);
         res.redirect("/login")
     }
     catch (err) {
