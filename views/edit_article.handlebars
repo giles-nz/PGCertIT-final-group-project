@@ -1,5 +1,11 @@
+<!-- 
+    This is the contente edit handlebars. It shows each article's content, as well as detials about the user that created the article,
+    and allows the user to make changes to their article. 
+-->
+
 <div id="edit-page">
 
+<!--displaying the current user's recipe and allowing them to edit it-->
   <div class="welcome-text">
     <h1>Edit your <em>@Flavourful</em> recipe |</h1>
     <h1>&nbsp;{{user.fname}}</h1>
@@ -32,7 +38,8 @@
         </textarea>
       </div>
       <br>
-      
+      <!--displaying the current recipe's image and allowing the author to edit it-->
+
       <fieldset>
 
         {{#if defaultImage}}
@@ -62,6 +69,8 @@
         />
 
       </fieldset>
+
+      <!--script for changing the image-->
 
       <script>
         const inputFile = document.querySelector("#inpFile");

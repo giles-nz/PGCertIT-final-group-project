@@ -7,36 +7,44 @@ const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 const { all } = require("express/lib/application");
 
-
+//set up a login router, when the login page is called
 router.get("/login", function (req, res) {
-
+    //set the title to Login
     res.locals.title = "Login | @FLAVOURFUL";
+    //if there's a user, take them to the home page
     if (res.locals.user) {
         res.redirect("/");
     }
-
+    //if there's not a user, ask them to log in again
     else {
         res.render("login");
     }
 
 });
 
+//set up a logout router, when the logout function is called
 router.get("/logout", function (req, res) {
+    //delete the authToken cookie
     res.clearCookie("authToken");
+    //set set the user on the webiste to null
     res.locals.user = null;
+    //set the toast message to success message
     res.setToastMessage("Successfully logged out!");
+    //redirect the user to the login page
     res.redirect("./login");
 });
 
+//set up a home router, check if the user is authenticated
 router.get("/", verifyAuthenticated, async function (req, res) {
+    //set the title to Home
     res.locals.title = "Home | @FLAVOURFUL";
+    //set the user to the current user
     const user = res.locals.user;
+    //render the home page
     res.render("home");
 });
 
-// Whenever we POST to /login, check the username and password submitted by the user.
-// If they match a user in the database, give that user an authToken, save the authToken
-// in a cookie, and redirect to "/". Otherwise, redirect to "/login", with a "login failed" message.
+//set up a post login function, called when the login button is pressed
 router.post("/login", async function (req, res) {
     
     // Get the username and password submitted in the form
@@ -51,10 +59,15 @@ router.post("/login", async function (req, res) {
     if (user) {
         // Auth success - give that user an authToken, save the token in a cookie, and redirect to the homepage.
         const authToken = uuid();
+        //set the user's authtoken to the one we created
         user.authToken = authToken;
+        //update the user's details with the new authtoken
         await userDao.updateUser(user);
+        //set the auth user to the authtoken we created
         res.cookie("authToken", authToken);
+        //set the website's user to the one we just created
         res.locals.user = user;
+        //redirect to the home page
         res.redirect("/");
     }
 
@@ -62,31 +75,46 @@ router.post("/login", async function (req, res) {
     else {
         // Auth fail
         res.locals.user = null;
+        //set the toast message to fail
         res.setToastMessage("Authentication failed!");
+        //redirect the user to the login page
         res.redirect("./login");
     }
 });
 
-
+//set up a get handler for myAccount
 router.get("/myAccount", verifyAuthenticated, function (req, res) {
+    //set the title of the page to My Account
     res.locals.title = "My Account | @FLAVOURFUL";
+    //set the user to the current user
      const user = res.locals.user;
+     //render the myaccount page
     res.render("myaccount");
 
 });
 
+//set up a new account get route handler
 router.get("/newAccount", async function(req, res) {
+    //set the title to New Account
     res.locals.title = "New Account | @FLAVOURFUL";
+    //render the new account page
     res.render("new-account");
 });
 
+//set up a get all users details route handler
 router.get("/getAllUsersDetails", async function(req,res){
+    //get all the user details from the database
     const allUserDetail = await userDao.retrieveAllUsers();
+    //set the userdetails to a json object
     res.json(allUserDetail);
 });
 
+//set up a post delete account request, called when the user clicks delete account
 router.post("/deleteAccount", async function(req,res){
+    //get the current user via the cookie
     const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+    //if there's a user, delete the user and set the toast message to 'your account
+    //has been deleted, then redirect the user to the login page
     try{
         userDao.deleteUser(user.id);
         res.setToastMessage("Sorry to see you go! Your account has been deleted.");
@@ -97,7 +125,10 @@ router.post("/deleteAccount", async function(req,res){
     }
  });
 
+
+//set up a post router to new account, called when the user creates a new acount
 router.post("/newAccount", function(req, res) {
+    //get the information from the form
     let user = {
         username: req.body.username,
         lname: req.body.lname,
@@ -108,6 +139,8 @@ router.post("/newAccount", function(req, res) {
         dob: req.body.dob
     };
 
+    //try to create a user using the function in the userDao, set the toast message,
+    //redirect the user to login page
     try {
         userDao.createUser(user);
         res.setToastMessage(`Thanks, ${user.fname}! We've created your account. Please log in using your new credentials.`);
@@ -120,9 +153,13 @@ router.post("/newAccount", function(req, res) {
 
  });
 
+ //set up a post request to myAccount, called when the user wants to change any of their details
  router.post("/myAccount", function(req, res) {
+     //get the current user
     const currentUser = res.locals.user;
-
+    //get the current details. If the field is left empty, don't change the 
+    //user details. If it's not left empty, change the field to the information the user
+    //entered.
     let newUsername = req.body.username;
     if(newUsername == ""){
         newUsername = currentUser.username;
@@ -137,6 +174,7 @@ router.post("/newAccount", function(req, res) {
     if(newPassword == ""){
         newPassword = currentUser.password;
     }else{
+        //make sure that the new password is also hashed
         newPassword = bcrypt.hashSync(newPassword, saltRounds);
     }
 
@@ -171,10 +209,10 @@ router.post("/newAccount", function(req, res) {
         authToken: currentUser.authToken,
         id: currentUser.id
     };
-
+    //actually setting the new user data, using the function in the userDao.
     try {
         userDao.updateUser(newData);
-        res.setToastMessage(`Thanks${newData.fname}! We've updated your details!`);
+        res.setToastMessage(`Thanks, ${newData.fname}! We've updated your details!`);
         res.redirect("/")
     }
     catch (err) {
