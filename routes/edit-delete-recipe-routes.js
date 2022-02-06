@@ -53,23 +53,27 @@ router.post("/editRecipe", async function(req, res) {
 router.post("/updateRecipe", upload.single("imageFile"), async function(req, res) { 
     
     const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
-    console.log(user.id);
+    // console.log(user.id);
 
     const article_id = req.cookies["articleID"];
-    console.log(article_id); 
+    // console.log(article_id); 
     
     const editTitle = req.body.title;
-    console.log(editTitle);
+    // console.log(editTitle);
 
     const editIngredients = req.body.ingredients;
-    console.log(editIngredients);
+    // console.log(editIngredients);
 
     const editRecipe = req.body.method;
-    console.log(editRecipe);
+    // console.log(editRecipe);
+
+    const checkedRadio = req.body.editImage;
+    // console.log(checkedRadio);
 
     const fileInfo = req.file;
+    console.log(fileInfo);
     
-    if (fileInfo) {
+    if ((checkedRadio == "inputFile") && fileInfo) {
         
         console.log(fileInfo);
             
@@ -84,9 +88,13 @@ router.post("/updateRecipe", upload.single("imageFile"), async function(req, res
 
         await articleDao.updateArticleAndImage(article_id, editTitle, fileInfo.originalname, editIngredients, editRecipe);
     
-    } else {
+    } else if ((checkedRadio == "inputFile") && !fileInfo) {
         
         await articleDao.updateArticleNotImage(article_id, editTitle, editIngredients, editRecipe);
+
+    } else {
+
+        await articleDao.updateArticleAndImage(article_id, editTitle, checkedRadio, editIngredients, editRecipe);
     }
     
     res.redirect("./userArticles");

@@ -26,6 +26,7 @@
       newImageRadio.focus();
       newImageRadio.click();
     });
+  
   });
 </script>
 
@@ -68,9 +69,18 @@
 
         {{#if defaultImage}}
         <input type="radio" name="editImage" id="currentImageRadio" value="{{content.image}}" checked>
-        <label for="currentImageRadio">Keep the current image for your <em>@Flavourful</em> recipe:</label>
+        <label for="currentImageRadio">Keep the <em>@Flavourful</em> default image for your recipe:</label>
         <br>
         <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
+        <br>
+        <input type="radio" name="editImage" id="newImageRadio" value="inputFile">
+        <label for="newImageRadio">Upload a replacement image of your <em>@Flavourful</em> dish here:</label>
+        <input
+          id="inpFile"
+          type="file"
+          name="imageFile"
+          accept=".png,.jpg,.jpeg,.bmp"
+        />
         {{else}}
         <input type="radio" name="editImage" id="currentImageRadio" value="{{content.image}}" checked>
         <label for="currentImageRadio">Keep the current image for your <em>@Flavourful</em> recipe:</label>
@@ -81,17 +91,17 @@
         <label for="defaultImageRadio">Delete your current image and replace with this <em>@Flavourful</em> default image:</label>
         <br>
         <img id="defaultImage" src="./images/thumbnails/default.jpg"  alt="Photo of various spices - default @Flavourful image" width="320px" height="auto">
-        {{/if}}
         <br>
-        <input type="radio" name="editImage" id="newImageRadio">
+        <input type="radio" name="editImage" id="newImageRadio" value="inputFile">
         <label for="newImageRadio">Upload a replacement image of your <em>@Flavourful</em> dish here:</label>
         <input
-        id="inpFile"
-        type="file"
-        name="imageFile"
-        accept=".png,.jpg,.jpeg,.bmp"
+          id="inpFile"
+          type="file"
+          name="imageFile"
+          accept=".png,.jpg,.jpeg,.bmp"
         />
-
+        {{/if}}
+        
       </fieldset>
 
       <br>
