@@ -1,5 +1,5 @@
 <!-- 
-    This is the contente edit handlebars. It shows each article's content, as well as detials about the user that created the article,
+    This is the content edit handlebars. It shows each article's content, as well as detials about the user that created the article,
     and allows the user to make changes to their article. 
 -->
 <script>
@@ -14,19 +14,16 @@
     const inputFile = document.querySelector("#inpFile");
 
     currentImage.addEventListener("click", function(event) {
-      console.log("current image clicked");
       currentImageRadio.focus();
       currentImageRadio.click();
     });
 
     defaultImage.addEventListener("click", function(event) {
-      console.log("default image clicked");
       defaultImageRadio.focus();
       defaultImageRadio.click();
     });
     
     inputFile.addEventListener("change", function(event) {
-      console.log("change detected");
       newImageRadio.focus();
       newImageRadio.click();
     });
@@ -110,17 +107,6 @@
         
       </fieldset>
 
-      <!--script for changing the image-->
-
-      <script>
-        const inputFile = document.querySelector("#inpFile");
-        const newImageRadio = document.getElementById("newImage");
-        inputFile.addEventListener("change", function(){
-          newImageRadio.focus();
-          newImageRadio.select();
-        });
-      </script>
-      
       <br>
       <br>
       <button type="submit"><strong>POST your changes <em>@Flavourful</em></strong></button>
