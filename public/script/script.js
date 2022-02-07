@@ -54,7 +54,6 @@ window.addEventListener("load", function(){
      async function commentreFresh(){
         let request = await fetch(`http://localhost:3000/commentUpdate`);
         let allComments = await request.json();
-        console.log(allComments.length);
 
         //reset the comment div...
         commentDisplay.innerHTML = "";
