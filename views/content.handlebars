@@ -15,7 +15,7 @@ such as adding comments, voting, replying, and deleting, when user click a recei
     </div>
 
     <div id="container-image">
-        <img id="img-inside" src="./images/thumbnails/{{content.image}}" width="640px" height="auto">
+        <img id="img-inside" src="./images/thumbnails/{{content.image}}">
     </div>
     
     <div id="container-recipe">
@@ -156,7 +156,7 @@ such as adding comments, voting, replying, and deleting, when user click a recei
     {{#if user}}
 
 <h3>Add Comment</h3>
-<div>Hello {{user.username}}, welcome to leave comments here.</div>
+<div>Hi {{user.username}}, please post your comment below!</div>
 <form action="./commentUpload" method="POST">
     <textarea name="content" id="txtContent" rows="10" placeholder="Type your comment here..." required></textarea>
     <br><input type="submit" id="submit">
