@@ -468,7 +468,7 @@ a:hover {
   padding: 10px;
 }
 .comment-card {
-  border:1px solid lightgray;
+  border: 1px solid lightgray;
   border-radius: 5px;
   padding: 20px 0px 20px 0px;
   display: none;
@@ -520,6 +520,9 @@ a:hover {
 
 #noUserRecipes{
   text-align: center;
+}
+.second-textbox{
+  width: auto;
 }
 /* nested comment css design */
 .comment-card-child {
@@ -573,6 +576,16 @@ a:hover {
 }
 /* --------------------------- content comment part */
 
+@media only screen and (max-width: 1150px) {
+  .second-textbox{
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 970px) {
+  .second-textbox{
+    width: 50%;
+  }
+}
 @media only screen and (max-width: 850px) {
   .welcome-text {
     font-size: medium;
@@ -602,7 +615,23 @@ a:hover {
     line-height: 130%;
   }
 }
-
+@media only screen and (max-width: 710px){
+  .small-icon {
+    padding: 0px;
+  }
+  .comment-title{
+    display: flex;
+    flex-direction: column;
+  }
+  .comment-title-child{
+    display: flex;
+    flex-direction: column;
+  }
+  .comment-title-child-second{
+    display: flex;
+    flex-direction: column;
+  }
+}
 @media only screen and (max-width: 510px){
  #nav{
   display: flex;
@@ -613,5 +642,13 @@ a:hover {
    display: flex;
    align-items: center;
  }
-
+.small-icon{
+  display: none;
+}
+.comment-upvote{
+  display: none;
+}
+.comment-downvote{
+  display: none;
+}
 }

@@ -52,7 +52,7 @@ router.get("/voteCommentUp", async function (req, res) {
     const userId = res.locals.user.id;
     
     //vote DAO record when people cilck upvote icon...
-    const vote = await voteDao.retreiveAVote(commentId, userId);
+    const vote = await voteDao.retrieveAVote(commentId, userId);
 
     //if no upvote before...
     if(!vote){
@@ -85,7 +85,7 @@ router.get("/voteCommentDown", async function (req, res) {
     const userId = res.locals.user.id;
 
     //vote DAO record when people cilck downvote icon...
-    const vote = await voteDao.retreiveAVote(commentId, userId);
+    const vote = await voteDao.retrieveAVote(commentId, userId);
 
     //if no upvote before...
     if(!vote){

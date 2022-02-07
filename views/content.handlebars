@@ -64,17 +64,17 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                         <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
                         {{/if}}
                     </div>
-                {{#if replyAuth}}
-                <a href="#1" class="replyToggle">Reply</a>
-                    <div class="replyPopup1"><form action="./replyComment" method="GET">
-                        <textarea name="content" rows="4" cols="50" placeholder="Type your reply here..." required></textarea>
+                        {{#if replyAuth}}
+                        <a href="#1" class="replyToggle">Reply</a>
+                        <div class="replyPopup1"><form action="./replyComment" method="GET">
+                        <textarea name="content" rows="4" cols="50" placeholder="Type your reply here..." class="second-textbox" required></textarea>
                         <input type="hidden" name="comment_id" value="{{id}}">
                         <br><input type="submit" class="submit-second">
                         </form>
-                    </div>
-                {{/if}}
+                        </div>
+                        {{/if}}
             </div>
-            <p class="comment-text">{{content}}</p>
+                <p class="comment-text">{{content}}</p>
 <!--if there are children comments-->
 
             {{#if children}}
@@ -97,7 +97,7 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                         {{#if replyAuth}}
                         <a href="#1" class="replyToggle">Reply</a>
                         <div class="replyPopup1"><form action="./replyComment" method="GET">
-                        <textarea name="content" rows="4" cols="38" placeholder="Type your reply here..." required></textarea>
+                        <textarea name="content" rows="4" cols="38" placeholder="Type your reply here..." class="second-textbox" required></textarea>
                         <input type="hidden" name="comment_id" value="{{id}}">
                         <br><input type="submit" class="submit-second">
                 </form>
@@ -123,15 +123,6 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                         <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
                         {{/if}}
                         </div>
-                        {{#if replyAuth}}
-                        <a href="#1" class="replyToggle">Reply</a>
-                        <div class="replyPopup1"><form action="./replyComment" method="GET">
-                        <textarea name="content" rows="4" cols="25" placeholder="Type your reply here..." required></textarea>
-                        <input type="hidden" name="comment_id" value="{{id}}">
-                        <br><input type="submit" class="submit-second">
-                </form>
-                </div>
-                {{/if}}
                     </div>
                     <p class="comment-text-child-second">{{content}}</p>
                 </div>
