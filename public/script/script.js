@@ -50,10 +50,6 @@ window.addEventListener("load", function(){
          ele.addEventListener("click", commentreFresh);
      })
 
-
-
-
-
      // this function can be called, using AJAX/Fetch to retrieve all comments and display...
      async function commentreFresh(){
         let request = await fetch(`http://localhost:3000/commentUpdate`);

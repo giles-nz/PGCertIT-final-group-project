@@ -557,6 +557,9 @@ a:hover {
   color: gray;
   font-size: 70%;
 }
+.sorting{
+  padding: 1%;
+}
 /* --------------------------- content comment part */
 
 @media only screen and (max-width: 850px) {
@@ -571,16 +574,18 @@ a:hover {
     margin: auto;
   }
 
-  /* .card {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-  }
+  
   .card-image {
-    max-width: 150px;
-    height: auto;
-  } */
+    max-width: 200px;
+   
+    margin: auto;
+    object-fit: cover;
+  }
 
+  .card{
+    max-height: 50%;
+    padding:10%;
+  }
   #container-Main {
     font-family: "Open Sans", sans-serif;
     line-height: 130%;
