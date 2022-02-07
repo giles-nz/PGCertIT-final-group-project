@@ -225,6 +225,8 @@ a:hover {
 
 #deleteButton {
   background-color: firebrick;
+  position: relative;
+  left: 4%;
 }
 
 .container-create h1 {
