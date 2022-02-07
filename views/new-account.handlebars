@@ -13,7 +13,7 @@
     <p class="toast-message">{{toastMessage}}</p>
     {{/if}}
 
-<div class="container-create">
+
       <!--displaying the new account box-->
 
     <h1>Create Your New Account</h1>
@@ -47,12 +47,93 @@
             <label for="username">Username</label>
             <p></p>
             <input type="text" name="username" id="username" class="usernamecheck"required>
-            <p id="log"></p></div>
+            <p id="log"></p>
+        </div>
+            
+
+
+  <!--ensuring the passwords match, and that they're six or more characters long-->
+
+        <div class="flex-col mb">
+            <label for ="password">Password</label>
+            <p></p>
+        <input id="password" name="password" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Must have at least 6 characters' : ''); if(this.checkValidity()) 
+        form.password_two.pattern = this.value;" required>
+        </div>
+
+        <br>
+    
+        <div class="flex-col mb">
+        <label for="password_two">Confirm Password</label>
+        <p></p>
+        <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Please enter the same password as above' : '');" required>
+        </div>
+
+        <br>
+
+         <div class="flex-col mb">
+            <label for="bio">Tell us a bit about yourself</label>
+            <p></p>
+            <input type="text" name="bio" id="bio"required>
+        </div>
+        <br>
+<label id="signupavatar">Choose your avatar:</label>
+<br>
+<br>
+        <div class="avatar-container">
+        
+            
+            <div>
+            <input type="radio" name="avatar" class="signupavatar" id="1" value="1">
+            <label for="1">
+                <img src="./images/avatars/1.png">
+            </label>
+            </div>
+            <div>
+                <input type="radio" name="avatar" class="signupavatar" id="2" value="2">
+                    <label for="2">
+                    <img src="./images/avatars/2.png">
+                </label>
+            </div>
+            <div><input type="radio" name="avatar" class="signupavatar" id="3" value="3">
+            <label for="3">
+                <img src="./images/avatars/3.png">
+            </label></div>
+            
+            <div><input type="radio" name="avatar" class="signupavatar" id="4" value="4">
+            <label for="6">
+                <img src="./images/avatars/4.png">
+            </label></div>
+            <div><input type="radio" name="avatar" class="signupavatar" id="5" value="5">
+            <label for="5">
+                <img src="./images/avatars/5.png">
+            </label></div>
+            <div><input type="radio" name="avatar" class="signupavatar" id="6" value="6" checked>
+            <label for="6">
+                <img src="./images/avatars/6.png">
+            </label></div>
             
         </div>
+        <br>
+        <br>
+        <br>
+        <div>
+            <button id="createNewAccountButton" type="submit">CREATE ACCOUNT</button>
+        </div>
+
+    </form>
+
+</div>
+<br>
 
 <!--script to check if the currenlty entered username is available in the database-->
     
+
+
 <script>
     const input = document.querySelector(".usernamecheck");
     const log = document.querySelector("#log");
@@ -75,78 +156,3 @@
     }
     });
 </script>
-  <!--ensuring the passwords match, and that they're six or more characters long-->
-
-        <div class="flex-col mb">
-            <label for ="password">Password</label>
-            <p></p>
-        <input id="password" name="password" type="password" pattern="^\S{6,}$" 
-        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
-        'Must have at least 6 characters' : ''); if(this.checkValidity()) 
-        form.password_two.pattern = this.value;" required>
-        </div>
-
-        <br>
-    
-
-        <div class="flex-col mb">
-        <label for="password_two">Confirm Password</label>
-        <p></p>
-        <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" 
-        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
-        'Please enter the same password as above' : '');" required>
-        </div>
-
-        <br>
-
-<label id="avatar">Choose your avatar:</label>
-
-        <div class="flex-container">
-            
-            <br></br>
-            <input type="radio" name="avatar" class="avatar-img" id="1" value="1">
-            <label for="1">
-                <img src="./images/avatars/1.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="2" value="2">
-            <label for="2">
-                <img src="./images/avatars/2.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="3" value="3">
-            <label for="3">
-                <img src="./images/avatars/3.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="4" value="4">
-            <label for="6">
-                <img src="./images/avatars/4.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="5" value="5">
-            <label for="5">
-                <img src="./images/avatars/5.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="6" value="6" checked>
-            <label for="6">
-                <img src="./images/avatars/6.png">
-            </label>
-        </div>
-
-        <br>
-
-
-        <div class="flex-col mb">
-            <label for="bio">Tell us a bit about yourself</label>
-            <p></p>
-            <input type="text" name="bio" id="bio"required>
-        </div>
-
-        <br>
-
-        <div class="flex-row justify-sb align-center">
-            <button type="submit">CREATE ACCOUNT</button>
-        </div>
-
-    </form>
-
-
-</div>
-<br>

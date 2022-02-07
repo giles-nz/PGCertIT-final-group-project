@@ -50,26 +50,19 @@ router.post("/editRecipe", async function(req, res) {
 router.post("/updateRecipe", upload.single("imageFile"), async function(req, res) { 
     
     const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
-    // console.log(user.id);
 
     const article_id = req.cookies["articleID"];
-    // console.log(article_id); 
     
     const editTitle = req.body.title;
-    // console.log(editTitle);
 
     const editIngredients = req.body.ingredients;
-    // console.log(editIngredients);
 
     const editRecipe = req.body.method;
-    // console.log(editRecipe);
 
     const checkedRadio = req.body.editImage;
-    // console.log(checkedRadio);
 
     const fileInfo = req.file;
-    console.log(fileInfo);
-    
+
     if ((checkedRadio == "inputFile") && fileInfo) {
         
         console.log(fileInfo);
