@@ -55,8 +55,8 @@ create table votes (
     foreign key (userId) references users (id)
 );
 
-insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (1,'Bryson','Newman','User number one of our site','user1','pa55word','1967-12-03',1, "asioasdjkjdlaksqw");
-insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (2,'Miles','Hartman','User number two of our site','user2','pa55word','1954-12-03',1, "12jahdkhjwqdas");
+insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (1,'Miles','Hartman','User number one of our site','user1','$2b$10$zneAJxwGvEq29hRA1DVw9eec.KXexUvutvVZsoA0UA7AzZ1HASb.e','1954-12-03',1, "12jahdkhjwqdas");
+insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (2,'Bryson','Jupp','User number two of our site','user2','$2b$10$zneAJxwGvEq29hRA1DVw9eec.KXexUvutvVZsoA0UA7AzZ1HASb.e','1954-12-03',1, "12jahdkhjwqdas");
 
 
 INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('1', 
@@ -66,7 +66,11 @@ INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_
 <li>1 kg oyster-cut lamb shoulder</li>
 <li>2 tablespoons flour</li>
 <li>1 red onion</li>
-<li>½ bunch baby carrots</li>
+<li> 1 onion</li>
+<li>handful dried apricots</li>
+<li>Small pinch of saffron</li>
+<li>3 cups low salt chicken broth</li>
+<li>4 lb boneless lamb roast, cut into 1" pieces</li>
 </ul>', 
 '<ol>
     <li>You can either prepare this recipe the night before or morning of slow cooking it. Pat lamb dry and toss with flour and season well with salt and pepper. Set aside. Slice onion into 1cm wedges and trim carrots. Place lamb, onion, and carrots into slow cooker, cover and set aside in the fridge.</li>
@@ -136,11 +140,7 @@ INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_
 
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('1', '1', '2019-01-31 10:11:01', '0', 'very nice', '1');
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('2', '1', '2020-01-31 10:11:01', '0', 'cool', '1');
-INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '0', 'best article I have seen!', '2');
-
-
-       delete from votes
-        where commentId = 4;
+INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '0', 'best article I have seen!', '1');
 	
 	
 	

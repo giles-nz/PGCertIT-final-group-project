@@ -12,8 +12,7 @@ router.post("/commentUpload", async function(req, res) {
     const userId = res.locals.user.id;
 
     //add comment from comment DAO.
- await commentDao.addComment(article_id, content, userId);
- res.send(article_id);
+    await commentDao.addComment(article_id, content, userId);
 });
 
 //this router is a function to send all comment from a specific article to the client side.
@@ -52,7 +51,7 @@ router.get("/voteCommentUp", async function (req, res) {
     const userId = res.locals.user.id;
     
     //vote DAO record when people cilck upvote icon...
-    const vote = await voteDao.retreiveAVote(commentId, userId);
+    const vote = await voteDao.retrieveAVote(commentId, userId);
 
     //if no upvote before...
     if(!vote){
@@ -85,7 +84,7 @@ router.get("/voteCommentDown", async function (req, res) {
     const userId = res.locals.user.id;
 
     //vote DAO record when people cilck downvote icon...
-    const vote = await voteDao.retreiveAVote(commentId, userId);
+    const vote = await voteDao.retrieveAVote(commentId, userId);
 
     //if no upvote before...
     if(!vote){

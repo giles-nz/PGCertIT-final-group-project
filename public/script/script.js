@@ -43,18 +43,17 @@ window.addEventListener("load", function(){
     });
     
     //matching child comment submit button...
-    const submit_second = document.querySelectorAll(".submit-second");
+     const submit_second = document.querySelectorAll(".submit-second");
 
-    //when people click the submit button, this function will call...
-    submit_second.forEach(function(ele){
-        ele.addEventListener("click", commentreFresh);
-    });
+     //when people click the submit button, this function will call...
+     submit_second.forEach(function(ele){
+         ele.addEventListener("click", commentreFresh);
+     })
 
-    // this function can be called, using AJAX/Fetch to retrieve all comments and display...
-    async function commentreFresh(){
+     // this function can be called, using AJAX/Fetch to retrieve all comments and display...
+     async function commentreFresh(){
         let request = await fetch(`http://localhost:3000/commentUpdate`);
         let allComments = await request.json();
-        console.log(allComments.length);
 
         //reset the comment div...
         commentDisplay.innerHTML = "";
