@@ -5,8 +5,6 @@
 
 <script src="./script/script.js" type:"text/javascript"></script>
 
-
-
 <div class="container-create">
     {{! Display a message if one was provided. }}
     {{#if toastMessage}}
@@ -49,10 +47,11 @@
             <input type="text" name="username" id="username" class="usernamecheck"required>
             <p id="log"></p>
         </div>
-            
+        
 
+        <!--ensuring the passwords match, and that they're six or more characters long-->
 
-  <!--ensuring the passwords match, and that they're six or more characters long-->
+  
 
         <div class="flex-col mb">
             <label for ="password">Password</label>

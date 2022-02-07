@@ -62,21 +62,23 @@ window.addEventListener("load", function(){
             //using loop to write all comment...
             commentDisplay.innerHTML += `
             <div class="comment-card">
-             <div class="comment-avater"><img class="comment-image" src="./images/avatars/${allComments[i].avatar}.png"></div>
-              <div class="comment-contents">
-               <div class="comment-title">
-                <p class="comment-username">${allComments[i].username}</p>
-                <p class="comment-time">${allComments[i].timestamp}</p>
-                <a href="./voteCommentUp?id=${allComments[i].id}"><img src="./images/avatars/up.png" class="small-icon"></a><p>${allComments[i].upvote}</p>
-                <a href="./voteCommentDown?id=${allComments[i].id}"><img src="./images/avatars/down.png" class="small-icon"></a><p>${allComments[i].downvote}</p>
-                <a href="./deleteComment?id=${allComments[i].id}"><img src="./images/avatars/delete.png" class="small-icon"></a>
-               </div>
-              <p class="comment-text">${allComments[i].content}</p>
-             </div>
+                <div class="comment-avater">
+                    <img class="comment-image" src="./images/avatars/${allComments[i].avatar}.png">
+                </div>
+                <div class="comment-contents">
+                    <div class="comment-title">
+                        <p class="comment-username">${allComments[i].username}</p>
+                        <p class="comment-time">${allComments[i].timestamp}</p>
+                        <a href="./voteCommentUp?id=${allComments[i].id}"><img src="./images/avatars/up.png" class="small-icon"></a><p>${allComments[i].upvote}</p>
+                        <a href="./voteCommentDown?id=${allComments[i].id}"><img src="./images/avatars/down.png" class="small-icon"></a><p>${allComments[i].downvote}</p>
+                        <a href="./deleteComment?id=${allComments[i].id}"><img src="./images/avatars/delete.png" class="small-icon"></a>
+                    </div>
+                    <p class="comment-text">${allComments[i].content}</p>
+                </div>
             </div>`
-        }
+        };
         //reload the page but don't jump to the top...
         location.reload();
-     }
+    };
 
 });
