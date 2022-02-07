@@ -1,3 +1,7 @@
+<!-- 
+    This is the contente edit handlebars. It shows each article's content, as well as detials about the user that created the article,
+    and allows the user to make changes to their article. 
+-->
 <script>
   window.addEventListener("load", function(event) {
     
@@ -32,6 +36,7 @@
 
 <div id="edit-page">
 
+<!--displaying the current user's recipe and allowing them to edit it-->
   <div class="welcome-text">
     <h1>Edit your <em>@Flavourful</em> recipe |</h1>
     <h1>&nbsp;{{user.fname}}</h1>
@@ -64,7 +69,8 @@
         </textarea>
       </div>
       <br>
-      
+      <!--displaying the current recipe's image and allowing the author to edit it-->
+
       <fieldset>
 
         {{#if defaultImage}}
@@ -88,7 +94,7 @@
         <img id="currentImage" src="./images/thumbnails/{{content.image}}"  alt="Current Image for {{content.title}}" width="320px" height="auto">
         <br> 
         <input type="radio" name="editImage" id="defaultImageRadio" value="default.jpg">
-        <label for="defaultImageRadio">Delete your current image and replace with this <em>@Flavourful</em> default image:</label>
+        <label for="defaultImageRadio">Replace your current image with this <em>@Flavourful</em> default image:</label>
         <br>
         <img id="defaultImage" src="./images/thumbnails/default.jpg"  alt="Photo of various spices - default @Flavourful image" width="320px" height="auto">
         <br>
@@ -104,6 +110,17 @@
         
       </fieldset>
 
+      <!--script for changing the image-->
+
+      <script>
+        const inputFile = document.querySelector("#inpFile");
+        const newImageRadio = document.getElementById("newImage");
+        inputFile.addEventListener("change", function(){
+          newImageRadio.focus();
+          newImageRadio.select();
+        });
+      </script>
+      
       <br>
       <br>
       <button type="submit"><strong>POST your changes <em>@Flavourful</em></strong></button>

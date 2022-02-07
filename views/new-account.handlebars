@@ -1,3 +1,8 @@
+<!-- 
+    This is the new account handlebars. It shows a box allowing users to create their account after having entered
+    their detials.
+-->
+
 <script src="./script/script.js" type:"text/javascript"></script>
 
 
@@ -6,11 +11,12 @@
 
     {{! Display a message if one was provided. }}
     {{#if toastMessage}}
-    <p>{{toastMessage}}</p>
+    <p class="toast-message">{{toastMessage}}</p>
 
     {{/if}}
 
 <div class="container-create">
+      <!--displaying the new account box-->
 
     <h1>Create Your New Account</h1>
     <form action="./newAccount" method="POST">
@@ -46,6 +52,8 @@
             <p id="log"></p></div>
             
         </div>
+
+          <!--script to check if the currenlty entered username is available in the database-->
     
 <script>
     const input = document.querySelector(".usernamecheck");
@@ -69,7 +77,7 @@
     }
     });
 </script>
-
+  <!--ensuring the passwords match, and that they're six or more characters long-->
 
         <div class="flex-col mb">
             <label for ="password">Password</label>
@@ -121,7 +129,7 @@
             <label for="5">
                 <img src="./images/avatars/5.png">
             </label>
-            <input type="radio" name="avatar" class="avatar-img" id="6" value="6">
+            <input type="radio" name="avatar" class="avatar-img" id="6" value="6" checked>
             <label for="6">
                 <img src="./images/avatars/6.png">
             </label>

@@ -1,3 +1,8 @@
+<!-- 
+    This is the main handlebars. It provides the WYSIWYG editor functionality, and sets up the navigation bar, which will be
+    present on all pages. 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.tiny.cloud/1/cq7c0kz5cfk762vhm8wh6sryppgbhuuawwwij58d4jizb3up/tinymce/5/tinymce.min.js" referrerpolicy="origin">
     </script>
+    <!--setting up the WYSIWYG editor-->
     <script>tinymce.init({
         selector: '.wysiwygEditor',
         plugins: 'lists',
@@ -25,7 +31,7 @@
 </head>
 
 <body>
-    
+    <!--setting up the Nav bar-->
     <div id="container-Main">
        <nav id="nav">
            <div id="leftnav">
@@ -34,17 +40,17 @@
                 {{#if user}}
                <a href="/userArticles" class="nav-a">Your Recipes</a>
                {{/if}}
-               {{!-- <a href="/" class="nav-a">About</a> --}}
-               {{!-- <a href="/" class="nav-a">Contact</a>
-               <a href="/" class="nav-a">Advertise</a> --}}
+
            </div>
            <div id="rightnav">
-               <a href="#" class="fa fa-facebook" id="facebook"></a>
-               <a href="#" class="fa fa-twitter" id="twitter"></a>
-               <a href="#" class="fa fa-instagram" id="instagram"></a>
-               <a href="#" class="fa fa-rss" id="rss"></a>
+               <a href="https://www.facebook.com/" class="fa fa-facebook" id="facebook"></a>
+               <a href="https://twitter.com/" class="fa fa-twitter" id="twitter"></a>
+               <a href="https://www.instagram.com/" class="fa fa-instagram" id="instagram"></a>
+               <a href="https://rss.com/" class="fa fa-rss" id="rss"></a>
                {{#if user}}
+               
                <a href="/myAccount" class="nav-a">My Account</a>
+               
                <a href="/logout" class="nav-a">Log out</a>
                {{else}}
                <a href="/newAccount" class="nav-a">Sign Up!</a>
@@ -52,8 +58,7 @@
                {{/if}}
 
            </div>
-          {{!-- <a href="login">SIGN IN</a>
-          <a href="newAccount">SIGN UP</a> --}}
+
        </nav>
 
     {{{body}}}

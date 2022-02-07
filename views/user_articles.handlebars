@@ -5,6 +5,7 @@
 
 <div id="container-all-article">
 
+    <!--displaying the sort functionality-->
 
     <div id="checkBox"> 
         <form action="./userArticlesSortBy" method="POST">
@@ -20,6 +21,7 @@
     {{#if noUserRecipes}}
     <h3>{{noUserRecipes}}</h3>
     {{/if}}
+    <!--displaying each of the user's recipes-->
 
     {{#each userArticles}}
     <div class="card">

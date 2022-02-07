@@ -5,7 +5,7 @@
 
 <div id="container-all-article">
 
-
+<!--displaying all sort methods-->
   <div id="checkBox"> 
     <form action="./sortBy" method="POST">
         <label for="sort_id">Sort by:</label>
@@ -17,7 +17,7 @@
         <input type="submit" value="Sort">
     </form>
   </div>  
-
+<!--displaying each article-->
     {{#each allArticles}}
     <div class="card">
         <div class="card-header"><a href="/content?id={{id}}">

@@ -11,6 +11,10 @@ body {
   background-color: rgb(246, 242, 241);
 }
 
+.toast-message {
+  text-align: center;
+}
+
 .nav-a:link {
   color: rgb(246, 242, 241);
   text-align: center;
@@ -114,9 +118,13 @@ a:hover {
   display: flex;
   flex-direction: row;
   color: #0e1c40;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 200%;
 }
 
-#login-word{
+#login-word {
   color: #0e1c40;
 }
 .login {
@@ -152,17 +160,16 @@ a:hover {
 .login button {
   height: 25px;
   width: 100px;
-  background-color: rgb(0 , 42, 56);
+  background-color: rgb(0, 42, 56);
   color: rgb(246, 242, 241);
   border-radius: 7px;
   font-size: 16px;
 }
-.login input{
+.login input {
   border-radius: 7px;
   border-width: 1.75px;
-  border-color: rgb(0 , 42, 56);
+  border-color: rgb(0, 42, 56);
   height: 15px;
-
 }
 
 /*.container-create h1 {
@@ -213,28 +220,27 @@ a:hover {
   transform: translate(-30%, -45%);
 }
 
-.container-create h1{
+.container-create h1 {
   text-align: center;
   font-weight: lighter;
 }
 
-.flex-container{
+.flex-container {
   position: absolute;
   top: 20%;
   left: 60%;
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
 }
 
-.flex-container img{
+.flex-container img {
   max-width: 70px;
   height: 70px;
 }
 
-.flex-container input{
+.flex-container input {
   position: relative;
   top: 20%;
   left: 70%;
@@ -244,7 +250,7 @@ a:hover {
   position: absolute;
   top: 22%;
   left: 60%;
-} 
+}
 
 .home-page-avatar {
   height: 50%;
@@ -286,6 +292,7 @@ a:hover {
   max-height: 100px;
   max-width: auto;
   margin: auto;
+  padding: 10px;
 }
 /* CSS for the slideshow:
 
@@ -363,13 +370,15 @@ a:hover {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   margin-top: 40px;
-
 }
 .card {
   display: flex;
   flex-direction: row;
   margin: 10px 300px 10px 300px;
+  padding: 5px;
+  max-height: 10%;
 }
+
 .card-image {
   width: 400px;
   height: 300px;
@@ -379,7 +388,6 @@ a:hover {
 .card-body {
   padding: 0;
   margin-left: 10%;
-  max-height: 50%;
 }
 .card-image:hover {
   transform: scale(1.1);
@@ -387,7 +395,9 @@ a:hover {
 }
 .card-title {
   font-size: 30px;
+  line-height: 110%;
 }
+
 .articl-a {
   color: rgb(0, 42, 56);
   text-decoration: none;
@@ -410,8 +420,8 @@ a:hover {
 #container-recipe {
   text-align: left;
   position: relative;
-  top:10%;
-  left:5%;
+  top: 10%;
+  left: 5%;
 }
 #comment-submit {
   text-align: center;
@@ -431,10 +441,10 @@ a:hover {
 #time-content {
   padding: 0px 0px 0px 50px;
 }
-.replyPopup1{
+.replyPopup1 {
   display: none;
 }
-.replyPopup2{
+.replyPopup2 {
   display: block;
 }
 /* --------------------------- content display part */
@@ -474,32 +484,32 @@ a:hover {
 .comment-time {
   color: gray;
 }
-#flex-container{
+#flex-container {
   display: flex;
   flex-direction: row;
   position: absolute;
   left: 80%;
 }
 
-.small-icon{
-  padding: 10px 3px 0px 10px; 
+.small-icon {
+  padding: 10px 3px 0px 10px;
 }
-.comment-upvote{
+.comment-upvote {
   padding-right: 10px;
 }
-.comment-downvote{
+.comment-downvote {
   padding-right: 10px;
 }
-.replyToggle{
+.replyToggle {
   padding: 10px;
 }
 /* nested comment css design */
-.comment-card-child{
+.comment-card-child {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
 }
-.comment-image-child{
+.comment-image-child {
   width: 70%;
   height: auto;
 }
@@ -517,12 +527,12 @@ a:hover {
   font-size: 90%;
 }
 /* second nested comment css design */
-.comment-card-child-second{
+.comment-card-child-second {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
 }
-.comment-image-child-second{
+.comment-image-child-second {
   width: 60%;
   height: auto;
 }
@@ -540,3 +550,26 @@ a:hover {
   font-size: 70%;
 }
 /* --------------------------- content comment part */
+
+@media only screen and (max-width: 850px) {
+  .welcome-text {
+    font-size: medium;
+    text-align: center;
+    justify-content: center;
+  }
+  .avatar-img {
+    max-width: 50px;
+    display: inline-block;
+    margin: auto;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  }
+  .card-image {
+    max-width: 150px;
+    height: auto;
+  }
+}

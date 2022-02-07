@@ -1,3 +1,8 @@
+<!-- 
+    This is the login handlebars. It shows an automated gallery, and a login box, where users can sign in with their credentials. If the user
+    does not yet have an account, if offers them the opportunity to make one. 
+-->
+
 <div id="loginheader">
 
       <div class="welcome-text">
@@ -7,13 +12,11 @@
   
     </div>
 
-    
+ {{! Display a message if one was provided. }}
    {{#if toastMessage}}
-    <p>{{toastMessage}}</p>
+    <p class="toast-message">{{toastMessage}}</p>
     {{/if}}
-
-
-    
+  <!--displaying automated gallery/timer etc.-->
 
   <img src="./images/thumbnails/lily-banse--YHSwy6uqvk-unsplash.jpg" id="image" class ="slideshow-container fade-in"onclick="stop();">
 
@@ -30,7 +33,7 @@
   setInterval(changePhoto, 3000);
             
  </script>
-
+  <!--displaying login box-->
 <div class="login">
 
       <h1 id="login-word">Login</h1>
