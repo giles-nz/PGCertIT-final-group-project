@@ -179,7 +179,7 @@ async function deleteUserByAdimn(id){
         where id = ${id}`); 
 }
 
-// Export functions.
+// Export users DAO functions
 module.exports = {
     createUser,
     retrieveUserById,

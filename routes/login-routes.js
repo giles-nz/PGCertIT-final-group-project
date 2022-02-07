@@ -6,6 +6,7 @@ const saltRounds = 10;
 const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 
+
 //set up a login router, when the login page is called
 router.get("/login", function (req, res) {
     //set the title to Login
@@ -161,14 +162,10 @@ router.post("/newAccount", function(req, res) {
     //entered.
     let newUsername = req.body.username;
     if(newUsername == ""){
-        newUsername = currentUser.username;
-    };
-
+        newUsername = currentUser.username;};
     let newLname = req.body.lname;
     if(newLname == ""){
-        newLname = currentUser.lname;
-    };
-
+        newLname = currentUser.lname;};
     let newPassword = req.body.password;
     if(newPassword == ""){
         newPassword = currentUser.password;
@@ -179,24 +176,18 @@ router.post("/newAccount", function(req, res) {
 
     let newFname = req.body.fname;
     if(newFname == ""){
-        newFname = currentUser.fname;
-    };
-
+        newFname = currentUser.fname;};
     let newBio = req.body.bio
     if(newBio == ""){
-        newBio = currentUser.bio;
-    };
-
+        newBio = currentUser.bio;};
     let newAvatar = req.body.avatar;
     if(newAvatar == null){
-        newAvatar = currentUser.avatar;
-    };
-
+        newAvatar = currentUser.avatar;};
     let newDob = req.body.dob;
     if(newDob == ""){
-        newDob = currentUser.dob;
-    };
+        newDob = currentUser.dob;};
 
+    //store changed detaill in new array...
     let newData = {
         username: newUsername,
         lname: newLname,
@@ -210,11 +201,13 @@ router.post("/newAccount", function(req, res) {
     };
     //actually setting the new user data, using the function in the userDao.
     try {
+        //update user detail to database...
         userDao.updateUser(newData);
         res.setToastMessage(`Thanks, ${newData.fname}! We've updated your details!`);
         res.redirect("/")
     }
     catch (err) {
+        //otherwise, send failed message...
         res.setToastMessage("Something went wrong!");
         res.redirect("/myaccount");
     }

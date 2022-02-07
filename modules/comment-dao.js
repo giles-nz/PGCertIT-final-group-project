@@ -81,6 +81,7 @@ async function downvote(id, value) {
     WHERE id = ${id}`);
 }
 
+// Export comment DAO functions
 module.exports = {
     retrieveAllComments,
     retrieveAllCommentsFromContent,
