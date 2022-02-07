@@ -257,7 +257,7 @@ a:hover {
   color: #0e1c40;
 }
 
-/*.container-login {
+/* .container-login {
   background-color: white;
   color: black;
   position: absolute;
@@ -268,8 +268,8 @@ a:hover {
   height: 40%;
   padding: 50px;
   text-align: center;
-}
-.container-create {
+} */
+/* .container-create {
   background-color: white;
   color: black;
   position: absolute;
@@ -280,7 +280,7 @@ a:hover {
   height: 70%;
   padding: 40px;
   text-align: center;
-}*/
+}  */
 .avatar-img {
   max-height: 100px;
   max-width: auto;
@@ -359,12 +359,14 @@ a:hover {
 /* --------------------------- article display part */
 
 .card {
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
   margin: auto;
   padding: 5px;
-  max-height: 10%;
-  overflow: hidden;
+  overflow: hidden; 
+  width: auto;
+  height: 350px;
 }
 #container-all-article {
   width: 80%;
@@ -377,6 +379,9 @@ a:hover {
   height: 300px;
   object-fit: cover;
   object-position: center;
+  padding: 2px;
+  border: 1px solid #2a53c1;
+  margin: 20px;
 }
 .card-body {
   padding: 0;
@@ -397,6 +402,9 @@ a:hover {
 }
 .articl-a:hover {
   color: #2a53c1;
+}
+.sorting{
+  padding: 20px;
 }
 /* --------------------------- article display part */
 
@@ -460,10 +468,13 @@ a:hover {
   padding: 10px;
 }
 .comment-card {
+  border:1px solid lightgray;
+  border-radius: 5px;
   padding: 20px 0px 20px 0px;
   display: none;
   display: flex;
   flex-direction: row;
+  margin: 20px;
 }
 .comment-dispear {
   display: none;
@@ -513,6 +524,7 @@ a:hover {
 /* nested comment css design */
 .comment-card-child {
   margin-left: 20px;
+  padding-top: 10px;
   display: flex;
   flex-direction: row;
 }
@@ -557,7 +569,7 @@ a:hover {
   font-size: 70%;
 }
 .sorting{
-  padding: 1%;
+  padding: 20px;
 }
 /* --------------------------- content comment part */
 
@@ -589,4 +601,17 @@ a:hover {
     font-family: "Open Sans", sans-serif;
     line-height: 130%;
   }
+}
+
+@media only screen and (max-width: 510px){
+ #nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+ #log{
+   display: flex;
+   align-items: center;
+ }
+
 }
