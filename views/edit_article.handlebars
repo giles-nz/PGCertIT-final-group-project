@@ -14,19 +14,16 @@
     const inputFile = document.querySelector("#inpFile");
 
     currentImage.addEventListener("click", function(event) {
-      console.log("current image clicked");
       currentImageRadio.focus();
       currentImageRadio.click();
     });
 
     defaultImage.addEventListener("click", function(event) {
-      console.log("default image clicked");
       defaultImageRadio.focus();
       defaultImageRadio.click();
     });
     
     inputFile.addEventListener("change", function(event) {
-      console.log("change detected");
       newImageRadio.focus();
       newImageRadio.click();
     });

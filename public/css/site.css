@@ -1,7 +1,3 @@
-/* *{
-    border: 1px solid black;
-}  */
-
 /* --------------------------- Nav part */
 body {
   font-family: "Open Sans", sans-serif;
@@ -142,7 +138,6 @@ a:hover {
   font-size: larger;
 }
 
-
 .login p {
   color: rgb(163, 1, 51);
 }
@@ -152,7 +147,7 @@ a:hover {
   top: 20px;
   left: -40px;
 }
-#log{
+#log {
   text-align: center;
 }
 
@@ -370,7 +365,7 @@ a:hover {
 }
 #container-all-article {
   width: 80%;
-  margin:auto;
+  margin: auto;
   overflow: hidden;
 }
 
@@ -518,7 +513,7 @@ a:hover {
   padding: 10px;
 }
 
-#noUserRecipes{
+#noUserRecipes {
   text-align: center;
 }
 .second-textbox{
@@ -598,17 +593,15 @@ a:hover {
     margin: auto;
   }
 
-  
   .card-image {
     max-width: 200px;
-   
+
     margin: auto;
     object-fit: cover;
   }
 
-  .card{
+  .card {
     max-height: 50%;
-    padding:10%;
   }
   #container-Main {
     font-family: "Open Sans", sans-serif;

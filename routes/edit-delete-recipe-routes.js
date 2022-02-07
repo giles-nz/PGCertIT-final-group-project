@@ -14,10 +14,8 @@ const userDao = require("../modules/users-dao.js");
 router.post("/deleteRecipe", async function(req, res) {
     
     const article_id = req.cookies["articleID"];
-    console.log(article_id);
 
     const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
-    console.log(user.id)
 
     await articleDao.deleteArticle(article_id, user.id);
 
@@ -37,7 +35,6 @@ router.post("/editRecipe", async function(req, res) {
     const defaultImage = "default.jpg";
 
     if (content.image == defaultImage) {
-        console.log(defaultImage);
         res.locals.defaultImage = defaultImage;
     }
     
