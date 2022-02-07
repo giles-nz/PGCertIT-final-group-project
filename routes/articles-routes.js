@@ -130,6 +130,7 @@ router.post("/sortBy", async function(req, res) {
         const allArticlesSortByName = await articleDao.retrieveAllArticlesByName();
         res.locals.allArticles = allArticlesSortByName;
         res.locals.sele1 = `selected = ${"selected"}`;
+        res.locals.title = "All Recipes | @FLAVOURFUL";
         res.render("articles");
     //When the user chooses to sort by date, respond to this feature...
     }else if(sortName == "date"){
@@ -138,6 +139,7 @@ router.post("/sortBy", async function(req, res) {
         const allArticlesSortByDate= await articleDao.retrieveAllArticlesByDate();
         res.locals.allArticles = allArticlesSortByDate;
         res.locals.sele2 = `selected = ${"selected"}`;
+        res.locals.title = "All Recipes | @FLAVOURFUL";
         res.render("articles");
     //When the user chooses to sort by title, respond to this feature...
     }else if(sortName == "title"){
@@ -145,6 +147,7 @@ router.post("/sortBy", async function(req, res) {
         //retrieve article data list from article dao order by title...
         const allArticlesSortByTitle= await articleDao.retrieveAllArticlesByTitle();
         res.locals.allArticles = allArticlesSortByTitle;
+        res.locals.title = "All Recipes | @FLAVOURFUL";
         res.locals.sele3 = `selected = ${"selected"}`;
         res.render("articles");
     }    
@@ -160,11 +163,13 @@ router.post("/userArticlesSortBy", async function(req, res) {
         const userArticlesSortByDate= await articleDao.retrieveUserArticlesByDate(user.id);
         res.locals.userArticles = userArticlesSortByDate;
         res.locals.sele1 = `selected = ${"selected"}`;
+        res.locals.title = "Your Recipes | @FLAVOURFUL";
         res.render("user_articles");
     } else if (sortName == "title") {
         const userArticlesSortByTitle= await articleDao.retrieveUserArticlesByTitle(user.id);
         res.locals.userArticles = userArticlesSortByTitle;
         res.locals.sele2 = `selected = ${"selected"}`;
+        res.locals.title = "Your Recipes | @FLAVOURFUL";
         res.render("user_articles");
     }    
 });
