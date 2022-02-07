@@ -80,7 +80,7 @@ INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_
     <li>Coarsely grate courgette and fold through cooked couscous. Pull or slice lamb into bite sized pieces and add back to the sauce. Season to taste.To serve, divide couscous and tagine between bowls and top with yoghurt, almonds and mint.</li>',
      '1',
       '2022-01-19 10:03:56');
-INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('2', 'Pan fried pork chops', 'pork_chops.jpeg', 
+INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('2', 'Pan Fried Pork Chops', 'pork_chops.jpeg', 
 '<ul>
 <li>2 x 380 g higher-welfare double pork chops , (approximately 2.5cm thick), rind on</li>
 <li>2 sprigs of fresh rosemary</li>
@@ -113,8 +113,8 @@ INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_
  '<ol>
  <li>Preheat the oven to 180°C/350°F/gas 4. Cut the skin off either side of the aubergine, then cut yourself four 1cm-thick slices lengthways (saving any offcuts for another day). Sprinkle the slices with sea salt, and spend a couple of minutes gently bashing and tenderizing them with a meat mallet or rolling pin. Take a piece of kitchen paper and dab off the liquid from both sides of the aubergine. Beat the eggs in a shallow bowl. Blitz the focaccia into fine crumbs in a food processor and pour on to a plate. Dip the aubergine slices in the egg, let any excess drip off, then dip each side in the crumbs. Fry in a large non-stick frying pan on a medium-high heat with 1 tablespoon of olive oil for 6 minutes, or until golden, turning halfway. Transfer to an oiled baking tray, finely grate over most of the Parmesan and pop into the oven.</li>
  <li>Cook the spaghetti in a pan of boiling salted water according to the packet instructions. Wipe out the frying pan, returning it to a medium-high heat with ½ a tablespoon of oil. Peel, finely slice and add the garlic. Fry until lightly golden, pour in the tomatoes, then swirl a splash of water around the tomato tin and into the pan. Pick the baby basil leaves and put aside, tear the rest into the sauce, season to perfection, then leave to simmer on a low heat. Once cooked, use tongs to drag the spaghetti straight into the sauce, letting a little starchy cooking water go with it. Toss together, then divide between plates. Sit the aubergine on top, grate over the remaining Parmesan and finish with the baby basil leaves.</li>
- </ol>', '1', '2022-01-26 10:03:56');
-INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('4', 'Trout fish finger baps', 'trout.jpeg', 
+ </ol>', '1', '2022-01-23 10:03:56');
+INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_user_id", "timestamp") VALUES ('4', 'Trout Fish Finger Baps', 'trout.jpeg', 
 '<ul>
 <li>100 g plain flour</li>
 <li>150 g very fine breadcrumbs</li>
@@ -133,14 +133,14 @@ INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_
  <li>Place a large frying pan on a medium heat with 1 tablespoon of olive oil. Add the fish fingers and pan fry for 3 minutes on each side until crispy and cooked through.</li>
  <li>Meanwhile, warm the rolls in the oven for 2 minutes, then cut in half.</li>
  <li>To serve, load up the rolls with a spoonful of tartare sauce and a handful of shredded lettuce, then place three fish fingers on top. Spread a little tartare sauce on the bottom of the lid, dust with cayenne pepper, if using, then pop the lid on top and tuck in.</li>
- </ol>', '1', '2022-01-10 10:03:56');
+ </ol>', '1', '2022-01-26 10:03:56');
 
 	
 
 
-INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('1', '1', '2019-01-31 10:11:01', '0', 'very nice', '1');
-INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('2', '1', '2020-01-31 10:11:01', '0', 'cool', '1');
-INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '0', 'best article I have seen!', '1');
+INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('1', '1', '2019-01-31 10:11:01', '0', 'very nice', '2');
+INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('2', '1', '2020-01-31 10:11:01', '1', 'thanks', '1');
+INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '2', 'best article I have seen!', '2');
 	
 	
 	
