@@ -1,4 +1,3 @@
-const { v4: uuid } = require("uuid");
 const express = require("express");
 const router = express.Router();
 
@@ -45,7 +44,7 @@ router.get("/content", async function(req, res) {
 
     //retrieve a user through the article id by User DAO...
     const content = await articleDao.retrieveArticleFromID(articleID);
-    //sned content to the content handlebars to display...
+    //send content to the content handlebars to display...
     res.locals.content = content;
 
     //retrieve a user through the authtoken by User DAO...
