@@ -25,7 +25,7 @@ async function retrieveDownvote(commentId) {
     return downvote.length;
 }
 
-
+// record a upvote...
 async function upvote(commentId, userId) {
     const db = await dbPromise;
 
@@ -34,6 +34,7 @@ async function upvote(commentId, userId) {
             (${commentId}, ${userId}, 0)`);
 }
 
+// record a downvote...
 async function downvote(commentId, userId) {
     const db = await dbPromise;
 
@@ -42,6 +43,7 @@ async function downvote(commentId, userId) {
             (${commentId}, ${userId}, 1)`);
 }
 
+// delete a vote when user double click the thumb-up or thumb-down...
 async function deleteVote(commentId, userId) {
     const db = await dbPromise;
 
@@ -50,7 +52,8 @@ async function deleteVote(commentId, userId) {
     WHERE commentId = ${commentId} AND userId = ${userId}`);
 }
 
-async function retreiveAVote(commentId, userId) {
+// retrieve a specific vote detail...
+async function retrieveAVote(commentId, userId) {
     const db = await dbPromise;
 
     const vote = await db.get(SQL`
@@ -61,7 +64,8 @@ async function retreiveAVote(commentId, userId) {
     return vote;
 }
 
-async function retreiveAUpVote(commentId, userId) {
+// retrieve a specific upvote detail...
+async function retrieveAUpVote(commentId, userId) {
     const db = await dbPromise;
 
     const vote = await db.get(SQL`
@@ -72,6 +76,7 @@ async function retreiveAUpVote(commentId, userId) {
     return vote;
 }
 
+// retrieve a specific downvote detail...
 async function retreiveADownVote(commentId, userId) {
     const db = await dbPromise;
 
@@ -83,14 +88,14 @@ async function retreiveADownVote(commentId, userId) {
     return vote;
 }
 
-// Export comment DAO functions
+// Export vote DAO functions
 module.exports = {
     retrieveUpvote,
     retrieveDownvote,
     upvote,
     downvote,
     deleteVote,
-    retreiveAVote,
-    retreiveAUpVote,
+    retrieveAVote,
+    retrieveAUpVote,
     retreiveADownVote
 };
