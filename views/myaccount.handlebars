@@ -11,42 +11,14 @@
 
     {{/if}}
 
-<div class="container-create">
   <!--dispalying personalised account details of current user-->
     <h1>{{user.fname}}'s Account Details</h1>
+
     <form action="./myAccount" method="POST">
+      <!--displaying the my account box-->
 
         <div class="flex-col mb">
-            <label for="username">New Username</label>
-            <p></p>
-            <input type="text" name="username" id="username">
-        </div>
-
-        <br>
-  <!--ensuring the passwords match, and that they're six or more characters long-->
-        <div class="flex-col mb">
-            <label for ="password">New Password</label>
-            <p></p>
-        <input id="password" name="password" type="password" pattern="^\S{6,}$" 
-        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
-        'Must have at least 6 characters' : ''); if(this.checkValidity()) 
-        form.password_two.pattern = this.value;">
-        </div>
-
-        <br>
-
-        <div class="flex-col mb">
-            <label>Confirm New Password</label>
-        <p></p>
-        <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" 
-        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
-        'Please enter the same password as above' : '');">
-        </div>
-
-        <br>
-
-        <div class="flex-col mb">
-            <label for="fname">Changed first name</label>
+            <label for="fname">First name</label>
             <p></p>
             <input type="text" name="fname" id="fname">
         </div>
@@ -54,7 +26,7 @@
         <br>
 
         <div class="flex-col mb">
-            <label for="lname">Changed last name</label>
+            <label for="lname">Last name</label>
             <p></p>
             <input type="text" name="lname" id="lname" >
         </div>
@@ -62,63 +34,101 @@
         <br>
         
         <div class="flex-col mb">
-            <label for="dob">Changed date of birth</label>
+            <label for="dob">Date of birth</label>
             <p></p>
-            <input type="date" name="dob" id="dob">
+            <input type="date" name="dob" id="dob" >
         </div>
 
         <br>
 
         <div class="flex-col mb">
-            <label for="bio">Tell us a bit more about yourself</label>
+            <label for="username">Username</label>
+            <p></p>
+            <input type="text" name="username" id="username" class="usernamecheck">
+            <p id="log"></p>
+        </div>
+            
+
+
+  <!--ensuring the passwords match, and that they're six or more characters long-->
+
+        <div class="flex-col mb">
+            <label for ="password">Password</label>
+            <p></p>
+        <input id="password" name="password" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Must have at least 6 characters' : ''); if(this.checkValidity()) 
+        form.password_two.pattern = this.value;" >
+        </div>
+
+        <br>
+    
+        <div class="flex-col mb">
+        <label for="password_two">Confirm Password</label>
+        <p></p>
+        <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" 
+        onchange="this.setCustomValidity(this.validity.patternMismatch ? 
+        'Please enter the same password as above' : '');" >
+        </div>
+
+        <br>
+
+         <div class="flex-col mb">
+            <label for="bio">Tell us a bit about yourself</label>
             <p></p>
             <input type="text" name="bio" id="bio">
         </div>
         <br>
-
-        <div class="flex-container">
-            <label for="avatar">Please select a new avatar:</label>
-            <br>
-            <input type="radio" name="avatar" class="avatar-img" id="1" value="1">
+        <label id="signupavatar">Choose your avatar:</label>
+        <br>
+        <br>
+        <div class="avatar-container">
+        
+            
+            <div>
+            <input type="radio" name="avatar" class="signupavatar" id="1" value="1">
             <label for="1">
                 <img src="./images/avatars/1.png">
             </label>
-            <input type="radio" name="avatar" class="avatar-img" id="2" value="2">
-            <label for="2">
-                <img src="./images/avatars/2.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="3" value="3">
+            </div>
+            <div>
+                <input type="radio" name="avatar" class="signupavatar" id="2" value="2">
+                    <label for="2">
+                    <img src="./images/avatars/2.png">
+                </label>
+            </div>
+            <div><input type="radio" name="avatar" class="signupavatar" id="3" value="3">
             <label for="3">
                 <img src="./images/avatars/3.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="4" value="4">
+            </label></div>
+            
+            <div><input type="radio" name="avatar" class="signupavatar" id="4" value="4">
             <label for="6">
                 <img src="./images/avatars/4.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="5" value="5">
-            <label for="7">
+            </label></div>
+            <div><input type="radio" name="avatar" class="signupavatar" id="5" value="5">
+            <label for="5">
                 <img src="./images/avatars/5.png">
-            </label>
-            <input type="radio" name="avatar" class="avatar-img" id="6" value="6">
-            <label for="11">
+            </label></div>
+            <div><input type="radio" name="avatar" class="signupavatar" id="6" value="6" checked>
+            <label for="6">
                 <img src="./images/avatars/6.png">
-            </label>
+            </label></div>
+            
         </div>
-
-
         <br>
 
-        <div class="flex-row justify-sb align-center">
+        <div>
             <button type="submit">Change account details</button>
         </div>
     <br>
     </form>
+<br>
+    <form action="./deleteAccount" method="POST">
 
-<form action="./deleteAccount" method="POST">
-    <div class="flex-row jusitfy-sb align center">
-        <button type="submit">Delete my account</button>
-    </div>
- </form>
+        <button id="deleteButton" type="submit">Delete my account</button>
+
+    </form>
 
 </div>
 <br>
