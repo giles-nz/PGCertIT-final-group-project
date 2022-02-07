@@ -149,6 +149,7 @@ a:hover {
 }
 #log {
   text-align: center;
+  color:rgb(163, 1, 51);
 }
 
 #loginheader {
@@ -586,6 +587,14 @@ a:hover {
 }
 .sorting{
   padding: 20px;
+}
+
+.disabled{
+  pointer-events: none;
+}
+
+.enabled{
+  pointer-events: all;
 }
 /* --------------------------- content comment part */
 
