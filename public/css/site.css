@@ -1,7 +1,3 @@
-/* *{
-    border: 1px solid black;
-}  */
-
 /* --------------------------- Nav part */
 body {
   font-family: "Open Sans", sans-serif;
@@ -142,7 +138,6 @@ a:hover {
   font-size: larger;
 }
 
-
 .login p {
   color: rgb(163, 1, 51);
 }
@@ -152,7 +147,7 @@ a:hover {
   top: 20px;
   left: -40px;
 }
-#log{
+#log {
   text-align: center;
 }
 
@@ -257,30 +252,6 @@ a:hover {
   color: #0e1c40;
 }
 
-/*.container-login {
-  background-color: white;
-  color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 40%;
-  padding: 50px;
-  text-align: center;
-}
-.container-create {
-  background-color: white;
-  color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 70%;
-  padding: 40px;
-  text-align: center;
-}*/
 .avatar-img {
   max-height: 100px;
   max-width: auto;
@@ -363,12 +334,14 @@ a:hover {
   flex-direction: row;
   margin: auto;
   padding: 5px;
-  max-height: 10%;
+  height: 350px;
+  width: auto;
   overflow: hidden;
+  object-fit: scale-down;
 }
 #container-all-article {
   width: 80%;
-  margin:auto;
+  margin: auto;
   overflow: hidden;
 }
 
@@ -507,7 +480,7 @@ a:hover {
   padding: 10px;
 }
 
-#noUserRecipes{
+#noUserRecipes {
   text-align: center;
 }
 /* nested comment css design */
@@ -556,7 +529,7 @@ a:hover {
   color: gray;
   font-size: 70%;
 }
-.sorting{
+.sorting {
   padding: 1%;
 }
 /* --------------------------- content comment part */
@@ -573,20 +546,29 @@ a:hover {
     margin: auto;
   }
 
-  
   .card-image {
     max-width: 200px;
-   
+
     margin: auto;
     object-fit: cover;
   }
 
-  .card{
+  .card {
     max-height: 50%;
-    padding:10%;
   }
   #container-Main {
     font-family: "Open Sans", sans-serif;
     line-height: 130%;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  #nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    row-gap: 10px;
+    align-items: center;
   }
 }

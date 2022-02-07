@@ -12,16 +12,12 @@ const userDao = require("../modules/users-dao.js");
 router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res) { 
     
     const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
-    console.log(user.id);
     
     const title = req.body.title;
-    console.log(title);
 
     const ingredients = req.body.ingredients;
-    console.log(ingredients);
 
     const newRecipe = req.body.method;
-    console.log(newRecipe);
 
     const fileInfo = req.file;
     
