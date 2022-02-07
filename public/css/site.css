@@ -1,14 +1,16 @@
 /* *{
     border: 1px solid black;
 }  */
+
+/* --------------------------- Nav part */
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0px;
+  background-color: rgb(246, 242, 241);
+}
 #container-Main {
   font-family: "Open Sans", sans-serif;
   line-height: 23px;
-}
-/* --------------------------- Nav part */
-body {
-  margin: 0px;
-  background-color: rgb(246, 242, 241);
 }
 
 .toast-message {
@@ -411,18 +413,24 @@ a:hover {
 /* --------------------------- content display part */
 #container-content {
   text-align: center;
+  list-style-position: inside;
+  line-height: 240%;
+  margin: 5px;
 }
 #img-inside {
-  float: left;
+  width: 70%;
+  height: auto;
   padding: 2px;
   border: 1px solid #2a53c1;
   margin: 10px;
 }
 #container-recipe {
   text-align: left;
-  position: relative;
-  top: 10%;
-  left: 5%;
+  margin: auto;
+  flex-wrap: wrap;
+  line-height: 200%;
+  width: 70%;
+  margin-bottom: 30px;
 }
 #comment-submit {
   text-align: center;
@@ -438,6 +446,10 @@ a:hover {
 }
 #author-content {
   padding: 0px 50px 0px 0px;
+}
+#author-avatar {
+  max-height: 40px;
+  width: auto;
 }
 #time-content {
   padding: 0px 0px 0px 50px;
