@@ -106,7 +106,8 @@ a:hover {
   margin: 20px;
 }
 #edit-page {
-  margin: 20px;
+  margin: auto;
+  width: 80%;
 }
 #nav-image {
   display: block;
@@ -571,5 +572,16 @@ a:hover {
   .card-image {
     max-width: 150px;
     height: auto;
+  }
+
+  .container-create {
+    margin: auto;
+    width: 99%;
+    overflow: visible;
+  }
+
+  #container-Main {
+    font-family: "Open Sans", sans-serif;
+    line-height: 130%;
   }
 }
