@@ -5,8 +5,6 @@
 
 <script src="./script/script.js" type:"text/javascript"></script>
 
-
-
 <div class="container-create">
 
     {{! Display a message if one was provided. }}
@@ -53,31 +51,32 @@
             
         </div>
 
-          <!--script to check if the currenlty entered username is available in the database-->
-    
-<script>
-    const input = document.querySelector(".usernamecheck");
-    const log = document.querySelector("#log");
+        <!--script to check if the currenlty entered username is available in the database-->
+        
+        <script>
+            const input = document.querySelector(".usernamecheck");
+            const log = document.querySelector("#log");
 
-    input.addEventListener("change", async function(){
-    let request = await fetch(`http://localhost:3000/getAllUsersDetails`);
-    let allDetails = await request.json();
-    let count = 0;
-    for(let i = 0; i < allDetails.length; i++){
-        if(input.value == allDetails[i].username){
-            count ++;
-        }else{
-            count += 0
-        }
-    }
-    if(count > 0){
-        log.innerHTML = "This username is already taken!";
-    }else{
-        log.innerHTML = "This username is available!";
-    }
-    });
-</script>
-  <!--ensuring the passwords match, and that they're six or more characters long-->
+            input.addEventListener("change", async function(){
+                let request = await fetch(`http://localhost:3000/getAllUsersDetails`);
+                let allDetails = await request.json();
+                let count = 0;
+                for(let i = 0; i < allDetails.length; i++){
+                    if(input.value == allDetails[i].username){
+                        count ++;
+                    }else{
+                        count += 0
+                    }
+                }
+                if(count > 0){
+                    log.innerHTML = "This username is already taken!";
+                }else{
+                    log.innerHTML = "This username is available!";
+                }
+            });
+        </script>
+
+        <!--ensuring the passwords match, and that they're six or more characters long-->
 
         <div class="flex-col mb">
             <label for ="password">Password</label>
