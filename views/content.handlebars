@@ -64,17 +64,17 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                         <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
                         {{/if}}
                     </div>
-                {{#if replyAuth}}
-                <a href="#1" class="replyToggle">Reply</a>
-                    <div class="replyPopup1"><form action="./replyComment" method="GET">
-                        <textarea name="content" rows="5" cols="50" placeholder="Type your reply here..." required></textarea>
+                        {{#if replyAuth}}
+                        <a href="#1" class="replyToggle">Reply</a>
+                        <div class="replyPopup1"><form action="./replyComment" method="GET">
+                        <textarea name="content" rows="4" cols="50" placeholder="Type your reply here..." class="second-textbox" required></textarea>
                         <input type="hidden" name="comment_id" value="{{id}}">
                         <br><input type="submit" class="submit-second">
                         </form>
-                    </div>
-                {{/if}}
+                        </div>
+                        {{/if}}
             </div>
-            <p class="comment-text">{{content}}</p>
+                <p class="comment-text">{{content}}</p>
 <!--if there are children comments-->
 
             {{#if children}}
@@ -85,6 +85,7 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                     <div class="comment-title-child">
                         <p class="comment-username-child">{{username}}</p>
                         <p class="comment-time-child">{{timestamp}}</p>
+                        <div id= "flex-container">
                         {{#if voteAuth}}
                         <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p class="comment-upvote">{{upvote}}</p>
                         <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p class="comment-downvote">{{downvote}}</p>
@@ -92,10 +93,11 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                         {{#if delectAuth}}
                         <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
                         {{/if}}
+                        </div>
                         {{#if replyAuth}}
                         <a href="#1" class="replyToggle">Reply</a>
                         <div class="replyPopup1"><form action="./replyComment" method="GET">
-                        <textarea name="content" rows="5" cols="50" placeholder="Type your reply here..." required></textarea>
+                        <textarea name="content" rows="4" cols="38" placeholder="Type your reply here..." class="second-textbox" required></textarea>
                         <input type="hidden" name="comment_id" value="{{id}}">
                         <br><input type="submit" class="submit-second">
                 </form>
@@ -112,6 +114,7 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                     <div class="comment-title-child-second">
                         <p class="comment-username-child-second">{{username}}</p>
                         <p class="comment-time-child-second">{{timestamp}}</p>
+                        <div id= "flex-container">
                         {{#if voteAuth}}
                         <a href="./voteCommentUp?id={{id}}"><img src="./images/avatars/up.png" class="small-icon"></a><p class="comment-upvote">{{upvote}}</p>
                         <a href="./voteCommentDown?id={{id}}"><img src="./images/avatars/down.png" class="small-icon"></a><p class="comment-downvote">{{downvote}}</p>
@@ -119,15 +122,7 @@ such as adding comments, voting, replying, and deleting, when user click a recei
                         {{#if delectAuth}}
                         <a href="./deleteComment?id={{id}}"><img src="./images/avatars/delete.png" class="small-icon"></a>
                         {{/if}}
-                        {{#if replyAuth}}
-                        <a href="#1" class="replyToggle">Reply</a>
-                        <div class="replyPopup1"><form action="./replyComment" method="GET">
-                        <textarea name="content" rows="5" cols="50" placeholder="Type your reply here..." required></textarea>
-                        <input type="hidden" name="comment_id" value="{{id}}">
-                        <br><input type="submit" class="submit-second">
-                </form>
-                </div>
-                {{/if}}
+                        </div>
                     </div>
                     <p class="comment-text-child-second">{{content}}</p>
                 </div>
