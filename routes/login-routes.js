@@ -6,7 +6,7 @@ const saltRounds = 10;
 const userDao = require("../modules/users-dao.js");
 const {verifyAuthenticated} = require("../middleware/auth-middleware.js");
 
-
+//user should visit the home page, if they login in. Otherwise, jump to login page...
 router.get("/login", function (req, res) {
 
     res.locals.title = "Login | @FLAVOURFUL";
@@ -20,12 +20,14 @@ router.get("/login", function (req, res) {
 
 });
 
+//user should logout and clear the authtoken cookies when user click log out button...
 router.get("/logout", function (req, res) {
     res.clearCookie("authToken");
     res.locals.user = null;
     res.setToastMessage("Successfully logged out!");
     res.redirect("./login");
 });
+
 
 router.get("/", verifyAuthenticated, async function (req, res) {
     res.locals.title = "Home | @FLAVOURFUL";
@@ -66,7 +68,7 @@ router.post("/login", async function (req, res) {
     }
 });
 
-
+//user should chage their detail in the page...
 router.get("/myAccount", verifyAuthenticated, function (req, res) {
     res.locals.title = "My Account | @FLAVOURFUL";
      const user = res.locals.user;
@@ -74,11 +76,13 @@ router.get("/myAccount", verifyAuthenticated, function (req, res) {
 
 });
 
+//user should create their new account in the page...
 router.get("/newAccount", async function(req, res) {
     res.locals.title = "New Account | @FLAVOURFUL";
     res.render("new-account");
 });
 
+//the router will send the AJAX/JSON to the client side...
 router.get("/getAllUsersDetails", async function(req,res){
     const allUserDetail = await userDao.retrieveAllUsers();
     res.json(allUserDetail);
@@ -119,6 +123,7 @@ router.post("/newAccount", function(req, res) {
 
  });
 
+ //
  router.post("/myAccount", function(req, res) {
     const currentUser = res.locals.user;
 
