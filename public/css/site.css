@@ -209,10 +209,9 @@ a:hover {
   width: 200px;
   height: 25px;
   align-content: center;
-  position: absolute;
-  bottom: -25%;
+  position: relative;
   /* transform: translate(-30%, -45%); */
-
+  left:30%;
 }
 
 #createNewAccountButton {
