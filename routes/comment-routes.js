@@ -13,6 +13,7 @@ router.post("/commentUpload", async function(req, res) {
 
     //add comment from comment DAO.
     await commentDao.addComment(article_id, content, userId);
+    res.redirect(`content?id=${article_id}`);
 });
 
 //this router is a function to send all comment from a specific article to the client side.
@@ -26,6 +27,8 @@ router.get("/commentUpdate", async function(req, res) {
 
 //this router is a function to delete a specific comment.
 router.get("/deleteComment", async function (req, res) {
+
+    const article_id = req.cookies["articleID"];
 
     const commentId = req.query.id;
     //this is a function when people click the delete icon, this comment will delete.
@@ -42,10 +45,13 @@ router.get("/deleteComment", async function (req, res) {
             await commentDao.deleteComment(secondChild[l].id);
         }
     }
+    res.redirect(`content?id=${article_id}`);
 });
 
 //this router is a function to record and display the upvote.
 router.get("/voteCommentUp", async function (req, res) {
+
+    const article_id = req.cookies["articleID"];
 
     const commentId = req.query.id;
     const userId = res.locals.user.id;
@@ -75,10 +81,14 @@ router.get("/voteCommentUp", async function (req, res) {
     const countDown = await voteDao.retrieveDownvote(commentId);
     //record the number of downvotes cast to comment table
     await commentDao.downvote(commentId, countDown);
+
+    res.redirect(`content?id=${article_id}`);
 })
 
 //this router is a function to record and display the downvote.
 router.get("/voteCommentDown", async function (req, res) {
+
+    const article_id = req.cookies["articleID"];
 
     const commentId = req.query.id;
     const userId = res.locals.user.id;
@@ -108,6 +118,9 @@ router.get("/voteCommentDown", async function (req, res) {
     const countDown = await voteDao.retrieveDownvote(commentId);
     //record the number of downvotes cast to comment table
     await commentDao.downvote(commentId, countDown);
+
+
+    res.redirect(`content?id=${article_id}`);
 })
 
 //this router is a function to reply to parent comment
@@ -120,6 +133,8 @@ router.get("/replyComment", async function(req, res) {
 
     //add child comment to comment table using comment DAO
     await commentDao.addChildComment(article_id, content, commentId, id);
+
+    res.redirect(`content?id=${article_id}`);
 });
 
 //this function will be called and response a json to cilent side
