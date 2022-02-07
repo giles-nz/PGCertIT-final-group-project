@@ -138,6 +138,8 @@
 <script>
     const input = document.querySelector(".usernamecheck");
     const log = document.querySelector("#log");
+    const submitButton = document.querySelector("#createNewAccountButton)
+
 
     input.addEventListener("change", async function(){
     let request = await fetch(`http://localhost:3000/getAllUsersDetails`);
@@ -152,8 +154,10 @@
     }
     if(count > 0){
         log.innerHTML = "This username is already taken!";
+        submitButton.classList.add('disabled');
     }else{
         log.innerHTML = "This username is available!";
+        submitButton.classList.add("enabled");
     }
     });
 </script>
