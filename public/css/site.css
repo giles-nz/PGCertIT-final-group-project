@@ -214,6 +214,14 @@ a:hover {
   font-weight: lighter;
 }
 
+.container-create{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .flex-container {
   top: 20%;
   left: 60%;
@@ -246,7 +254,7 @@ a:hover {
   display: block;
   margin: auto;
   font-size: 40px;
-  margin-left: 70px;
+  margin-left: 0px;
   display: flex;
   flex-direction: row;
   color: #0e1c40;
@@ -258,6 +266,19 @@ a:hover {
   margin: auto;
   padding: 10px;
 }
+
+.avatar-container{
+  /* border: 1px solid black; */
+  display:grid;
+  flex-direction: row;
+  overflow:visible;
+  padding:0px;
+  margin:auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  justify-content: center;
+}
+
 /* CSS for the slideshow:
 
 /* Slideshow container */
@@ -542,7 +563,7 @@ a:hover {
   }
   .avatar-img {
     max-width: 50px;
-    display: inline-block;
+    display: inline;
     margin: auto;
   }
 
