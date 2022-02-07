@@ -6,7 +6,6 @@ const fs = require("../middleware/fs-directory_scanner.js");
 const jimp = require("../middleware/jimp-image_processor.js");
 
 const articleDao = require("../modules/article-dao.js");
-const commentDao = require("../modules/comment-dao.js");
 const userDao = require("../modules/users-dao.js");
 
 // this function deletes the recipe from the articles table in project-database.db
@@ -49,8 +48,6 @@ router.post("/editRecipe", async function(req, res) {
 // this function updates a recipe in the articles table of project-database.db
 router.post("/updateRecipe", upload.single("imageFile"), async function(req, res) { 
     
-    const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
-
     const article_id = req.cookies["articleID"];
     
     const editTitle = req.body.title;
@@ -64,8 +61,6 @@ router.post("/updateRecipe", upload.single("imageFile"), async function(req, res
     const fileInfo = req.file;
 
     if ((checkedRadio == "inputFile") && fileInfo) {
-        
-        console.log(fileInfo);
             
         const oldFileName = fileInfo.path;
         const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;

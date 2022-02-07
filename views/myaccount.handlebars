@@ -50,7 +50,7 @@
             
 
 
-  <!--ensuring the passwords match, and that they're six or more characters long-->
+        <!--ensuring the passwords match, and that they're six or more characters long-->
 
         <div class="flex-col mb">
             <label for ="password">Password</label>
@@ -121,14 +121,39 @@
         <div>
             <button type="submit">Change account details</button>
         </div>
-    <br>
+        <br>
     </form>
-<br>
+    <br>
     <form action="./deleteAccount" method="POST">
 
         <button id="deleteButton" type="submit">Delete my account</button>
 
     </form>
+    <br>
 
 </div>
-<br>
+
+<!--script to check if the currenlty entered username is available in the database-->
+
+<script>
+    const input = document.querySelector(".usernamecheck");
+    const log = document.querySelector("#log");
+
+    input.addEventListener("change", async function(){
+    let request = await fetch(`http://localhost:3000/getAllUsersDetails`);
+    let allDetails = await request.json();
+    let count = 0;
+    for(let i = 0; i < allDetails.length; i++){
+        if(input.value == allDetails[i].username){
+            count ++;
+        }else{
+            count += 0
+        }
+    }
+    if(count > 0){
+        log.innerHTML = "This username is already taken!";
+    }else{
+        log.innerHTML = "This username is available!";
+    }
+    });
+</script>

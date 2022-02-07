@@ -27,16 +27,6 @@ app.use(cookieParser());
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
-// Setup fs for directory scanning
-const fs = require("fs");
-
-// Setup JIMP for image processing
-const jimp = require("jimp");
-
-//Accessing database
-// const SQL = require("sql-template-strings");;
-// const dbPromise = app.use(require("./modules/database.js"));
-
 // Use the toaster middleware
 app.use(require("./middleware/toaster-middleware.js"));
 
@@ -45,7 +35,8 @@ const { addUserToLocals } = require("./middleware/auth-middleware.js");
 app.use(addUserToLocals);
 
 // Setup routes
-app.use(require("./routes/articles-routes.js"));
+const articleRouter = require("./routes/articles-routes.js");
+app.use(articleRouter);
 
 const loginRouter = require("./routes/login-routes.js");
 app.use(loginRouter);
