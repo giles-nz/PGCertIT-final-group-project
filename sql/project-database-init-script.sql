@@ -141,10 +141,6 @@ INSERT INTO articles ("id", "title", "image", "ingredients", "method", "creator_
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('1', '1', '2019-01-31 10:11:01', '0', 'very nice', '1');
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('2', '1', '2020-01-31 10:11:01', '0', 'cool', '1');
 INSERT INTO comments ("id", "article_id", "timestamp", "parent_comment_id", "content", "user_id") VALUES ('3', '1', '2022-01-31 10:11:01', '0', 'best article I have seen!', '1');
-
-
-       delete from votes
-        where commentId = 4;
 	
 	
 	
