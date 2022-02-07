@@ -142,6 +142,7 @@ a:hover {
   font-size: larger;
 }
 
+
 .login p {
   color: rgb(163, 1, 51);
 }
@@ -150,6 +151,9 @@ a:hover {
   position: relative;
   top: 20px;
   left: -40px;
+}
+#log{
+  text-align: center;
 }
 
 #loginheader {
@@ -175,19 +179,6 @@ a:hover {
   height: 15px;
 }
 
-/*.container-create h1 {
-  background-color: rgb(246, 242, 241);
-  color: rgb(0, 42, 56);
-  font-weight: lighter;
-  position: relative;
-  top: 30%;
-  left: 20%;
-  transform: translate(-30%, -20%);
-  width: 80%;
-  height: 55%;
-  padding: 0px;
-  text-align: center;
-}*/
 .container-create label {
   color: rgb(89, 18, 34);
   font-weight: 100;
@@ -367,19 +358,19 @@ a:hover {
 /* --------------------------- homepage part */
 
 /* --------------------------- article display part */
-#container-all-article {
-  font-family: "Lato", sans-serif;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  margin-top: 40px;
-}
+
 .card {
   display: flex;
   flex-direction: row;
-  margin: 10px 300px 10px 300px;
+  margin: auto;
   padding: 5px;
   max-height: 10%;
+  overflow: hidden;
+}
+#container-all-article {
+  width: 80%;
+  margin:auto;
+  overflow: hidden;
 }
 
 .card-image {
@@ -516,6 +507,10 @@ a:hover {
 .replyToggle {
   padding: 10px;
 }
+
+#noUserRecipes{
+  text-align: center;
+}
 /* nested comment css design */
 .comment-card-child {
   margin-left: 20px;
@@ -576,7 +571,7 @@ a:hover {
     margin: auto;
   }
 
-  .card {
+  /* .card {
     display: flex;
     flex-direction: row;
     margin: auto;
@@ -584,13 +579,7 @@ a:hover {
   .card-image {
     max-width: 150px;
     height: auto;
-  }
-
-  .container-create {
-    margin: auto;
-    width: 99%;
-    overflow: visible;
-  }
+  } */
 
   #container-Main {
     font-family: "Open Sans", sans-serif;
