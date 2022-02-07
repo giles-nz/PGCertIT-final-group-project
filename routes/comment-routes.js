@@ -12,8 +12,7 @@ router.post("/commentUpload", async function(req, res) {
     const userId = res.locals.user.id;
 
     //add comment from comment DAO.
- await commentDao.addComment(article_id, content, userId);
- res.send(article_id);
+    await commentDao.addComment(article_id, content, userId);
 });
 
 //this router is a function to send all comment from a specific article to the client side.
