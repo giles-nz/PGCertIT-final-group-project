@@ -60,31 +60,34 @@ router.post("/updateRecipe", upload.single("imageFile"), async function(req, res
 
     const fileInfo = req.file;
     try{
-    if ((checkedRadio == "inputFile") && fileInfo) {
+        if ((checkedRadio == "inputFile") && fileInfo) {
             
-        const oldFileName = fileInfo.path;
-        const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
+            const oldFileName = fileInfo.path;
+            const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
     
-        fs.renameSync(oldFileName, newFileName);
+            fs.renameSync(oldFileName, newFileName);
 
-        const image = await jimp.read(newFileName);
-        image.resize(1280, 720);
-        await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
+            const image = await jimp.read(newFileName);
+            image.resize(1280, 720);
+            await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
 
-        await articleDao.updateArticleAndImage(article_id, editTitle, fileInfo.originalname, editIngredients, editRecipe);
+            await articleDao.updateArticleAndImage(article_id, editTitle, fileInfo.originalname, editIngredients, editRecipe);
     
-    } else if ((checkedRadio == "inputFile") && !fileInfo) {
+        } else if ((checkedRadio == "inputFile") && !fileInfo) {
         
-        await articleDao.updateArticleNotImage(article_id, editTitle, editIngredients, editRecipe);
+            await articleDao.updateArticleNotImage(article_id, editTitle, editIngredients, editRecipe);
 
-    } else {
+        } else {
 
-        await articleDao.updateArticleAndImage(article_id, editTitle, checkedRadio, editIngredients, editRecipe);
-    }
+            await articleDao.updateArticleAndImage(article_id, editTitle, checkedRadio, editIngredients, editRecipe);
+        }
     
-    res.redirect("./userArticles");
+        res.redirect("./userArticles");
+
     }catch(err){
+
         res.setToastMessage("Please check file type!");
+        
         const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
         const article_id = req.cookies["articleID"];
     
