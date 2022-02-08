@@ -63,6 +63,9 @@ router.get("/content", async function(req, res) {
         if(authData == comments[i].authToken){
             //if matching set value is true...
             comments[i].delectAuth = true;
+        }
+        else if(content.creator_user_id == user.id){
+            comments[i].delectAuth = true;
         }else{
             //otherwise, set the value is false...
             comments[i].delectAuth = false;
