@@ -20,9 +20,10 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     const newRecipe = req.body.method;
 
     const fileInfo = req.file;
-    
+    try{
+
     if (fileInfo) {
-            
+
         const oldFileName = fileInfo.path;
         const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
     
@@ -40,7 +41,10 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     }
     
     res.redirect("./userArticles");
-
+    }catch(err){
+        res.setToastMessage("Please check file type!");
+        res.redirect("/");
+    }
 });
 
 module.exports = router;

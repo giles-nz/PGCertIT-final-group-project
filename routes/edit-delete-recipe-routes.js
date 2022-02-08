@@ -59,7 +59,7 @@ router.post("/updateRecipe", upload.single("imageFile"), async function(req, res
     const checkedRadio = req.body.editImage;
 
     const fileInfo = req.file;
-
+    try{
     if ((checkedRadio == "inputFile") && fileInfo) {
             
         const oldFileName = fileInfo.path;
@@ -83,7 +83,26 @@ router.post("/updateRecipe", upload.single("imageFile"), async function(req, res
     }
     
     res.redirect("./userArticles");
-
+    }catch(err){
+        res.setToastMessage("Please check file type!");
+        const user = await userDao.retrieveUserWithAuthToken(req.cookies.authToken);
+        const article_id = req.cookies["articleID"];
+    
+        const content = await articleDao.retrieveArticleFromID(article_id);
+        // console.log(content);
+    
+        const defaultImage = "default.jpg";
+    
+        if (content.image == defaultImage) {
+            res.locals.defaultImage = defaultImage;
+        }
+        
+        res.locals.user = user;
+        res.locals.content = content;
+        res.locals.title = "Edit Recipe | @FLAVOURFUL";
+        
+        res.render("edit_article");
+    }
 });
 
 module.exports = router;
