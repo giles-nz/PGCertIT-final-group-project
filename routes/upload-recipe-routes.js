@@ -20,28 +20,31 @@ router.post("/uploadRecipe", upload.single("imageFile"), async function(req, res
     const newRecipe = req.body.method;
 
     const fileInfo = req.file;
+    
     try{
 
-    if (fileInfo) {
+        if (fileInfo) {
 
-        const oldFileName = fileInfo.path;
-        const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
+            const oldFileName = fileInfo.path;
+            const newFileName = `./public/images/uploaded_images/${fileInfo.originalname}`;
     
-        fs.renameSync(oldFileName, newFileName);
+            fs.renameSync(oldFileName, newFileName);
 
-        const image = await jimp.read(newFileName);
-        image.resize(1280, 720);
-        await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
+            const image = await jimp.read(newFileName);
+            image.resize(1280, 720);
+            await image.write(`./public/images/thumbnails/${fileInfo.originalname}`)
 
-        await articleDao.addArticle(title, fileInfo.originalname, ingredients, newRecipe, user.id);
+            await articleDao.addArticle(title, fileInfo.originalname, ingredients, newRecipe, user.id);
     
-    } else {
+        } else {
         
-        await articleDao.addArticle(title, "default.jpg", ingredients, newRecipe, user.id);
-    }
+            await articleDao.addArticle(title, "default.jpg", ingredients, newRecipe, user.id);
+        }
     
-    res.redirect("./userArticles");
+        res.redirect("./userArticles");
+        
     }catch(err){
+
         res.setToastMessage("Please check file type!");
         res.redirect("/");
     }
