@@ -59,6 +59,7 @@ router.get("/content", async function(req, res) {
     const comments = await commentDao.retrieveAllCommentsFromContent(articleID);
  
     //using a loop to compare the authtoken from the cookies and the authtoken from the database...
+    if(authData){
     for(let i = 0; i < comments.length; i++){
         if(authData == comments[i].authToken){
             //if matching set value is true...
@@ -78,7 +79,7 @@ router.get("/content", async function(req, res) {
             //otherwise, set the value is false...
             comments[i].voteAuth = false;
             comments[i].replyAuth = false;
-        }
+        }}
     }
 
     // the function is convert array of objects with parent id's to a nested tree structure...
