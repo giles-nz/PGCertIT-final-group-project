@@ -4,18 +4,15 @@
 -->
 
 <div id="loginheader">
-
-      <div class="welcome-text">
-    <h1>Welcome! | @FlavourFul</h1>
-  </div>
-  
-  
+    <div class="welcome-text">
+      <h1>Welcome! | @FlavourFul</h1>
     </div>
+</div>
 
  {{! Display a message if one was provided. }}
-   {{#if toastMessage}}
+  {{#if toastMessage}}
     <p class="toast-message">{{toastMessage}}</p>
-    {{/if}}
+  {{/if}}
   <!--displaying automated gallery/timer etc.-->
 
   <img src="./images/thumbnails/lily-banse--YHSwy6uqvk-unsplash.jpg" id="image" class ="slideshow-container fade-in"onclick="stop();">
@@ -32,30 +29,29 @@
   
   setInterval(changePhoto, 3000);
             
- </script>
+  </script>
   <!--displaying login box-->
 <div class="login">
 
-      <h1 id="login-word">Login</h1>
+  <h1 id="login-word">Login</h1>
 
-    <form action="./login" method="POST">
-        <div class="flex-col mb">
-            <label for="txtUsername">Username</label>
-            <p></p>
-            <input type="text" name="username" id="txtUsername" required>
-        </div>
-        <br>
-        <div class="flex-col mb">
-            <label for="txtPassword">Password</label>
-            <p></p>
-            <input type="password" name="password" id="txtPassword" required>
-        </div>
-        <br>
-        <div class="flex-row justify-sb align-center">
-            <button type="submit">Log in</button>
-        </div>
-    
-    </form>
+  <form action="./login" method="POST">
+      <div class="flex-col mb">
+          <label for="txtUsername">Username</label>
+          <p></p>
+        <input type="text" name="username" id="txtUsername" required>
+      </div>
+      <br>
+      <div class="flex-col mb">
+          <label for="txtPassword">Password</label>
+          <p></p>
+        <input type="password" name="password" id="txtPassword" required>
+      </div>
+      <br>
+      <div class="flex-row justify-sb align-center">
+          <button type="submit">Log in</button>
+      </div>
+  
+  </form>
     <p id="dont">Don't have an account? <a href="./newAccount">Sign Up!</a></p>
-
 </div>

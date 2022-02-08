@@ -32,6 +32,8 @@
 </script>
 
 <div id="edit-page">
+   {{! Display a message if one was provided. }}
+
 
 <!--displaying the current user's recipe and allowing them to edit it-->
   <div class="welcome-text">
@@ -65,9 +67,10 @@
       </div>
       <br>
       <!--displaying the current recipe's image and allowing the author to edit it-->
-
+      {{#if toastMessage}}
+        <p class="toast-message">{{toastMessage}}</p>
+      {{/if}}
       <fieldset>
-
         {{#if defaultImage}}
         <input type="radio" name="editImage" id="currentImageRadio" value="{{content.image}}" checked>
         <label for="currentImageRadio">Keep the <em>@Flavourful</em> default image for your recipe:</label>

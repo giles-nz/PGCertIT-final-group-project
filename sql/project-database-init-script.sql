@@ -1,8 +1,3 @@
-/*
- * Upon submission, this file should contain the SQL script to initialize your database.
- * It should contain all DROP TABLE and CREATE TABLE statments, and any INSERT statements
- * required.
- */
 drop table if exists votes;
 drop table if exists comments;
 drop table if exists articles;
@@ -55,7 +50,7 @@ create table votes (
     foreign key (userId) references users (id)
 );
 
-insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (1,'Miles','Hartman','User number one of our site','user1','$2b$10$zneAJxwGvEq29hRA1DVw9eec.KXexUvutvVZsoA0UA7AzZ1HASb.e','1954-12-03',1, "12jahdkhjwqdas");
+insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken,isAdmin) values (1,'Miles','Hartman','User number one of our site','user1','$2b$10$zneAJxwGvEq29hRA1DVw9eec.KXexUvutvVZsoA0UA7AzZ1HASb.e','1954-12-03',1, "12jahdkhjwqdas",1);
 insert into users (id, fname, lname, bio, username, password, dob, avatar, authToken) values (2,'Bryson','Jupp','User number two of our site','user2','$2b$10$zneAJxwGvEq29hRA1DVw9eec.KXexUvutvVZsoA0UA7AzZ1HASb.e','1954-12-03',1, "12jahdkhjwqdas");
 
 
