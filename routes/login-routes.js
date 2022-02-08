@@ -117,6 +117,7 @@ router.post("/deleteAccount", async function(req,res){
     //has been deleted, then redirect the user to the login page
     try{
         userDao.deleteUser(user.id);
+        res.clearCookie("authToken");
         res.setToastMessage("Sorry to see you go! Your account has been deleted.");
         res.redirect("/login")
     } catch(err){
